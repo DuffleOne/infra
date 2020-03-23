@@ -141,7 +141,7 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
-		// push everything over to duffleman.co.uk
+	// push everything over to duffleman.co.uk
 	CF_REDIRECT("*georgemiller.me.uk/*", "https://duffleman.co.uk/$2"),
 
 	// Mail
