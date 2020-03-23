@@ -6,37 +6,47 @@ var REG_NONE = NewRegistrar('none', 'NONE');
 var cloudflare = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI');
 
 D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
+	ALIAS('@', 'zero-damage.do.dfl.mn.'),
+	CNAME('www', 'dfl.mn.'),
+
+	// Internal machines
 	A('ant-man.int', '192.168.254.148'),
 	A('galactus.int', '192.168.254.5'),
-	A('plex.ext', '212.140.154.25'),
-	A('wg', '212.140.154.25'),
 	A('wireguard.int', '192.168.254.22'),
 
-	ALIAS('@', 'zero-damage.do.dfl.mn.'),
+	// External hosts
+	A('mission.h', '212.140.154.25'),
+
+	// External services
+	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
+	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
+	CNAME('pihole', 'zero-damage.do.dfl.mn.'),
+	CNAME('plex', 'mission.h.dfl.mn.'),
+	CNAME('status', 'zero-damage.do.dfl.mn.'),
+	CNAME('wg', 'mission.h.dfl.mn.'),
+
+	// Internal services
 	CNAME('deluge.int', 'ant-man.int.dfl.mn.'),
 	CNAME('duplicati.int', 'ant-man.int.dfl.mn.'),
-	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
 	CNAME('jackett.int', 'ant-man.int.dfl.mn.'),
-	CNAME('jmv3ey5brt6wp64aquv7e6pmgj3m2zfi._domainkey.ses', 'jmv3ey5brt6wp64aquv7e6pmgj3m2zfi.dkim.amazonses.com.'),
 	CNAME('netdata.int', 'ant-man.int.dfl.mn.'),
-	CNAME('oapkcsxs37goqvx4jydjubagqml6544f._domainkey.ses', 'oapkcsxs37goqvx4jydjubagqml6544f.dkim.amazonses.com.'),
-	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
-	CNAME('ombi.ext', 'zero-damage.do.dfl.mn.'),
 	CNAME('ombi.int', 'ant-man.int.dfl.mn.'),
-	CNAME('pihole', 'zero-damage.do.dfl.mn.'),
 	CNAME('radarr.int', 'ant-man.int.dfl.mn.'),
 	CNAME('sonarr.int', 'ant-man.int.dfl.mn.'),
-	CNAME('status', 'zero-damage.do.dfl.mn.'),
-	CNAME('t', '34znbemwn.cname.eu.ngrok.io.'),
-	CNAME('www', 'dfl.mn.'),
-	CNAME('ysimhqy4t3riv543ehlzcjlarf7nkvrf._domainkey.ses', 'ysimhqy4t3riv543ehlzcjlarf7nkvrf.dkim.amazonses.com.'),
 
+	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
 	MX('@', 10, 'alt3.aspmx.l.google.com.'),
 	MX('@', 10, 'alt4.aspmx.l.google.com.'),
+
+	// SES
 	MX('ses', 10, 'inbound-smtp.eu-west-1.amazonaws.com.'),
+	TXT('_amazonses.ses', 'VEJgs8FdY5WGi/Sg8EjPUlR+r5wbJvN4vyXZiab1zjQ='),
+	CNAME('jmv3ey5brt6wp64aquv7e6pmgj3m2zfi._domainkey.ses', 'jmv3ey5brt6wp64aquv7e6pmgj3m2zfi.dkim.amazonses.com.'),
+	CNAME('oapkcsxs37goqvx4jydjubagqml6544f._domainkey.ses', 'oapkcsxs37goqvx4jydjubagqml6544f.dkim.amazonses.com.'),
+	CNAME('ysimhqy4t3riv543ehlzcjlarf7nkvrf._domainkey.ses', 'ysimhqy4t3riv543ehlzcjlarf7nkvrf.dkim.amazonses.com.'),
 
 	NS('cuv', 'ns1.digitalocean.com.'),
 	NS('cuv', 'ns2.digitalocean.com.'),
@@ -45,7 +55,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	NS('do', 'ns2.digitalocean.com.'),
 	NS('do', 'ns3.digitalocean.com.'),
 
-	TXT('_amazonses.ses', 'VEJgs8FdY5WGi/Sg8EjPUlR+r5wbJvN4vyXZiab1zjQ='),
 	TXT('@', 'keybase-site-verification=5iWvlQacJDPK1-1tMxiRwdUeNv7eFEdIDqyJT2xqSLY'),
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPMzaX0DMLvdwFg5j6ifkunYhkn0JvMKghrlzR5r6BelB9cVV3w72ncqsOiMHGNh8pL98n6x9iz5Q4fmU9aTXUoyx4xQmuuR/3armuIKEr88uox4ArZy4TWR8OuDKuMlezt4WwCOUdyqxnqUgpd6gOZL20TY81PB8Zd3EG93Yv8QIDAQAB')
