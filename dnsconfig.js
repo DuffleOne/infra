@@ -83,24 +83,6 @@ D("duffleman.co.uk", REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt9kMz3boousXY4IUknZfeYvhqCixCZtXidnF0deacOC7DAFCskqPu+J/00IHcCx7fiAHC08yuHna3xW30cPzwTcTRI+7e7CqYrH9ltvgMXtTZgnqPzfvGRRCoj8uFb/nGVzOXjRFtegvIClqekc6VIU0g+sQ/kkAa4fk8AwSjUQIDAQAB')
 )
 
-D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'georgeflix.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
-	CNAME('www', 'georgeflix.uk.', CF_PROXY_ON),
-
-	// Avoid WWW
-	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
-
-	// Mail
-	MX('@', 1, 'aspmx.l.google.com.'),
-	MX('@', 5, 'alt1.aspmx.l.google.com.'),
-	MX('@', 5, 'alt2.aspmx.l.google.com.'),
-	MX('@', 10, 'aspmx2.googlemail.com.'),
-	MX('@', 10, 'aspmx3.googlemail.com.'),
-
-	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9uQ00gCmDmfYAlSVecQ+SaCNFEhSFcnjrS1hWH3OZvq3MSf7tuyqpHI2mLagsKY12tVLOJWX9mFAZkN77dT59A1GskdHKeUllnYkG6jh0AUD9TIizKMvaTwnwm175NerFKmBK67P6LyzdxyoHsflFGdVcwZOyBRzSR5dGk5vgo5LMGNxSmyWFoOe7IxKHO8C77M0eJ7J85mReN/l367UG7S6vusTfgF8+cDv78acq7QKWhlERggX2S8pHVRZ2Irp6Tdsv3qaC6Uaiy8Kdgy57+rILFyFR4GDA1gMFWPrSAAcBQjFCllOwyrwy6PJqOo3oLETDm2bLMg8OJIvrOxrQIDAQAB')
-)
-
 D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
@@ -120,6 +102,41 @@ D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsc0Yj+RLfT+MirS/ZpLyRxXpHfdxZYRGbK5zS+X4ASGVIIZLA9EdK7qkNnNDxb6ID6wdx9Z52H/DRsOwhG1g21MA2SVL+43d41gdbAjAussF1iA6T/UD7oGWutSS9kW3RvFYoYm9NEr9dJmGHj2WiOEunruw+O0gDVyXrdWI2idsx2sTU61yE+RUdPJ/uAMg3Q5rWkWzqW22+eFFgE8MG6we7qPzEbbzg23mDy15UJnqE7kxIrgsfgYbsHb4H2NE6BvKKpqoHJ40W1ozmLaX0EoiCSExzoeb+lsPp/nSiH8ePy65nizzVioNf16sI39Z6v6zn87XVaPri6v5pMDh8QIDAQAB')
 )
 
+D("duffleman.uk", REG_NONE, DnsProvider(cloudflare),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
+
+	CF_REDIRECT("*duffleman.uk/*", "https://duffleman.co.uk/$2"),
+
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'aspmx2.googlemail.com.'),
+	MX('@', 10, 'aspmx3.googlemail.com.'),
+
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('_keybase', 'keybase-site-verification=Pfkhz4_vVBGKCYWh30PAp87lz5f-gIiAmes-jKMg96Q'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2OgbsykUScp+kl3WrXmmKU85aX7dwd34pi7ghiKlSmJzn7roPX7IUwJpcaW18nHPW3tQi7T4yMzIMGn+4gZsUy4+36tXGIVpNSZ1En7KGKAgD2dB2g/NOQM4WJhBXETf+bhK188RJfVphlq3k4UtrGheTHermFyjqUWRSgxx1wIW1OdB0RTepppZw1T028TM8Cd2FokbRoqLnKWov5nlhTnh+MypPSLuL4dwN61DzV8xCXSeatuGrHqu1pVsDrufWdE226qD0puB70COIk1XQ+0PcJ/siP/rWrxhxVrhF7nZIQjZ00Ow7WudQPu6qxxuxpSe7NluPJv5obvuNyckwIDAQAB')
+)
+
+D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
+	ALIAS('@', 'georgeflix.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
+	CNAME('www', 'georgeflix.uk.', CF_PROXY_ON),
+
+	// Avoid WWW
+	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
+
+	// Mail
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'aspmx2.googlemail.com.'),
+	MX('@', 10, 'aspmx3.googlemail.com.'),
+
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9uQ00gCmDmfYAlSVecQ+SaCNFEhSFcnjrS1hWH3OZvq3MSf7tuyqpHI2mLagsKY12tVLOJWX9mFAZkN77dT59A1GskdHKeUllnYkG6jh0AUD9TIizKMvaTwnwm175NerFKmBK67P6LyzdxyoHsflFGdVcwZOyBRzSR5dGk5vgo5LMGNxSmyWFoOe7IxKHO8C77M0eJ7J85mReN/l367UG7S6vusTfgF8+cDv78acq7QKWhlERggX2S8pHVRZ2Irp6Tdsv3qaC6Uaiy8Kdgy57+rILFyFR4GDA1gMFWPrSAAcBQjFCllOwyrwy6PJqOo3oLETDm2bLMg8OJIvrOxrQIDAQAB')
+)
+
 D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
@@ -137,21 +154,4 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('@', 'keybase-site-verification=gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlzRF0eIiHqrHrdqIHxZCW1+MV49Dpp/rHoGs2OiCiQzrCn14FelwAo7x9Q51kvtSj4GoukdkluWp3KX7PnZHFfjepZwBaK+yxcegPHg0cNwKqdW5dYQEJBZ4RRLYDTvQbCqh9HzZPWDUjjBMZeIE890peua4Y73Ml2Xb2gqpWXLd+WT/qjesR3VJfpdT4Aq/y3kcJa02rdUZSqhffBrZOdhOfVdh2VhTleaRgYVRkAYU7YKj+rieo9Swbc/hsQmAHzHLlK3bwt62oMxq2EsB1qakb2xhKLJfO6eVVF4ObFU682sBBnOncJuMMUwtw2nJlX9mXiOboGyBF3SuZwsSYwIDAQAB')
-)
-
-D("duffleman.uk", REG_NONE, DnsProvider(cloudflare),
-	A('@', '1.2.3.4', CF_PROXY_ON),
-	A('www', '1.2.3.4', CF_PROXY_ON),
-
-	CF_REDIRECT("*duffleman.uk/*", "https://duffleman.co.uk/$2"),
-
-	MX('@', 1, 'aspmx.l.google.com.'),
-	MX('@', 5, 'alt1.aspmx.l.google.com.'),
-	MX('@', 5, 'alt2.aspmx.l.google.com.'),
-	MX('@', 10, 'aspmx2.googlemail.com.'),
-	MX('@', 10, 'aspmx3.googlemail.com.'),
-
-	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
-	TXT('_keybase', 'keybase-site-verification=Pfkhz4_vVBGKCYWh30PAp87lz5f-gIiAmes-jKMg96Q'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2OgbsykUScp+kl3WrXmmKU85aX7dwd34pi7ghiKlSmJzn7roPX7IUwJpcaW18nHPW3tQi7T4yMzIMGn+4gZsUy4+36tXGIVpNSZ1En7KGKAgD2dB2g/NOQM4WJhBXETf+bhK188RJfVphlq3k4UtrGheTHermFyjqUWRSgxx1wIW1OdB0RTepppZw1T028TM8Cd2FokbRoqLnKWov5nlhTnh+MypPSLuL4dwN61DzV8xCXSeatuGrHqu1pVsDrufWdE226qD0puB70COIk1XQ+0PcJ/siP/rWrxhxVrhF7nZIQjZ00Ow7WudQPu6qxxuxpSe7NluPJv5obvuNyckwIDAQAB')
 )
