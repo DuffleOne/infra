@@ -11,21 +11,13 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'zero-damage.do.dfl.mn.'),
 	CNAME('www', 'dfl.mn.'),
 
-	// Internal machines
+	// Internal hosts
 	A('ant-man.int', '192.168.254.148'),
 	A('galactus.int', '192.168.254.5'),
 	A('wireguard.int', '192.168.254.22'),
 
 	// External hosts
 	A('mission.h', '212.140.154.25'),
-
-	// External services
-	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
-	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
-	CNAME('pihole', 'zero-damage.do.dfl.mn.'),
-	CNAME('plex', 'mission.h.dfl.mn.'),
-	CNAME('status', 'zero-damage.do.dfl.mn.'),
-	CNAME('wg', 'mission.h.dfl.mn.'),
 
 	// Internal services
 	CNAME('deluge.int', 'ant-man.int.dfl.mn.'),
@@ -35,6 +27,14 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('ombi.int', 'ant-man.int.dfl.mn.'),
 	CNAME('radarr.int', 'ant-man.int.dfl.mn.'),
 	CNAME('sonarr.int', 'ant-man.int.dfl.mn.'),
+
+	// External services
+	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
+	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
+	CNAME('pihole', 'zero-damage.do.dfl.mn.'),
+	CNAME('plex', 'mission.h.dfl.mn.'),
+	CNAME('status', 'zero-damage.do.dfl.mn.'),
+	CNAME('wg', 'mission.h.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
@@ -50,6 +50,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('oapkcsxs37goqvx4jydjubagqml6544f._domainkey.ses', 'oapkcsxs37goqvx4jydjubagqml6544f.dkim.amazonses.com.'),
 	CNAME('ysimhqy4t3riv543ehlzcjlarf7nkvrf._domainkey.ses', 'ysimhqy4t3riv543ehlzcjlarf7nkvrf.dkim.amazonses.com.'),
 
+	// NS delegation
 	NS('cuv', 'ns1.digitalocean.com.'),
 	NS('cuv', 'ns2.digitalocean.com.'),
 	NS('cuv', 'ns3.digitalocean.com.'),
@@ -70,6 +71,7 @@ D("duffleman.co.uk", REG_NONE, DnsProvider(cloudflare),
 	// Avoid WWW
 	CF_REDIRECT("www.duffleman.co.uk/*", "https://duffleman.co.uk/$1"),
 
+	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
