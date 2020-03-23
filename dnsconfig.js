@@ -58,8 +58,8 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	NS('do', 'ns2.digitalocean.com.'),
 	NS('do', 'ns3.digitalocean.com.'),
 
-	TXT('@', 'keybase-site-verification=5iWvlQacJDPK1-1tMxiRwdUeNv7eFEdIDqyJT2xqSLY'),
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('@', 'keybase-site-verification=5iWvlQacJDPK1-1tMxiRwdUeNv7eFEdIDqyJT2xqSLY'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPMzaX0DMLvdwFg5j6ifkunYhkn0JvMKghrlzR5r6BelB9cVV3w72ncqsOiMHGNh8pL98n6x9iz5Q4fmU9aTXUoyx4xQmuuR/3armuIKEr88uox4ArZy4TWR8OuDKuMlezt4WwCOUdyqxnqUgpd6gOZL20TY81PB8Zd3EG93Yv8QIDAQAB')
 )
 
@@ -78,8 +78,8 @@ D("duffleman.co.uk", REG_NONE, DnsProvider(cloudflare),
 	MX('@', 10, 'alt3.aspmx.l.google.com.'),
 	MX('@', 10, 'alt4.aspmx.l.google.com.'),
 
-	TXT('@', 'keybase-site-verification=2zA8_3TqWj5I8W56tdkAGhdBUoW9_slEBtzKohqF2AQ'),
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('@', 'keybase-site-verification=2zA8_3TqWj5I8W56tdkAGhdBUoW9_slEBtzKohqF2AQ'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt9kMz3boousXY4IUknZfeYvhqCixCZtXidnF0deacOC7DAFCskqPu+J/00IHcCx7fiAHC08yuHna3xW30cPzwTcTRI+7e7CqYrH9ltvgMXtTZgnqPzfvGRRCoj8uFb/nGVzOXjRFtegvIClqekc6VIU0g+sQ/kkAa4fk8AwSjUQIDAQAB')
 )
 
@@ -90,6 +90,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	// Avoid WWW
 	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
 
+	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
@@ -103,14 +104,17 @@ D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
+	// push everything over to duffleman.co.uk
 	CF_REDIRECT("*duffleman.dev/*", "https://duffleman.co.uk/$2"),
 
+	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
 	MX('@', 10, 'aspmx2.googlemail.com.'),
 	MX('@', 10, 'aspmx3.googlemail.com.'),
 
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('@', 'keybase-site-verification=r4duEmobKVLUbzBicnGTkjX7xQwYY9aN9eoQHKMVl8s'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsc0Yj+RLfT+MirS/ZpLyRxXpHfdxZYRGbK5zS+X4ASGVIIZLA9EdK7qkNnNDxb6ID6wdx9Z52H/DRsOwhG1g21MA2SVL+43d41gdbAjAussF1iA6T/UD7oGWutSS9kW3RvFYoYm9NEr9dJmGHj2WiOEunruw+O0gDVyXrdWI2idsx2sTU61yE+RUdPJ/uAMg3" "Q5rWkWzqW22+eFFgE8MG6we7qPzEbbzg23mDy15UJnqE7kxIrgsfgYbsHb4H2NE6BvKKpqoHJ40W1ozmLaX0EoiCSExzoeb+lsPp/nSiH8ePy65nizzVioNf16sI39Z6v6zn87XVaPri6v5pMDh8QIDAQAB')
 )
@@ -119,8 +123,18 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
+		// push everything over to duffleman.co.uk
 	CF_REDIRECT("*georgemiller.me.uk/*", "https://duffleman.co.uk/$2"),
 
+	// Mail
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'aspmx2.googlemail.com.'),
+	MX('@', 10, 'aspmx3.googlemail.com.'),
+
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('@', 'keybase-site-verification=gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvTs4UzqTndwtHddNLp65ZiW12GlEiibAvqCdqeTnj/dDPO4PomLH+nsjF+b/q2adl+NOxtKe7DvZJbSxCEIfyHqE9xEowVyd50WiKB8JEkpW74v35Pe2qFVS6q/DY7FrLRNDRwwY6VZS3mjSOc/vc5vttuSQOW7YyOshaChiqoWndPUO9NN72W9ozhqqmstjZ6hYExKnHD2ZwFCAniehn9P+QkOANRjlIEIB2rZjoBm1KQlxTWEM95+NB1RjkZVozHtjIE2AxjiQNGvX/rX/m9pIUjekquLnHaQgcW7VUa61GdH3Q9ZItxz9BXkyN+AIMAp3Gau9ga6KNmi9niKs7QIDAQAB')
 )
 
@@ -137,6 +151,6 @@ D("duffleman.uk", REG_NONE, DnsProvider(cloudflare),
 	MX('@', 10, 'aspmx3.googlemail.com.'),
 
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2OgbsykUScp+kl3WrXmmKU85aX7dwd34pi7ghiKlSmJzn7roPX7IUwJpcaW18nHPW3tQi7T4yMzIMGn+4gZsUy4+36tXGIVpNSZ1En7KGKAgD2dB2g/NOQM4WJhBXETf+bhK188RJfVphlq3k4UtrGheTHermFyjqUWRSgxx1wIW1OdB0RTepppZw1T028TM8Cd2FokbRoqLnKWov5nlhTnh+MypPSLuL4dwN61DzV8xCXSeatuGrHqu1pVsDrufWdE226qD0puB70COIk1XQ+0PcJ/siP/rWrxhxVrhF7nZIQjZ00Ow7WudQPu6qxxuxpSe7NluPJv5obvuNyckwIDAQAB'),
-	TXT('_keybase', 'keybase-site-verification=Pfkhz4_vVBGKCYWh30PAp87lz5f-gIiAmes-jKMg96Q')
+	TXT('_keybase', 'keybase-site-verification=Pfkhz4_vVBGKCYWh30PAp87lz5f-gIiAmes-jKMg96Q'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2OgbsykUScp+kl3WrXmmKU85aX7dwd34pi7ghiKlSmJzn7roPX7IUwJpcaW18nHPW3tQi7T4yMzIMGn+4gZsUy4+36tXGIVpNSZ1En7KGKAgD2dB2g/NOQM4WJhBXETf+bhK188RJfVphlq3k4UtrGheTHermFyjqUWRSgxx1wIW1OdB0RTepppZw1T028TM8Cd2FokbRoqLnKWov5nlhTnh+MypPSLuL4dwN61DzV8xCXSeatuGrHqu1pVsDrufWdE226qD0puB70COIk1XQ+0PcJ/siP/rWrxhxVrhF7nZIQjZ00Ow7WudQPu6qxxuxpSe7NluPJv5obvuNyckwIDAQAB')
 )
