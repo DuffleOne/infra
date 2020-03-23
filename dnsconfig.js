@@ -3,7 +3,9 @@
 */
 
 var REG_NONE = NewRegistrar('none', 'NONE');
-var cloudflare = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI');
+var cloudflare = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI', {
+	manage_redirects: true,
+});
 
 D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'zero-damage.do.dfl.mn.'),
@@ -65,6 +67,9 @@ D("duffleman.co.uk", REG_NONE, DnsProvider(cloudflare),
 	CNAME('www', 'duffleman.co.uk.', CF_PROXY_ON),
 	CNAME('s3', 's3.amazonaws.com.'),
 
+	// Avoid WWW
+	CF_REDIRECT("www.duffleman.co.uk/*", "https://duffleman.co.uk/$1"),
+
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
@@ -80,6 +85,9 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'georgeflix.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
 	CNAME('www', 'georgeflix.uk.', CF_PROXY_ON),
 
+	// Avoid WWW
+	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
+
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
@@ -90,8 +98,10 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 )
 
 D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 's3.amazonaws.com.', CF_PROXY_ON),
-	CNAME('www', 'duffleman.dev.', CF_PROXY_ON),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
+
+	CF_REDIRECT("*duffleman.dev/*", "https://duffleman.co.uk/$2"),
 
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
@@ -104,15 +114,19 @@ D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
 )
 
 D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'ultimate-vanguard.do.dfl.mn.'),
-	CNAME('www', 'georgemiller.me.uk.'),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
+
+	CF_REDIRECT("*georgemiller.me.uk/*", "https://duffleman.co.uk/$2"),
 
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvTs4UzqTndwtHddNLp65ZiW12GlEiibAvqCdqeTnj/dDPO4PomLH+nsjF+b/q2adl+NOxtKe7DvZJbSxCEIfyHqE9xEowVyd50WiKB8JEkpW74v35Pe2qFVS6q/DY7FrLRNDRwwY6VZS3mjSOc/vc5vttuSQOW7YyOshaChiqoWndPUO9NN72W9ozhqqmstjZ6hYExKnHD2ZwFCAniehn9P+QkOANRjlIEIB2rZjoBm1KQlxTWEM95+NB1RjkZVozHtjIE2AxjiQNGvX/rX/m9pIUjekquLnHaQgcW7VUa61GdH3Q9ZItxz9BXkyN+AIMAp3Gau9ga6KNmi9niKs7QIDAQAB')
 )
 
 D("duffleman.uk", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'ultimate-vanguard.do.dfl.mn.'),
-	CNAME('www', 'duffleman.uk.'),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
+
+	CF_REDIRECT("*duffleman.uk/*", "https://duffleman.co.uk/$2"),
 
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
