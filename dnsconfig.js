@@ -97,7 +97,8 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	MX('@', 10, 'aspmx2.googlemail.com.'),
 	MX('@', 10, 'aspmx3.googlemail.com.'),
 
-	TXT('@', 'v=spf1 include:_spf.google.com ~all')
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9uQ00gCmDmfYAlSVecQ+SaCNFEhSFcnjrS1hWH3OZvq3MSf7tuyqpHI2mLagsKY12tVLOJWX9mFAZkN77dT59A1GskdHKeUllnYkG6jh0AUD9TIizKMvaTwnwm175NerFKmBK67P6LyzdxyoHsflFGdVcwZOyBRzSR5dGk5vgo5LMGNxSmyWFoOe7IxKHO8C77M0eJ7J85mReN/l367UG7S6vusTfgF8+cDv78acq7QKWhlERggX2S8pHVRZ2Irp6Tdsv3qaC6Uaiy8Kdgy57+rILFyFR4GDA1gMFWPrSAAcBQjFCllOwyrwy6PJqOo3oLETDm2bLMg8OJIvrOxrQIDAQAB')
 )
 
 D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
@@ -116,7 +117,7 @@ D("duffleman.dev", REG_NONE, DnsProvider(cloudflare),
 
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('@', 'keybase-site-verification=r4duEmobKVLUbzBicnGTkjX7xQwYY9aN9eoQHKMVl8s'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsc0Yj+RLfT+MirS/ZpLyRxXpHfdxZYRGbK5zS+X4ASGVIIZLA9EdK7qkNnNDxb6ID6wdx9Z52H/DRsOwhG1g21MA2SVL+43d41gdbAjAussF1iA6T/UD7oGWutSS9kW3RvFYoYm9NEr9dJmGHj2WiOEunruw+O0gDVyXrdWI2idsx2sTU61yE+RUdPJ/uAMg3" "Q5rWkWzqW22+eFFgE8MG6we7qPzEbbzg23mDy15UJnqE7kxIrgsfgYbsHb4H2NE6BvKKpqoHJ40W1ozmLaX0EoiCSExzoeb+lsPp/nSiH8ePy65nizzVioNf16sI39Z6v6zn87XVaPri6v5pMDh8QIDAQAB')
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsc0Yj+RLfT+MirS/ZpLyRxXpHfdxZYRGbK5zS+X4ASGVIIZLA9EdK7qkNnNDxb6ID6wdx9Z52H/DRsOwhG1g21MA2SVL+43d41gdbAjAussF1iA6T/UD7oGWutSS9kW3RvFYoYm9NEr9dJmGHj2WiOEunruw+O0gDVyXrdWI2idsx2sTU61yE+RUdPJ/uAMg3Q5rWkWzqW22+eFFgE8MG6we7qPzEbbzg23mDy15UJnqE7kxIrgsfgYbsHb4H2NE6BvKKpqoHJ40W1ozmLaX0EoiCSExzoeb+lsPp/nSiH8ePy65nizzVioNf16sI39Z6v6zn87XVaPri6v5pMDh8QIDAQAB')
 )
 
 D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
@@ -135,7 +136,7 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('@', 'keybase-site-verification=gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvTs4UzqTndwtHddNLp65ZiW12GlEiibAvqCdqeTnj/dDPO4PomLH+nsjF+b/q2adl+NOxtKe7DvZJbSxCEIfyHqE9xEowVyd50WiKB8JEkpW74v35Pe2qFVS6q/DY7FrLRNDRwwY6VZS3mjSOc/vc5vttuSQOW7YyOshaChiqoWndPUO9NN72W9ozhqqmstjZ6hYExKnHD2ZwFCAniehn9P+QkOANRjlIEIB2rZjoBm1KQlxTWEM95+NB1RjkZVozHtjIE2AxjiQNGvX/rX/m9pIUjekquLnHaQgcW7VUa61GdH3Q9ZItxz9BXkyN+AIMAp3Gau9ga6KNmi9niKs7QIDAQAB')
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlzRF0eIiHqrHrdqIHxZCW1+MV49Dpp/rHoGs2OiCiQzrCn14FelwAo7x9Q51kvtSj4GoukdkluWp3KX7PnZHFfjepZwBaK+yxcegPHg0cNwKqdW5dYQEJBZ4RRLYDTvQbCqh9HzZPWDUjjBMZeIE890peua4Y73Ml2Xb2gqpWXLd+WT/qjesR3VJfpdT4Aq/y3kcJa02rdUZSqhffBrZOdhOfVdh2VhTleaRgYVRkAYU7YKj+rieo9Swbc/hsQmAHzHLlK3bwt62oMxq2EsB1qakb2xhKLJfO6eVVF4ObFU682sBBnOncJuMMUwtw2nJlX9mXiOboGyBF3SuZwsSYwIDAQAB')
 )
 
 D("duffleman.uk", REG_NONE, DnsProvider(cloudflare),
