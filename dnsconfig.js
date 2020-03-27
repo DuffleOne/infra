@@ -12,21 +12,22 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('www', 'dfl.mn.'),
 
 	// Internal hosts
-	A('ant-man.int', '192.168.254.148'),
-	A('galactus.int', '192.168.254.5'),
-	A('wireguard.int', '192.168.254.22'),
+	A('ant-man.h', '192.168.254.148'),
+	A('galactus.h', '192.168.254.5'),
+	A('galactus.int', '192.168.254.5'), // Legacy for RDP certificates
+	A('wireguard.h', '192.168.254.22'),
 
 	// External hosts
 	A('mission.h', '212.140.154.25'),
 
 	// Internal services
-	CNAME('deluge.int', 'ant-man.int.dfl.mn.'),
-	CNAME('duplicati.int', 'ant-man.int.dfl.mn.'),
-	CNAME('jackett.int', 'ant-man.int.dfl.mn.'),
-	CNAME('netdata.int', 'ant-man.int.dfl.mn.'),
-	CNAME('ombi.int', 'ant-man.int.dfl.mn.'),
-	CNAME('radarr.int', 'ant-man.int.dfl.mn.'),
-	CNAME('sonarr.int', 'ant-man.int.dfl.mn.'),
+	CNAME('deluge.i', 'ant-man.h.dfl.mn.'),
+	CNAME('duplicati.i', 'ant-man.h.dfl.mn.'),
+	CNAME('jackett.i', 'ant-man.h.dfl.mn.'),
+	CNAME('netdata.i', 'ant-man.h.dfl.mn.'),
+	CNAME('ombi.i', 'ant-man.h.dfl.mn.'),
+	CNAME('radarr.i', 'ant-man.h.dfl.mn.'),
+	CNAME('sonarr.i', 'ant-man.h.dfl.mn.'),
 
 	// External services
 	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
