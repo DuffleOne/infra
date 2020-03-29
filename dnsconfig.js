@@ -16,6 +16,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('galactus.h', '192.168.254.5'),
 	A('galactus.int', '192.168.254.5'), // Legacy for RDP certificates
 	A('wireguard.h', '192.168.254.22'),
+	AAAA('galactus.h', 'fd00::944f:54c7:d:a50a'),
 
 	// External hosts
 	A('mission.h', '212.140.154.25'),
