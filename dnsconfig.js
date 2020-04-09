@@ -31,10 +31,14 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
+	CNAME('mc', 'minecraft.do.dfl.mn.'),
 	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
 	CNAME('plex', 'mission.h.dfl.mn.'),
 	CNAME('status', 'zero-damage.do.dfl.mn.'),
 	CNAME('wg', 'mission.h.dfl.mn.'),
+
+	// SRV
+	SRV('_minecraft._tcp', 0, 5, 25565, 'minecraft.do.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
