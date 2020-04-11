@@ -148,6 +148,9 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	// Avoid WWW
 	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
 
+	// External services
+	CNAME('sync', 'zero-damage.do.dfl.mn.'),
+
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
