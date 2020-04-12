@@ -21,6 +21,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('mission.h', '212.140.154.25'),
 
 	// Internal services
+	CNAME('bazarr.i', 'ant-man.h.dfl.mn.'),
 	CNAME('deluge.i', 'ant-man.h.dfl.mn.'),
 	CNAME('duplicati.i', 'ant-man.h.dfl.mn.'),
 	CNAME('jackett.i', 'ant-man.h.dfl.mn.'),
