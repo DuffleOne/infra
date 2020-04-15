@@ -31,8 +31,8 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('sonarr.i', 'ant-man.h.dfl.mn.'),
 
 	// External services
+	CNAME('code', 'zero-damage.do.dfl.mn.'),
 	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
-	CNAME('mc', 'minecraft.do.dfl.mn.'),
 	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
 	CNAME('plex', 'mission.h.dfl.mn.'),
 	CNAME('read', 'zero-damage.do.dfl.mn.'),
