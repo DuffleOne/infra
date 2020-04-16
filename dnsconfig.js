@@ -11,6 +11,9 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'zero-damage.do.dfl.mn.'),
 	CNAME('www', 'dfl.mn.'),
 
+	// Redirects for deprecated records
+	CF_REDIRECT("*ombi.dfl.mn/*", "https://requests.georgeflix.uk/$2"),
+
 	// Internal hosts
 	A('ant-man.h', '192.168.254.148'),
 	A('galactus.h', '192.168.254.5'),
@@ -33,8 +36,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	// External services
 	CNAME('code', 'zero-damage.do.dfl.mn.'),
 	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
-	CNAME('ombi', 'zero-damage.do.dfl.mn.'),
-	CNAME('plex', 'mission.h.dfl.mn.'),
+	CNAME('ombi', 'zero-damage.do.dfl.mn.', CF_PROXY_ON), // deprecated in favour of requests.georgeflix.uk
 	CNAME('read', 'zero-damage.do.dfl.mn.'),
 	CNAME('status', 'zero-damage.do.dfl.mn.'),
 	CNAME('wg', 'mission.h.dfl.mn.'),
@@ -150,6 +152,8 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
 
 	// External services
+	CNAME('plex', 'mission.h.dfl.mn.'),
+	CNAME('requests', 'zero-damage.do.dfl.mn.'),
 	CNAME('sync', 'zero-damage.do.dfl.mn.'),
 
 	// Mail
