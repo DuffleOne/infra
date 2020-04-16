@@ -1,0 +1,263 @@
+{
+	"version": "3.7",
+	"services": {
+		"bazarr": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.routers.bazarr.rule=Host(`bazarr.i.dfl.mn`)",
+					"traefik.http.services.bazarr.loadbalancer.server.port=6767",
+					"traefik.http.routers.bazarr.tls=true",
+					"traefik.http.routers.bazarr.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PUID=1000",
+				"PGID=1000",
+				"TZ=Europe/London",
+				"UMASK_SET=022"
+			],
+			"image": "linuxserver/bazarr",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/mnt/downloads:/downloads",
+				"/home/docker/bazarr/config:/config",
+				"/mnt/tv-a1:/tv-a1",
+				"/mnt/tv-a2:/tv-a2",
+				"/mnt/tv-a3:/tv-a3",
+				"/mnt/movies-a2:/movies-a2",
+				"/mnt/movies-a3:/movies-a3"
+			]
+		},
+		"dd-agent": {
+			"cap_add": [
+				"SYS_ADMIN",
+				"SYS_RESOURCE",
+				"SYS_PTRACE",
+				"NET_ADMIN",
+				"IPC_LOCK"
+			],
+			"environment": [
+				"DD_API_KEY=${DATADOG_API}",
+				"DD_APM_ENABLED=true",
+				"DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
+				"DD_LOGS_ENABLED=true",
+				"DD_PROCESS_AGENT_ENABLED=true",
+				"DD_SITE=datadoghq.eu",
+				"DD_SYSTEM_PROBE_ENABLED=true",
+				"DOCKER_CONTENT_TRUST=1"
+			],
+			"image": "datadog/agent:latest",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/etc/passwd:/etc/passwd:ro",
+				"/proc/:/host/proc/:ro",
+				"/sys/fs/cgroup/:/host/sys/fs/cgroup:ro",
+				"/sys/kernel/debug:/sys/kernel/debug",
+				"/var/run/docker.sock:/var/run/docker.sock:ro"
+			]
+		},
+		"deluge": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.routers.deluge.rule=Host(`deluge.i.dfl.mn`)",
+					"traefik.http.services.deluge.loadbalancer.server.port=8112",
+					"traefik.http.routers.deluge.tls=true",
+					"traefik.http.routers.deluge.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PUID=1000",
+				"PGID=1000",
+				"TZ=Europe/London",
+				"UMASK_SET=022",
+				"DELUGE_LOGLEVEL=error"
+			],
+			"image": "linuxserver/deluge",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/mnt/downloads:/downloads",
+				"/home/docker/deluge/config:/config"
+			]
+		},
+		"duplicati": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.services.duplicati.loadbalancer.server.port=8200",
+					"traefik.http.routers.duplicati.rule=Host(`duplicati.i.dfl.mn`)",
+					"traefik.http.routers.duplicati.tls=true",
+					"traefik.http.routers.duplicati.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PUID=1000",
+				"PGID=1000",
+				"TZ=Europe/London"
+			],
+			"image": "linuxserver/duplicati",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/duplicati/config:/config",
+				"/home/docker/:/source",
+				"/mnt/downloads:/downloads"
+			]
+		},
+		"jackett": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.services.jackett.loadbalancer.server.port=9117",
+					"traefik.http.routers.jackett.rule=Host(`jackett.i.dfl.mn`)",
+					"traefik.http.routers.jackett.tls=true",
+					"traefik.http.routers.jackett.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PGID=1000",
+				"PUID=1000",
+				"TZ=Europe/London"
+			],
+			"image": "linuxserver/jackett",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/jackett/config:/config",
+				"/mnt/downloads:/downloads",
+				"/etc/localtime:/etc/localtime:ro"
+			]
+		},
+		"netdata": {
+			"cap_add": [
+				"SYS_PTRACE"
+			],
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.routers.netdata.rule=Host(`netdata.i.dfl.mn`)",
+					"traefik.http.services.netdata.loadbalancer.server.port=19999",
+					"traefik.http.routers.netdata.tls=true",
+					"traefik.http.routers.netdata.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PGID=1000"
+			],
+			"hostname": "${HOSTNAME}",
+			"image": "netdata/netdata:latest",
+			"restart": "unless-stopped",
+			"security_opt": [
+				"apparmor:unconfined"
+			],
+			"volumes": [
+				"/proc:/host/proc:ro",
+				"/sys:/host/sys:ro",
+				"/var/run/docker.sock:/var/run/docker.sock:rw"
+			]
+		},
+		"ombi": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.services.ombi.loadbalancer.server.port=3579",
+					"traefik.http.routers.ombi.rule=Host(`ombi.i.dfl.mn`)",
+					"traefik.http.routers.ombi.tls=true",
+					"traefik.http.routers.ombi.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PGID=1000",
+				"PUID=1000",
+				"TZ=Europe/London"
+			],
+			"image": "linuxserver/ombi",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/ombi/config:/config"
+			]
+		},
+		"radarr": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.services.radarr.loadbalancer.server.port=7878",
+					"traefik.http.routers.radarr.rule=Host(`radarr.i.dfl.mn`)",
+					"traefik.http.routers.radarr.tls=true",
+					"traefik.http.routers.radarr.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PUID=1000",
+				"PGID=1000",
+				"TZ=Europe/London",
+				"UMASK_SET=022"
+			],
+			"image": "linuxserver/radarr:preview",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/radarr/config:/config",
+				"/mnt/downloads:/downloads",
+				"/mnt/movies-a2:/movies-a2",
+				"/mnt/movies-a3:/movies-a3"
+			]
+		},
+		"sonarr": {
+			"deploy": {
+				"labels": [
+					"traefik.enable=true",
+					"traefik.http.routers.sonarr.rule=Host(`sonarr.i.dfl.mn`)",
+					"traefik.http.services.sonarr.loadbalancer.server.port=8989",
+					"traefik.http.routers.sonarr.tls=true",
+					"traefik.http.routers.sonarr.tls.certresolver=le"
+				]
+			},
+			"environment": [
+				"PUID=1000",
+				"PGID=1000",
+				"TZ=Europe/London",
+				"UMASK_SET=022"
+			],
+			"image": "linuxserver/sonarr:preview",
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/sonarr/config:/config",
+				"/mnt/downloads:/downloads",
+				"/mnt/tv-a1:/tv-a1",
+				"/mnt/tv-a2:/tv-a2",
+				"/mnt/tv-a3:/tv-a3",
+				"/mnt/movies-a2:/movies-a2",
+				"/mnt/movies-a3:/movies-a3"
+			]
+		},
+		"web-ingress": {
+			"deploy": {
+				"placement": {
+					"constraints": [
+						"node.role == manager"
+					]
+				}
+			},
+			"environment": [
+				"CF_API_EMAIL=${CF_API_EMAIL}",
+				"CF_API_KEY=${CF_API_KEY}",
+				"AWS_ACCESS_KEY_ID=${AWS_KEY_ID}",
+				"AWS_SECRET_ACCESS_KEY=${AWS_SECRET_KEY}",
+				"AWS_REGION=eu-west-1"
+			],
+			"image": "traefik:latest",
+			"ports": [
+				"80:80",
+				"443:443",
+				"8080:8080"
+			],
+			"restart": "unless-stopped",
+			"volumes": [
+				"/home/docker/traefik/cloudflare.json:/cloudflare.json",
+				"/home/docker/traefik/aws.json:/aws.json",
+				"/root/configs/traefik:/etc/traefik/traefik.yml",
+				"/root/configs/traefik_dyn:/traefik_dyn",
+				"/var/run/docker.sock:/var/run/docker.sock"
+			]
+		}
+	}
+}

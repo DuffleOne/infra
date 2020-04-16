@@ -1,0 +1,64 @@
+{
+	"tracing": {
+		"datadog": {
+			"localAgentHostPort": "dd-agent:8126"
+		}
+	},
+	"metrics": {
+		"datadog": {
+			"address": "dd-agent:8125"
+		}
+	},
+	"api": {
+		"insecure": true
+	},
+	"providers": {
+		"file": {
+			"directory": "/traefik_dyn/"
+		},
+		"docker": {
+			"exposedByDefault": false,
+			"endpoint": "unix:///var/run/docker.sock",
+			"defaultRule": "Host(`{{ .Name }}.i.dfl.mn`)",
+			"swarmMode": true
+		}
+	},
+	"entryPoints": {
+		"web": {
+			"address": ":80"
+		},
+		"websecure": {
+			"address": ":443"
+		}
+	},
+	"certificatesResolvers": {
+		"le": {
+			"acme": {
+				"email": "security@duffleman.co.uk",
+				"storage": "cloudflare.json",
+				"dnsChallenge": {
+					"provider": "cloudflare",
+					"delayBeforeCheck": 0,
+					"resolvers": [
+						"1.1.1.1:53",
+						"8.8.8.8:53"
+					]
+				}
+			}
+		},
+		"r53": {
+			"acme": {
+				"email": "security@duffleman.co.uk",
+				"storage": "aws.json",
+				"dnsChallenge": {
+					"provider": "route53",
+					"delayBeforeCheck": 0,
+					"resolvers": [
+						"1.1.1.1:53",
+						"8.8.8.8:53"
+					]
+				}
+			}
+		}
+	}
+}
