@@ -1,0 +1,73 @@
+ombi.dfl.mn {
+	proxy / https://ombi.i.dfl.mn
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}
+
+dfl.mn www.dfl.mn {
+	proxy / http://dflimg:8001 {
+		transparent
+	}
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}
+
+heimdall.dfl.mn {
+	proxy / http://heimdall:80 {
+		transparent
+	}
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}
+
+read.dfl.mn {
+	proxy / http://wallabag {
+		transparent
+	}
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}
+
+status.dfl.mn {
+	proxy / http://cachet:8000 {
+		transparent
+	}
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}
+
+sync.georgeflix.uk {
+	gzip
+
+	proxy / synclounge:8088 {
+		except /socket.io
+		except /slserver
+		websocket
+		transparent
+	}
+
+	proxy /slserver synclounge:8089 {
+		header_upstream Host {host}
+		header_upstream X-Real-IP {remote}
+		header_upstream X-Forwarded-For {remote}
+		websocket
+		transparent
+	}
+
+	proxy /socket.io synclounge:8089/slserver/socket.io/ {
+		header_upstream Host {host}
+		header_upstream X-Real-IP {remote}
+		header_upstream X-Forwarded-For {remote}
+		websocket
+		transparent
+	}
+
+	tls security@dfl.mn {
+		dns cloudflare
+	}
+}

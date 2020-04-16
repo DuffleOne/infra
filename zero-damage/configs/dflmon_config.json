@@ -1,0 +1,74 @@
+{
+	"jobs": [
+		{
+			"name": "plex",
+			"component_name": "PLEX Server",
+			"type": "https-novalidate",
+			"host": "192.168.254.5:32400/web/index.html",
+			"interval": 120
+		},
+		{
+			"name": "vpn_tunnel",
+			"component_name": "VPN Bridge",
+			"type": "icmp",
+			"host": "192.168.254.254",
+			"interval": 120
+		},
+		{
+			"name": "ombi",
+			"component_name": "Ombi",
+			"type": "https",
+			"host": "ombi.i.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "deluge",
+			"component_name": "Deluge",
+			"type": "https",
+			"host": "deluge.i.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "sonarr",
+			"component_name": "Sonarr",
+			"type": "https",
+			"host": "sonarr.i.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "radarr",
+			"component_name": "Radarr",
+			"type": "https",
+			"host": "radarr.i.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "galactus",
+			"component_name": "galactus",
+			"type": "icmp",
+			"host": "galactus.h.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "ant-man",
+			"component_name": "ant-man",
+			"type": "icmp",
+			"host": "ant-man.h.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "minecraft",
+			"component_name": "minecraft",
+			"type": "icmp",
+			"host": "minecraft.do.dfl.mn",
+			"interval": 120
+		},
+		{
+			"name": "Minecraft",
+			"component_name": "Minecraft",
+			"type": "tcp",
+			"host": "minecraft.do.dfl.mn:25565",
+			"interval": 120
+		}
+	]
+}
