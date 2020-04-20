@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dflimg
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+      app: dflimg

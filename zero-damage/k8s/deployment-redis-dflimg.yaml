@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-dflimg
+  labels:
+    app: redis-dflimg
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-dflimg
+  template:
+    metadata:
+      labels:
+        app: redis-dflimg
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      containers:
+        - name: redis
+          image: redis:latest
+          ports:
+          - containerPort: 6379
+          volumeMounts:
+          - mountPath: "/data"
+            name: redis-dflimg
+      volumes:
+        - name: redis-dflimg
+          persistentVolumeClaim:
+            claimName: redis-dflimg

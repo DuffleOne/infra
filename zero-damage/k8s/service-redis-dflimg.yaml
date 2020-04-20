@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis-dflimg
+spec:
+  ports:
+  - port: 6379
+    protocol: TCP
+  selector:
+      app: redis-dflimg

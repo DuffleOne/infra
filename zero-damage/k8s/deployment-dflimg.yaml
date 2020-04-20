@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dflimg
+  labels:
+    app: dflimg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dflimg
+  template:
+    metadata:
+      labels:
+        app: dflimg
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      containers:
+        - name: dflimg
+          image: duffleman/dflimg:latest
+          ports:
+          - containerPort: 80
+          env:
+          - name: ADDR
+            value: :80
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: aws-access-key
+          - name: AWS_DEFAULT_REGION
+            value: eu-west-1
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: aws-secret-key
+          - name: DFL_ROOT_URL
+            value: https://dfl.mn
+          - name: DFL_SALT
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: salt
+          - name: DFL_USERS
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: dfl-users
+          - name: PG_OPTS
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: database-uri
+          - name: REDIS_ADDR
+            value: redis-dflimg:6379
