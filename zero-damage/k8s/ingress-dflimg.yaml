@@ -2,7 +2,17 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-dflimg
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+    certmanager.k8s.io/cluster-issuer: issuer-cert-manager-production
+    kubernetes.io/ingress.class: "nginx"
 spec:
+  tls:
+  - hosts:
+    - dfl.mn
+    secretName: cert-dflmn
   rules:
   - host: dfl.mn
     http:
