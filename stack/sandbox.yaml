@@ -1,21 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: sandbox
-  labels:
-    app: sandbox
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: sandbox
-  template:
-    metadata:
-      labels:
-        app: sandbox
-    spec:
-      containers:
-      - name: sandbox
-        image: alpine
-        command: [ "/bin/sh", "-c", "--" ]
-        args: [ "while true; do sleep 30; done;" ]
+  containers:
+    - name: sandbox
+      image: ubuntu
+      command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+  restartPolicy: Never
