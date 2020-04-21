@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
-  name: issuer-cert-manager
+  name: issuer-cert-manager-staging
 spec:
   acme:
     email: security@duffleman.co.uk
@@ -10,19 +10,19 @@ spec:
       name: cert-manager-staging
     solvers:
     - selector:
-        dnsNames:
-        - dfl.mn
+        dnsZones:
+        - 'do.dfl.mn'
+      dns01:
+        digitalocean:
+          tokenSecretRef:
+            name: digitalocean
+            key: personal-token
+    - selector:
+        dnsZones:
+        - 'dfl.mn'
       dns01:
         cloudflare:
           email: cloudflare@duffleman.co.uk
           apiTokenSecretRef:
             name: cloudflare
             key: api-token
-    - selector:
-        dnsNames:
-        - do.dfl.mn
-      dns01:
-        digitalocean:
-          tokenSecretRef:
-            name: digitalocean
-            key: personal-token
