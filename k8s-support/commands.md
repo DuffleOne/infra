@@ -58,6 +58,12 @@ kubectl delete pod -n kube-system -l app=flannel
 
 ### Cilium
 
+First fulfill the [requirements](https://docs.cilium.io/en/stable/kubernetes/requirements/)
+
+Add into `/etc/fstab`
+
+`bpffs                      /sys/fs/bpf             bpf     defaults 0 0`
+
 ```sh
 # generate a random key
 echo $(dd if=/dev/urandom count=20 bs=1 2> /dev/null| xxd -p -c 64)
