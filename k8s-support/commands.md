@@ -13,17 +13,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16
 
 # use cilium <- works
 kubeadm init --pod-network-cidr=10.217.0.0/16
-```
 
-## label the nodes
-
-```sh
-# annotate nodes with datacentre for scheduling
-kubectl label nodes control-plane dfl.mn/datacentre=digitalocean
-kubectl label nodes node-1 dfl.mn/datacentre=digitalocean
-kubectl label nodes node-2 dfl.mn/datacentre=digitalocean
-
-kubectl label nodes ant-man dfl.mn/datacentre=mission
 # weavenet <-  experimenting
 kubeadm init --pod-network-cidr=10.32.0.0/12
 ```
@@ -105,6 +95,17 @@ Download the DO CSI from this [releases page](https://github.com/digitalocean/cs
 kubectl apply -f https://raw.githubusercontent.com/digitalocean/csi-digitalocean/master/deploy/kubernetes/releases/csi-digitalocean-v1.2.0.yaml
 ```
 
+## label the nodes
+
+```sh
+# annotate nodes with datacentre for scheduling
+kubectl label nodes control-plane dfl.mn/datacentre=digitalocean
+kubectl label nodes node-1 dfl.mn/datacentre=digitalocean
+kubectl label nodes node-2 dfl.mn/datacentre=digitalocean
+
+kubectl label nodes ant-man dfl.mn/datacentre=mission
+```
+
 ## setup cert-manager
 
 ```sh
@@ -136,4 +137,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 
 ```sh
 kubectl get secret cert-dflmn --namespace=default -o yaml | kubectl apply --namespace=ingress-nginx -f -
+```
+
+```sh
+kubeadm join 68.183.38.41:6443 --token hmysvp.f2g5i9sbnopswh9a \
+    --discovery-token-ca-cert-hash sha256:135a77749d19df2c5e6ec22569acb39c252e8539a3c6f8147db19681cc85c94d
 ```
