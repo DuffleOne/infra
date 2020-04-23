@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cachet
+  labels:
+    app: cachet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cachet
+  template:
+    metadata:
+      labels:
+        app: cachet
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      containers:
+        - name: cachet
+          image: cachethq/docker:latest
+          ports:
+          - containerPort: 8000
+          env:
+          - name: DOCKER
+            value: 'true'
+          - name: APP_ENV
+            value: production
+          - name: APP_DEBUG
+            value: 'false'
+          - name: APP_KEY
+            valueFrom:
+              secretKeyRef:
+                name: cachet
+                key: app-key
+          - name: DB_DRIVER
+            value: pgsql
+          - name: DB_HOST
+            value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
+          - name: DB_PORT
+            value: '25060'
+          - name: DB_DATABASE
+            value: cachet
+          - name: DB_USERNAME
+            value: cachet
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cachet
+                key: db-password
+          - name: CACHE_DRIVER
+            value: redis
+          - name: QUEUE_DRIVER
+            value: redis
+          - name: REDIS_HOST
+            value: redis-cachet
+          - name: REDIS_DATABASE
+            value: '0'
+          - name: MAIL_DRIVER
+            value: smtp
+          - name: MAIL_PORT
+            value: '587'
+          - name: MAIL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: cachet
+                key: mail-username
+          - name: MAIL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cachet
+                key: mail-password
+          - name: MAIL_ADDRESS
+            value: alerts@ses.dfl.mn
+          - name: MAIL_NAME
+            value: DFL Alerts
+          - name: MAIL_ENCRYPTION
+            value: tls

@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cachet
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+  selector:
+      app: cachet
