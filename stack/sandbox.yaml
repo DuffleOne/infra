@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sandbox
+  labels:
+    app: sandbox
+spec:
+  containers:
+    - name: sandbox
+      image: linuxserver/openssh-server:latest
+      # volumeMounts:
+      # - mountPath: "/heimdall"
+      #   name: heimdall
+      # - mountPath: "/wallabag/data"
+      #   name: wallabag-data
+      # - mountPath: "/wallabag/images"
+      #   name: wallabag-images
+      env:
+        - name: USER_NAME
+          value: george
+        - name: PUBLIC_KEY
+          value: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBNEDxTTblGzfvS+JfbIA9hC+c/mkWj4gXNN4hyIXPrP george@duffleman.co.uk
+  # volumes:
+  #   - name: heimdall
+  #     persistentVolumeClaim:
+  #       claimName: heimdall
+  #   - name: wallabag-images
+  #     persistentVolumeClaim:
+  #       claimName: wallabag-images
+  #   - name: wallabag-data
+  #     persistentVolumeClaim:
+  #       claimName: wallabag-data
+  restartPolicy: Never
