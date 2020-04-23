@@ -5,42 +5,6 @@ requests.georgeflix.uk ombi.dfl.mn {
 	}
 }
 
-dfl.mn www.dfl.mn {
-	proxy / http://dflimg:8001 {
-		transparent
-	}
-	tls security@dfl.mn {
-		dns cloudflare
-	}
-}
-
-heimdall.dfl.mn {
-	proxy / http://heimdall:80 {
-		transparent
-	}
-	tls security@dfl.mn {
-		dns cloudflare
-	}
-}
-
-read.dfl.mn {
-	proxy / http://wallabag {
-		transparent
-	}
-	tls security@dfl.mn {
-		dns cloudflare
-	}
-}
-
-status.dfl.mn {
-	proxy / http://cachet:8000 {
-		transparent
-	}
-	tls security@dfl.mn {
-		dns cloudflare
-	}
-}
-
 sync.georgeflix.uk {
 	gzip
 

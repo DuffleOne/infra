@@ -2,122 +2,10 @@
 	"version": "3.7",
 	"volumes": {
 		"heimdall_data": {},
-		"omnidb_data": {},
-		"redis_data": {},
 		"wallabag_data": {},
 		"wallabag_images": {}
 	},
 	"services": {
-		"cachet": {
-			"depends_on": [
-				"redis"
-			],
-			"environment": [
-				"DOCKER=true",
-				"APP_ENV=production",
-				"APP_DEBUG=false",
-				"APP_KEY=${CACHET_APP_KEY}",
-				"DB_DRIVER=pgsql",
-				"DB_HOST=private-db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com",
-				"DB_PORT=25060",
-				"DB_DATABASE=cachet",
-				"DB_USERNAME=cachet",
-				"DB_PASSWORD=${CACHET_DB_PASSWORD}",
-				"CACHE_DRIVER=redis",
-				"QUEUE_DRIVER=redis",
-				"REDIS_HOST=redis",
-				"REDIS_DATABASE=1",
-				"MAIL_DRIVER=smtp",
-				"MAIL_HOST=email-smtp.eu-west-1.amazonaws.com",
-				"MAIL_PORT=587",
-				"MAIL_USERNAME=${CACHET_MAIL_USERNAME}",
-				"MAIL_PASSWORD=${CACHET_MAIL_PASSWORD}",
-				"MAIL_ADDRESS=alerts@ses.dfl.mn",
-				"MAIL_NAME=DFL Alerts",
-				"MAIL_ENCRYPTION=tls"
-			],
-			"image": "cachethq/docker:latest",
-			"restart": "unless-stopped"
-		},
-		"dd-agent": {
-			"cap_add": [
-				"SYS_ADMIN",
-				"SYS_RESOURCE",
-				"SYS_PTRACE",
-				"NET_ADMIN",
-				"IPC_LOCK"
-			],
-			"environment": [
-				"DD_API_KEY=${DATADOG_API}",
-				"DD_APM_ENABLED=true",
-				"DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
-				"DD_LOGS_ENABLED=true",
-				"DD_PROCESS_AGENT_ENABLED=true",
-				"DD_SITE=datadoghq.eu",
-				"DD_SYSTEM_PROBE_ENABLED=true",
-				"DOCKER_CONTENT_TRUST=1"
-			],
-			"image": "datadog/agent:latest",
-			"restart": "unless-stopped",
-			"volumes": [
-				"/etc/passwd:/etc/passwd:ro",
-				"/proc/:/host/proc/:ro",
-				"/sys/fs/cgroup/:/host/sys/fs/cgroup:ro",
-				"/sys/kernel/debug:/sys/kernel/debug",
-				"/var/run/docker.sock:/var/run/docker.sock:ro"
-			]
-		},
-		"dflimg": {
-			"depends_on": [
-				"redis"
-			],
-			"environment": [
-				"PG_OPTS=postgresql://dflimg:${DLFIMG_DB_PW}@private-db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com:25060/dflimg?sslmode=require",
-				"DFL_USERS={\"Duffleman\": \"${DFLIMG_DFL_PW}\"}",
-				"DFL_ROOT_URL=https://dfl.mn",
-				"DFL_SALT=${DFL_SALT}",
-				"ADDR=:8001",
-				"AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}",
-				"AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}",
-				"AWS_DEFAULT_REGION=eu-west-1",
-				"REDIS_ADDR=redis:6379"
-			],
-			"image": "duffleman/dflimg",
-			"restart": "unless-stopped"
-		},
-		"dflmon": {
-			"depends_on": [
-				"cachet"
-			],
-			"environment": [
-				"DFLMON_DEBUG=false",
-				"DFLMON_CACHET_URL=http://cachet:8000",
-				"DFLMON_CACHET_TOKEN=${CACHET_TOKEN}",
-				"DFLMON_CONFIG=/dflmon_config"
-			],
-			"image": "duffleman/dflmon",
-			"restart": "unless-stopped",
-			"volumes": [
-				"/root/configs/dflmon_config:/dflmon_config"
-			]
-		},
-		"heimdall": {
-			"environment": [
-				"TZ=Europe/London"
-			],
-			"image": "linuxserver/heimdall",
-			"restart": "unless-stopped",
-			"volumes": [
-				"heimdall_data:/config"
-			]
-		},
-		"redis": {
-			"image": "redis",
-			"restart": "unless-stopped",
-			"volumes": [
-				"redis_data:/data"
-			]
-		},
 		"synclounge": {
 			"environment": [
 				"DOMAIN=sync.georgeflix.uk",
@@ -125,19 +13,6 @@
 			],
 			"image": "starbix/synclounge",
 			"restart": "unless-stopped"
-		},
-		"wallabag": {
-			"environment": [
-				"SYMFONY__ENV__SECRET=${WALLABAG_SECRET}",
-				"SYMFONY__ENV__DOMAIN_NAME=https://read.dfl.mn",
-				"SYMFONY__ENV__REDIS_HOST=redis"
-			],
-			"image": "wallabag/wallabag",
-			"restart": "unless-stopped",
-			"volumes": [
-				"wallabag_data:/var/www/wallabag/data",
-				"wallabag_images:/var/www/wallabag/web/assets/images"
-			]
 		},
 		"web-ingress": {
 			"environment": [
