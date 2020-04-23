@@ -18,7 +18,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('ant-man.h', '192.168.254.148'),
 	A('galactus.h', '192.168.254.5'),
 	A('wireguard.h', '192.168.254.22'),
-	AAAA('galactus.h', 'fd00::944f:54c7:d:a50a'),
 
 	// External hosts
 	A('mission.h', '212.140.154.25'),
