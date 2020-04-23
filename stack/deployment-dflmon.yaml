@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dflmon
+  labels:
+    app: dflmon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dflmon
+  template:
+    metadata:
+      labels:
+        app: dflmon
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      volumes:
+      - name: configmap-dflmon
+        configMap:
+          name: configmap-dflmon
+      containers:
+        - name: dflmon
+          image: duffleman/dflmon:latest
+          volumeMounts:
+          - name: configmap-dflmon
+            mountPath: /dflmon_config
+          env:
+          - name: ADDR
+            value: :80
+          - name: DFLMON_CACHET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: dflmon
+                key: cachet-token
+          - name: DFLMON_DEBUG
+            value: 'false'
+          - name: DFLMON_CACHET_URL
+            value: 'https://status.dfl.mn'
+          - name: DFLMON_CONFIG
+            value: '/dflmon_config/config'
