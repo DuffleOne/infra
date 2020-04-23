@@ -24,6 +24,8 @@ kubectl label nodes node-1 dfl.mn/datacentre=digitalocean
 kubectl label nodes node-2 dfl.mn/datacentre=digitalocean
 
 kubectl label nodes ant-man dfl.mn/datacentre=mission
+# weavenet <-  experimenting
+kubeadm init --pod-network-cidr=10.32.0.0/12
 ```
 
 ## install the CNI
@@ -81,6 +83,17 @@ helm install cilium cilium/cilium --version 1.7.2 \
   --set global.encryption.nodeEncryption=false \ # TODO: make this true
   --enable-node-port \
   --enable-external-ips
+```
+
+### WeaveNet
+
+```sh
+# from https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
+echo "flake-tectum-famine-cordoba-musketry-malaise-alibi-shorten-breccia-debility" > /var/lib/weave/weave-passwd
+
+kubectl create secret -n kube-system generic weave-passwd --from-file=/var/lib/weave/weave-passwd
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&password-secret=weave-passwd"
 ```
 
 ## install the DO CSI for DO volumes
