@@ -15,13 +15,20 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-DEBIAN_FRONTEND=noninteractive apt update && apt upgrade -y
+# add wireguard repo
+ add-apt-repository ppa:wireguard/wireguard
 
-DEBIAN_FRONTEND=noninteractive apt install -y \
+DEBIAN_FRONTEND=noninteractive apt-get update && apt-get upgrade -y
+
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
 apt-transport-https \
 ca-certificates \
 curl \
 gnupg-agent \
-software-properties-common
+software-properties-common \
+wireguard
 
-apt autoremove -y
+umask 077
+wg genkey | tee privatekey | wg pubkey > publickey
+
+apt-get autoremove -y
