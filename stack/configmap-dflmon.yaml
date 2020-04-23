@@ -10,7 +10,7 @@ data:
           "name": "plex",
           "component_name": "PLEX Server",
           "type": "https-novalidate",
-          "host": "192.168.254.5:32400/web/index.html",
+          "host": "galactus.h.dfl.mn:32400/web/index.html",
           "interval": 120
         },
         {
