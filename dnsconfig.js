@@ -8,8 +8,11 @@ var cloudflare = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI', {
 });
 
 D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'zero-damage.do.dfl.mn.'),
-	CNAME('www', 'dfl.mn.'),
+	ALIAS('@', 'haproxy.k.dfl.mn.'),
+	CNAME('www', 'dfl.mn.', CF_PROXY_ON),
+
+	// Avoid WWW
+	CF_REDIRECT("www.dfl.mn/*", "https://dfl.mn/$1"),
 
 	// Redirects for deprecated records
 	CF_REDIRECT("*ombi.dfl.mn/*", "https://requests.georgeflix.uk/$2"),
@@ -22,6 +25,11 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	// External hosts
 	A('mission.h', '212.140.154.25'),
 
+	// k8s hosts
+	A('haproxy.k', '68.183.45.191'),
+	A('node-1.k', '134.209.191.212'),
+	A('node-2.k', '178.62.102.39'),
+
 	// Internal services
 	CNAME('bazarr.i', 'ant-man.h.dfl.mn.'),
 	CNAME('deluge.i', 'ant-man.h.dfl.mn.'),
@@ -33,11 +41,10 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('sonarr.i', 'ant-man.h.dfl.mn.'),
 
 	// External services
-	CNAME('code', 'zero-damage.do.dfl.mn.'),
-	CNAME('heimdall', 'zero-damage.do.dfl.mn.'),
-	CNAME('ombi', 'zero-damage.do.dfl.mn.', CF_PROXY_ON), // deprecated in favour of requests.georgeflix.uk
-	CNAME('read', 'zero-damage.do.dfl.mn.'),
-	CNAME('status', 'zero-damage.do.dfl.mn.'),
+	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
+	CNAME('ombi', 'haproxy.k.dfl.mn.', CF_PROXY_ON), // deprecated in favour of requests.georgeflix.uk
+	CNAME('read', 'haproxy.k.dfl.mn.'),
+	CNAME('status', 'haproxy.k.dfl.mn.'),
 	CNAME('wg', 'mission.h.dfl.mn.'),
 
 	// SRV
