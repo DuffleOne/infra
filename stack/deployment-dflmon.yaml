@@ -37,6 +37,6 @@ spec:
           - name: DFLMON_DEBUG
             value: 'false'
           - name: DFLMON_CACHET_URL
-            value: 'https://status.dfl.mn'
+            value: 'http://cachet:8000'
           - name: DFLMON_CONFIG
             value: '/dflmon_config/config'
