@@ -1,23 +1,35 @@
 # infra
 
-This repo contains the docker-compose files and DNS configuration to run my personal stack.
+This repo contains the kubernetes and DNS configuration files to run my stack, it also contains legacy docker-compose files which are being migrated into k8s.
 
 Some items are not tracked in this repo yet, and possibly may never be.
 
-A lot is missing before you can deploy your own version of this. So the end goal here is to have a repo where you can set up some environment variables, run `terraform apply` and it just works.
+A lot is missing before you can deploy your own version of this. But this works as reference point to recreate the stack if I ever loose it, or a reference point for others trying to do similar things.
 
-Until then, I hope at least it is a good reference point for others setting up docker-compose files for their services.
+## resources
+
+Although they won't need to match, here are my own resources I use to run the stack.
+
+- 2x Digital Ocean Droplets
+  - 1x control-plane node
+  - 2x node worker
+  - 1x HAProxy LB
+- 1x on-site k8s node w/ access to NAS
+- 1x Buffalo NAS (112 TB)
+- 1x custom-built Windows PC for PLEX
 
 ## plans
 
 - ditch all of this in favour of terraform
 - run the stack with some kubernetes magic (even if it's a single node)
 
-## missing
+![It's happening](https://media.giphy.com/media/rl0FOxdz7CcxO/giphy.gif)
+
+## missing configuration from this repo
 
 - PLEX server on "galactus.h.dfl.mn"
 - Minecraft server on "minecraft.do.dfl.mn"
-- Wireguard connection between "ant-man" and "zero-damage"
+- Wireguard connections
 
 ## dns
 
@@ -29,6 +41,15 @@ Until then, I hope at least it is a good reference point for others setting up d
 4. Run `dnscontrol push` to build the records
 
 ## hosts
+
+For each K8s node, run the scripts:
+
+- `./k8s-support/provision/bash.sh`
+- `./k8s-support/kube-node.sh`
+
+Then have them join the cluster. Ensure to label them appropriately so any software that requires access to the NAS can access it.
+
+## hosts (legacy)
 
 Two hosts are referenced: ant-man and zero-damage. ant-man must run on the same network as the PLEX server and it's filesystem, zero-damage can run anywhere, but has a wireguard connection to ant-man.
 
