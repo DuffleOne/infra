@@ -160,7 +160,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	// External services
 	CNAME('plex', 'mission.h.dfl.mn.'),
 	CNAME('requests', 'zero-damage.do.dfl.mn.'),
-	CNAME('sync', 'zero-damage.do.dfl.mn.'),
+	CNAME('sync', 'haproxy.k.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),

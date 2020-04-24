@@ -20,6 +20,7 @@ spec:
     - selector:
         dnsZones:
         - 'dfl.mn'
+        - 'georgeflix.uk'
       dns01:
         cloudflare:
           email: cloudflare@duffleman.co.uk

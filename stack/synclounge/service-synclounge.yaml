@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: synclounge
+spec:
+  ports:
+  - port: 8088
+    protocol: TCP
+    name: client
+  - port: 8089
+    protocol: TCP
+    name: server
+  selector:
+      app: synclounge

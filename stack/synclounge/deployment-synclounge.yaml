@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synclounge
+  labels:
+    app: synclounge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synclounge
+  template:
+    metadata:
+      labels:
+        app: synclounge
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      containers:
+        - name: synclounge
+          image: starbix/synclounge:latest
+          ports:
+          - containerPort: 8088
+          - containerPort: 8089
+          env:
+          - name: DOMAIN
+            value: sync.georgeflix.uk
+          - name: SERVERS
+            value: |
+              {
+                "name": "GeorgeSync",
+                "location": "Earth",
+                "url": "https://sync.georgeflix.uk/slserver",
+                "logo": "https://dfl.mn/0lm",
+                "image": "https://dfl.mn/0lm"
+              }
