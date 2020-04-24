@@ -1,14 +1,4 @@
 {
-	"tracing": {
-		"datadog": {
-			"localAgentHostPort": "dd-agent:8126"
-		}
-	},
-	"metrics": {
-		"datadog": {
-			"address": "dd-agent:8125"
-		}
-	},
 	"api": {
 		"insecure": true
 	},
