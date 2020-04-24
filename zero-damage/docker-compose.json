@@ -6,14 +6,6 @@
 		"wallabag_images": {}
 	},
 	"services": {
-		"synclounge": {
-			"environment": [
-				"DOMAIN=sync.georgeflix.uk",
-				"SERVERS={\"name\":\"GeorgeSync\",\"location\":\"Earth\",\"url\":\"https://sync.georgeflix.uk/slserver\",\"logo\":\"https://dfl.mn/0lm\",\"image\":\"https://dfl.mn/0lm\"}"
-			],
-			"image": "starbix/synclounge",
-			"restart": "unless-stopped"
-		},
 		"web-ingress": {
 			"environment": [
 				"CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}",
