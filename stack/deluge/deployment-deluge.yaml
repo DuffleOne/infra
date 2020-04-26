@@ -28,13 +28,25 @@ spec:
             name: antfarm
           env:
           - name: PUID
-            value: '1000'
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: puid
           - name: PGID
-            value: '1000'
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: pgid
           - name: TZ
-            value: 'Europe/London'
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: timezone
           - name: UMASK_SET
-            value: '022'
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: umask
           - name: DELUGE_LOGLEVEL
             value: error
       volumes:
