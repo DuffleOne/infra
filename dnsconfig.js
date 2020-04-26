@@ -31,14 +31,11 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('node-2.k', '178.62.102.39'),
 
 	// Internal services
-	CNAME('bazarr.i', 'ant-man.h.dfl.mn.'),
-	CNAME('deluge.i', 'ant-man.h.dfl.mn.'),
-	CNAME('duplicati.i', 'ant-man.h.dfl.mn.'),
-	CNAME('jackett.i', 'ant-man.h.dfl.mn.'),
-	CNAME('netdata.i', 'ant-man.h.dfl.mn.'),
-	CNAME('ombi.i', 'ant-man.h.dfl.mn.'),
-	CNAME('radarr.i', 'ant-man.h.dfl.mn.'),
-	CNAME('sonarr.i', 'ant-man.h.dfl.mn.'),
+	CNAME('bazarr.i', 'haproxy.k.dfl.mn.'),
+	CNAME('deluge.i', 'haproxy.k.dfl.mn.'),
+	CNAME('jackett.i', 'haproxy.k.dfl.mn.'),
+	CNAME('radarr.i', 'haproxy.k.dfl.mn.'),
+	CNAME('sonarr.i', 'haproxy.k.dfl.mn.'),
 
 	// External services
 	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
@@ -159,7 +156,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('plex', 'mission.h.dfl.mn.'),
-	CNAME('requests', 'zero-damage.do.dfl.mn.'),
+	CNAME('requests', 'haproxy.k.dfl.mn.'),
 	CNAME('sync', 'haproxy.k.dfl.mn.'),
 
 	// Mail
