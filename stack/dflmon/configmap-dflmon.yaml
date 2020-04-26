@@ -24,7 +24,7 @@ data:
           "name": "ombi",
           "component_name": "Ombi",
           "type": "https",
-          "host": "ombi.i.dfl.mn",
+          "host": "requests.georgeflix.uk",
           "interval": 120
         },
         {
