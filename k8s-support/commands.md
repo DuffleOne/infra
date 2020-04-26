@@ -93,6 +93,9 @@ Download the DO CSI from this [releases page](https://github.com/digitalocean/cs
 ```sh
 # install
 kubectl apply -f https://raw.githubusercontent.com/digitalocean/csi-digitalocean/master/deploy/kubernetes/releases/csi-digitalocean-v1.2.0.yaml
+
+# patch the daemonset to only run in digitalocean hosts
+kc patch daemonset csi-do-node -n kube-system -p '{"spec":{"template":{"spec":{"nodeSelector":{"dfl.mn/datacentre":"digitalocean"}}}}}'
 ```
 
 ## label the nodes
