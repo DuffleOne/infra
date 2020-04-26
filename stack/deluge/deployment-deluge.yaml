@@ -23,7 +23,7 @@ spec:
           - containerPort: 8112
           volumeMounts:
           - mountPath: /mnt/downloads
-            name: nas-downloads
+            name: downloads
           - mountPath: /config
             name: antfarm
           env:
@@ -50,9 +50,9 @@ spec:
           - name: DELUGE_LOGLEVEL
             value: error
       volumes:
-        - name: nas-downloads
+        - name: downloads
           persistentVolumeClaim:
-            claimName: pvc-nas-downloads
+            claimName: pvc-downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-nas-antfarm-deluge
+            claimName: pvc-antfarm-deluge
