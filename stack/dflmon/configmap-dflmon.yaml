@@ -56,20 +56,6 @@ data:
           "interval": 120
         },
         {
-          "name": "zero-damage",
-          "component_name": "zero-damage",
-          "type": "icmp",
-          "host": "zero-damage.do.dfl.mn",
-          "interval": 120
-        },
-        {
-          "name": "ant-man",
-          "component_name": "ant-man",
-          "type": "icmp",
-          "host": "ant-man.h.dfl.mn",
-          "interval": 120
-        },
-        {
           "name": "minecraft",
           "component_name": "minecraft",
           "type": "icmp",
