@@ -3,6 +3,9 @@ kind: Ingress
 metadata:
   name: ingress-deluge
   annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'i.dfl.mn auth required'
     ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
     cert-manager.io/cluster-issuer: issuer-cert-manager-production
