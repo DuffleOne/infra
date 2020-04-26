@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deluge
+  labels:
+    app: deluge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deluge
+  template:
+    metadata:
+      labels:
+        app: deluge
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: mission
+      containers:
+        - name: deluge
+          image: linuxserver/deluge:latest
+          ports:
+          - containerPort: 8112
+          volumeMounts:
+          - mountPath: /mnt/downloads
+            name: nas-downloads
+          - mountPath: /config
+            name: antfarm
+          env:
+          - name: PUID
+            value: '1000'
+          - name: PGID
+            value: '1000'
+          - name: TZ
+            value: 'Europe/London'
+          - name: UMASK_SET
+            value: '022'
+          - name: DELUGE_LOGLEVEL
+            value: error
+      volumes:
+        - name: nas-downloads
+          persistentVolumeClaim:
+            claimName: pvc-nas-downloads
+        - name: antfarm
+          persistentVolumeClaim:
+            claimName: pvc-nas-antfarm-deluge

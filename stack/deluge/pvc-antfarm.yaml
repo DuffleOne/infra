@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nas-antfarm-deluge
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  volumeName: pv-nas-antfarm-deluge
+  resources:
+    requests:
+      storage: 1Gi
