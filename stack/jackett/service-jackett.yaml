@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: jackett
+spec:
+  ports:
+  - port: 9117
+    protocol: TCP
+  selector:
+      app: jackett

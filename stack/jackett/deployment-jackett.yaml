@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jackett
+  labels:
+    app: jackett
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jackett
+  template:
+    metadata:
+      labels:
+        app: jackett
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: mission
+      containers:
+        - name: jackett
+          image: linuxserver/jackett:latest
+          ports:
+          - containerPort: 9117
+          volumeMounts:
+          - mountPath: /config
+            name: antfarm
+          env:
+          - name: PUID
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: puid
+          - name: PGID
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: pgid
+          - name: TZ
+            valueFrom:
+              configMapKeyRef:
+                name: configmap-linuxserver
+                key: timezone
+      volumes:
+        - name: antfarm
+          persistentVolumeClaim:
+            claimName: pvc-antfarm-jackett
