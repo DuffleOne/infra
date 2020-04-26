@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-antfarm-ombi
+spec:
+  resources:
+    requests:
+      storage: 1Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  volumeName: pv-antfarm-ombi
