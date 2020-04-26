@@ -16,7 +16,7 @@ add-apt-repository \
    stable"
 
 # add wireguard repo
- add-apt-repository ppa:wireguard/wireguard
+add-apt-repository ppa:wireguard/wireguard
 
 DEBIAN_FRONTEND=noninteractive apt-get update && apt-get upgrade -y
 

@@ -103,7 +103,7 @@ kubectl label nodes control-plane dfl.mn/datacentre=digitalocean
 kubectl label nodes node-1 dfl.mn/datacentre=digitalocean
 kubectl label nodes node-2 dfl.mn/datacentre=digitalocean
 
-kubectl label nodes ant-man dfl.mn/datacentre=mission
+kubectl label nodes node-3 dfl.mn/datacentre=mission
 ```
 
 ## setup cert-manager
