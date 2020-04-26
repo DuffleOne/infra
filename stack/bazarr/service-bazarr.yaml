@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bazarr
+spec:
+  ports:
+  - port: 6767
+    protocol: TCP
+  selector:
+      app: bazarr
