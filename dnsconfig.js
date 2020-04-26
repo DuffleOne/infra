@@ -18,7 +18,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CF_REDIRECT("*ombi.dfl.mn/*", "https://requests.georgeflix.uk/$2"),
 
 	// Internal hosts
-	A('ant-man.h', '192.168.254.148'),
 	A('galactus.h', '192.168.254.5'),
 	A('wireguard.h', '192.168.254.22'),
 
@@ -29,6 +28,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('haproxy.k', '68.183.45.191'),
 	A('node-1.k', '134.209.191.212'),
 	A('node-2.k', '178.62.102.39'),
+	A('node-3.k', '212.140.154.25'),
 
 	// Internal services
 	CNAME('bazarr.i', 'haproxy.k.dfl.mn.'),

@@ -1,6 +1,0 @@
-requests.georgeflix.uk ombi.dfl.mn {
-	proxy / https://ombi.i.dfl.mn
-	tls security@dfl.mn {
-		dns cloudflare
-	}
-}
