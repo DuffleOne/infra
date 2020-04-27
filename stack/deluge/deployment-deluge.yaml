@@ -22,7 +22,7 @@ spec:
           ports:
           - containerPort: 8112
           volumeMounts:
-          - mountPath: /mnt/downloads
+          - mountPath: /downloads
             name: downloads
           - mountPath: /config
             name: antfarm
