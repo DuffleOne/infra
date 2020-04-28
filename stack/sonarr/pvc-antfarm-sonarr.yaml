@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-antfarm-sonarr
+  name: pvc-localfs-sonarr
 spec:
   resources:
     requests:
-      storage: 1Ti
+      storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ""
-  volumeName: pv-antfarm-sonarr
+  storageClassName: local-storage
+  volumeName: pv-localfs-sonarr

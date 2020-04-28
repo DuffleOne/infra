@@ -63,7 +63,7 @@ spec:
             claimName: pvc-downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-antfarm-bazarr
+            claimName: pvc-localfs-bazarr
         - name: tv-a1
           persistentVolumeClaim:
             claimName: pvc-tv-a1

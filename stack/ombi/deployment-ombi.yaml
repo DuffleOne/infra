@@ -43,4 +43,4 @@ spec:
       volumes:
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-antfarm-ombi
+            claimName: pvc-localfs-ombi

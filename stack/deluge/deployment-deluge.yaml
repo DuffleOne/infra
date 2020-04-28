@@ -55,4 +55,4 @@ spec:
             claimName: pvc-downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-antfarm-deluge
+            claimName: pvc-localfs-deluge

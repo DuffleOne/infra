@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-antfarm-bazarr
+  name: pvc-localfs-bazarr
 spec:
   resources:
     requests:
-      storage: 1Ti
+      storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ""
-  volumeName: pv-antfarm-bazarr
+  storageClassName: local-storage
+  volumeName: pv-localfs-bazarr

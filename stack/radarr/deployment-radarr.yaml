@@ -57,7 +57,7 @@ spec:
             claimName: pvc-downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-antfarm-radarr
+            claimName: pvc-localfs-radarr
         - name: movies-a2
           persistentVolumeClaim:
             claimName: pvc-movies-a2

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-antfarm-radarr
+  name: pvc-localfs-radarr
 spec:
   resources:
     requests:
-      storage: 1Ti
+      storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ""
-  volumeName: pv-antfarm-radarr
+  storageClassName: local-storage
+  volumeName: pv-localfs-radarr
