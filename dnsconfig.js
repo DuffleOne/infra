@@ -18,17 +18,19 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CF_REDIRECT("*ombi.dfl.mn/*", "https://requests.georgeflix.uk/$2"),
 
 	// Internal hosts
-	A('galactus.h', '192.168.254.5'),
-	A('wireguard.h', '192.168.254.22'),
+	A('galactus.int', '192.168.254.5'),
+	A('wireguard.int', '192.168.254.22'),
+	A('node-3.int', '192.168.254.101'),
 
 	// External hosts
-	A('mission.h', '212.140.154.25'),
+	A('wireguard.ext', '217.38.231.169'),
+	A('galactus.ext', '217.38.231.169'),
 
 	// k8s hosts
 	A('haproxy.k', '68.183.45.191'),
 	A('node-1.k', '134.209.191.212'),
 	A('node-2.k', '178.62.102.39'),
-	A('node-3.k', '212.140.154.25'),
+	A('node-3.k', '217.38.231.169'),
 
 	// Internal services
 	CNAME('bazarr.i', 'haproxy.k.dfl.mn.'),
@@ -42,7 +44,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('ombi', 'haproxy.k.dfl.mn.', CF_PROXY_ON), // deprecated in favour of requests.georgeflix.uk
 	CNAME('read', 'haproxy.k.dfl.mn.'),
 	CNAME('status', 'haproxy.k.dfl.mn.'),
-	CNAME('wg', 'mission.h.dfl.mn.'),
+	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 
 	// SRV
 	SRV('_minecraft._tcp', 0, 5, 25565, 'minecraft.do.dfl.mn.'),
@@ -155,7 +157,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	CF_REDIRECT("www.georgeflix.uk/*", "https://georgeflix.uk/$1"),
 
 	// External services
-	CNAME('plex', 'mission.h.dfl.mn.'),
+	CNAME('plex', 'galactus.ext.dfl.mn.'),
 	CNAME('requests', 'haproxy.k.dfl.mn.'),
 	CNAME('sync', 'haproxy.k.dfl.mn.'),
 
