@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-localfs-sonarr
+  name: localfs-sonarr
 spec:
   resources:
     requests:
@@ -9,4 +9,4 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: local-storage
-  volumeName: pv-localfs-sonarr
+  volumeName: localfs-sonarr

@@ -36,36 +36,36 @@ spec:
           - name: PUID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: puid
           - name: PGID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: pgid
           - name: TZ
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: timezone
           - name: UMASK_SET
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: umask
       volumes:
         - name: downloads
           persistentVolumeClaim:
-            claimName: pvc-downloads
+            claimName: downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-localfs-sonarr
+            claimName: localfs-sonarr
         - name: tv-a1
           persistentVolumeClaim:
-            claimName: pvc-tv-a1
+            claimName: tv-a1
         - name: tv-a2
           persistentVolumeClaim:
-            claimName: pvc-tv-a2
+            claimName: tv-a2
         - name: tv-a3
           persistentVolumeClaim:
-            claimName: pvc-tv-a3
+            claimName: tv-a3

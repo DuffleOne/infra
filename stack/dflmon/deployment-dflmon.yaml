@@ -17,14 +17,14 @@ spec:
       nodeSelector:
         dfl.mn/datacentre: digitalocean
       volumes:
-      - name: configmap-dflmon
+      - name: dflmon
         configMap:
-          name: configmap-dflmon
+          name: dflmon
       containers:
         - name: dflmon
           image: duffleman/dflmon:latest
           volumeMounts:
-          - name: configmap-dflmon
+          - name: dflmon
             mountPath: /dflmon_config
           env:
           - name: ADDR

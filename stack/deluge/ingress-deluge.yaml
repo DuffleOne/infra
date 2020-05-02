@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-deluge
+  name: deluge
   annotations:
     nginx.ingress.kubernetes.io/auth-tls-verify-client: 'on'
-    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/secret-deluge'
+    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/deluge'
     ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
 spec:
   tls:
   - hosts:
     - deluge.i.dfl.mn
-    secretName: secret-deluge
+    secretName: deluge
   rules:
   - host: deluge.i.dfl.mn
     http:

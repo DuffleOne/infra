@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-tv-a3
+  name: tv-a3
 spec:
   resources:
     requests:
@@ -9,4 +9,4 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ""
-  volumeName: pv-tv-a3
+  volumeName: tv-a3

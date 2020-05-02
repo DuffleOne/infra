@@ -28,19 +28,19 @@ spec:
           - name: PUID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: puid
           - name: PGID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: pgid
           - name: TZ
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: timezone
       volumes:
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-localfs-ombi
+            claimName: localfs-ombi

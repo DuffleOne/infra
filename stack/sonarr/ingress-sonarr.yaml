@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-sonarr
+  name: sonarr
   annotations:
     nginx.ingress.kubernetes.io/auth-tls-verify-client: 'on'
-    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/secret-sonarr'
+    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/sonarr'
     ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
 spec:
   tls:
   - hosts:
     - sonarr.i.dfl.mn
-    secretName: secret-sonarr
+    secretName: sonarr
   rules:
   - host: sonarr.i.dfl.mn
     http:

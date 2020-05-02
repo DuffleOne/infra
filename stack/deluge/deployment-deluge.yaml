@@ -30,29 +30,29 @@ spec:
           - name: PUID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: puid
           - name: PGID
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: pgid
           - name: TZ
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: timezone
           - name: UMASK_SET
             valueFrom:
               configMapKeyRef:
-                name: configmap-linuxserver
+                name: linuxserver
                 key: umask
           - name: DELUGE_LOGLEVEL
             value: error
       volumes:
         - name: downloads
           persistentVolumeClaim:
-            claimName: pvc-downloads
+            claimName: downloads
         - name: antfarm
           persistentVolumeClaim:
-            claimName: pvc-localfs-deluge
+            claimName: localfs-deluge

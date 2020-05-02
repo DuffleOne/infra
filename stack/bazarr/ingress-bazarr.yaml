@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-bazarr
+  name: bazarr
   annotations:
     nginx.ingress.kubernetes.io/auth-tls-verify-client: 'on'
-    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/secret-bazarr'
+    nginx.ingress.kubernetes.io/auth-tls-secret: 'default/bazarr'
     ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
 spec:
   tls:
   - hosts:
     - bazarr.i.dfl.mn
-    secretName: secret-bazarr
+    secretName: bazarr
   rules:
   - host: bazarr.i.dfl.mn
     http:

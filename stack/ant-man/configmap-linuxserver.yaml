@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configmap-linuxserver
+  name: linuxserver
 data:
   timezone: Europe/London
   puid: '1000'
