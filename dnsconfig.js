@@ -21,6 +21,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('galactus.int', '192.168.254.5'),
 	A('wireguard.int', '192.168.254.22'),
 	A('node-3.int', '192.168.254.101'),
+	A('node-4.int', '192.168.254.103'),
 
 	// External hosts
 	A('wireguard.ext', '217.38.231.169'),
@@ -31,6 +32,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('node-1.k', '134.209.191.212'),
 	A('node-2.k', '178.62.102.39'),
 	A('node-3.k', '217.38.231.169'),
+	A('node-4.k', '217.38.231.170'),
 
 	// Internal services
 	CNAME('bazarr.i', 'haproxy.k.dfl.mn.'),
