@@ -19,13 +19,13 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 
 	// Internal hosts
 	A('galactus.int', '192.168.254.5'),
-	A('wireguard.int', '192.168.254.22'),
 	A('node-3.int', '192.168.254.101'),
 	A('node-4.int', '192.168.254.103'),
+	A('wireguard.int', '192.168.254.22'),
 
 	// External hosts
-	A('wireguard.ext', '217.38.231.169'),
 	A('galactus.ext', '217.38.231.169'),
+	A('wireguard.ext', '217.38.231.169'),
 
 	// k8s hosts
 	A('haproxy.k', '68.183.45.191'),
