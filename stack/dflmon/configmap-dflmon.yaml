@@ -10,7 +10,7 @@ data:
           "name": "plex",
           "component_name": "PLEX Server",
           "type": "https-novalidate",
-          "host": "galactus.h.dfl.mn:32400/web/index.html",
+          "host": "galactus.int.dfl.mn:32400/web/index.html",
           "interval": 120
         },
         {
@@ -30,29 +30,29 @@ data:
         {
           "name": "deluge",
           "component_name": "Deluge",
-          "type": "https",
-          "host": "deluge.i.dfl.mn",
+          "type": "http",
+          "host": "deluge:8112",
           "interval": 120
         },
         {
           "name": "sonarr",
           "component_name": "Sonarr",
-          "type": "https",
-          "host": "sonarr.i.dfl.mn",
+          "type": "http",
+          "host": "sonarr:8989",
           "interval": 120
         },
         {
           "name": "radarr",
           "component_name": "Radarr",
-          "type": "https",
-          "host": "radarr.i.dfl.mn",
+          "type": "http",
+          "host": "radarr:7878",
           "interval": 120
         },
         {
           "name": "galactus",
           "component_name": "galactus",
           "type": "icmp",
-          "host": "galactus.h.dfl.mn",
+          "host": "galactus.int.dfl.mn",
           "interval": 120
         },
         {
