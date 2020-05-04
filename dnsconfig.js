@@ -28,7 +28,9 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('wireguard.ext', '217.38.231.169'),
 
 	// k8s hosts
-	A('haproxy.k', '68.183.45.191'),
+	A('haproxy.k', '134.209.191.212'),
+	A('haproxy.k', '178.62.102.39'),
+
 	A('node-1.k', '134.209.191.212'),
 	A('node-2.k', '178.62.102.39'),
 	A('node-3.k', '217.38.231.169'),
