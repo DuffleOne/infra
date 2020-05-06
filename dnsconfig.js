@@ -80,6 +80,18 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPMzaX0DMLvdwFg5j6ifkunYhkn0JvMKghrlzR5r6BelB9cVV3w72ncqsOiMHGNh8pL98n6x9iz5Q4fmU9aTXUoyx4xQmuuR/3armuIKEr88uox4ArZy4TWR8OuDKuMlezt4WwCOUdyqxnqUgpd6gOZL20TY81PB8Zd3EG93Yv8QIDAQAB')
 )
 
+D("212.house", REG_NONE, DnsProvider(cloudflare),
+	// Mail
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'alt3.aspmx.l.google.com.'),
+	MX('@', 10, 'alt4.aspmx.l.google.com.'),
+
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmxl7gmIOYXDhi3M1RhbDmRFO0mIJTm3T24QqcKPeBsgKAjB4EjkW48xOqx318gE1DrDTkpbDZrBN6+MpL8e9IpaeF91Wg03c8Iyx2m0r/geQ4KMMycPB7pf466eZMbZ0XzluNqUsRM/YrdTfBHJ0mVTjBwhCBbGslL+asO4lLnCpyCFFP2tVhTeUeq0Ub90wvir7VG4+KGP4n5DuM352xFbLZO88Mr8FjNDmBOUBXVScw8lmI9Xym8daxuxkkcb++SWIvEKItsdA+TaO42ThaBkBmRJzU0SfVuBkQV9myDlgrnjSjWWwBf+FgbFylNkZGqYRWS9vhfzXFyFOwwJZ0wIDAQAB')
+)
+
 D("duffleman.co.uk", REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'duffleman.co.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
 	CNAME('www', 'duffleman.co.uk.', CF_PROXY_ON),
