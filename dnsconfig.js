@@ -80,6 +80,8 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 )
 
 D("212.house", REG_NONE, DnsProvider(cloudflare),
+	A('printer', '192.168.255.228'),
+
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
