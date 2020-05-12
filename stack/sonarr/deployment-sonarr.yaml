@@ -19,6 +19,7 @@ spec:
       containers:
         - name: sonarr
           image: linuxserver/sonarr:preview
+          imagePullPolicy: Always
           ports:
           - containerPort: 8989
           volumeMounts:

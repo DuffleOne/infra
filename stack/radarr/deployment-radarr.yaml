@@ -19,6 +19,7 @@ spec:
       containers:
         - name: radarr
           image: linuxserver/radarr:preview
+          imagePullPolicy: Always
           ports:
           - containerPort: 7878
           volumeMounts:
