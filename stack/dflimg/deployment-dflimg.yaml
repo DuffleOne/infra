@@ -55,3 +55,5 @@ spec:
                 key: database-uri
           - name: REDIS_ADDR
             value: redis-dflimg:6379
+          - name: STORAGE_PROVIDER
+            value: aws
