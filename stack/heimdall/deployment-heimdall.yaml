@@ -16,18 +16,21 @@ spec:
     spec:
       nodeSelector:
         dfl.mn/datacentre: digitalocean
+      volumes:
+      - name: heimdall-env
+        secret:
+          secretName: heimdall
+          items:
+          - key: env
+            path: env
       containers:
         - name: heimdall
           image: linuxserver/heimdall:latest
+          volumeMounts:
+          - name: heimdall-env
+            mountPath: /k8s-config
           ports:
           - containerPort: 80
-          volumeMounts:
-          - mountPath: "/config"
-            name: heimdall
           env:
             - name: TZ
               value: Europe/London
-      volumes:
-        - name: heimdall
-          persistentVolumeClaim:
-            claimName: heimdall
