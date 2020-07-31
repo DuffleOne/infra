@@ -14,9 +14,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	// Avoid WWW
 	CF_REDIRECT("www.dfl.mn/*", "https://dfl.mn/$1"),
 
-	// Redirects for deprecated records
-	CF_REDIRECT("*ombi.dfl.mn/*", "https://requests.georgeflix.uk/$2"),
-
 	// Internal hosts
 	A('galactus.int', '192.168.254.5'),
 	A('node-3.int', '192.168.254.101'),
@@ -44,7 +41,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
-	CNAME('ombi', 'haproxy.k.dfl.mn.', CF_PROXY_ON), // deprecated in favour of requests.georgeflix.uk
 	CNAME('read', 'haproxy.k.dfl.mn.'),
 	CNAME('status', 'haproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
