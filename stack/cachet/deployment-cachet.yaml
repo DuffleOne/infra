@@ -49,13 +49,9 @@ spec:
                 name: cachet
                 key: db-password
           - name: CACHE_DRIVER
-            value: redis
+            value: file
           - name: QUEUE_DRIVER
-            value: redis
-          - name: REDIS_HOST
-            value: redis-cachet
-          - name: REDIS_DATABASE
-            value: '0'
+            value: sync
           - name: MAIL_DRIVER
             value: smtp
           - name: MAIL_PORT
