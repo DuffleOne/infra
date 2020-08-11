@@ -53,7 +53,10 @@ spec:
               secretKeyRef:
                 name: dflimg
                 key: database-uri
-          - name: REDIS_ADDR
-            value: redis-dflimg:6379
+          - name: REDIS_URI
+            valueFrom:
+              secretKeyRef:
+                name: dflimg
+                key: reddis-uri
           - name: STORAGE_PROVIDER
             value: aws
