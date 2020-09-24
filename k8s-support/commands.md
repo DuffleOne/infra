@@ -42,8 +42,14 @@ scheduler:
 You can then reapply this config back with:
 
 ```sh
-kubeadm init phase control-plane controllerManager --config kubeadm.yaml
+kubeadm init phase control-plane controller-manager --config kubeadm.yaml
 kubeadm init phase control-plane scheduler --config kubeadm.yaml
+```
+
+or to do **all** of it
+
+```sh
+kubeadm init phase control-plane all --config kubeadm.yaml
 ```
 
 ## install the CNI
