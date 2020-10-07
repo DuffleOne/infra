@@ -13,7 +13,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 
 	// direct open domain requests to stable S3 bucket
 	// if k8s dies, it shouldn't affect the domain
-	CF_REDIRECT("*dfl.mn", "https://duffleman.co.uk"),
+	CF_REDIRECT("*dfl.mn/", "https://duffleman.co.uk"),
 
 	// Avoid WWW
 	CF_REDIRECT("www.dfl.mn/*", "https://dfl.mn/$1"),
