@@ -18,7 +18,7 @@ spec:
         dfl.mn/datacentre: mission
       containers:
         - name: bazarr
-          image: linuxserver/bazarr:latest
+          image: linuxserver/bazarr:version-7a2e6ab2
           ports:
           - containerPort: 6767
           volumeMounts:

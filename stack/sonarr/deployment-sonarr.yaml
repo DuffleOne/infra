@@ -18,7 +18,7 @@ spec:
         dfl.mn/datacentre: mission
       containers:
         - name: sonarr
-          image: linuxserver/sonarr:preview
+          image: linuxserver/sonarr:version-3.0.3.956
           imagePullPolicy: Always
           ports:
           - containerPort: 8989

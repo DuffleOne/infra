@@ -18,7 +18,7 @@ spec:
         dfl.mn/datacentre: mission
       containers:
         - name: radarr
-          image: linuxserver/radarr:preview
+          image: linuxserver/radarr:version-3.0.0.3879
           imagePullPolicy: Always
           ports:
           - containerPort: 7878
