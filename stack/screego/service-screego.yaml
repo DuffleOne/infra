@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: screego
+spec:
+  ports:
+  - port: 5050
+    name: http
+    protocol: TCP
+  - port: 3478
+    name: turn
+    protocol: TCP
+  selector:
+      app: screego

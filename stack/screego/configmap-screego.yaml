@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: screego
+data:
+  config: |
+    Duffleman:$2a$12$56jd92uJ.F8vDHa2JAFbFeZggMZ3IcjUxsVTVsF0J5E2.y9Rk6deK

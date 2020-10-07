@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: screego
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+    certmanager.k8s.io/cluster-issuer: issuer-cert-manager-production
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - share.dfl.mn
+    secretName: cert-share
+  rules:
+  - host: share.dfl.mn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: screego
+          servicePort: 5050

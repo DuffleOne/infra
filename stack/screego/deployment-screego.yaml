@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: screego
+  labels:
+    app: screego
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: screego
+  template:
+    metadata:
+      labels:
+        app: screego
+    spec:
+      nodeSelector:
+        dfl.mn/datacentre: digitalocean
+      volumes:
+      - name: screego
+        configMap:
+          name: screego
+      containers:
+        - name: screego
+          image: screego/server:unstable
+          volumeMounts:
+          - name: screego
+            mountPath: /screego_users
+          ports:
+          - containerPort: 5050
+          - containerPort: 3478
+          env:
+          - name: SCREEGO_EXTERNAL_IP
+            value: 0.0.0.0
+          - name: SCREEGO_TRUST_PROXY_HEADERS
+            value: 'true'
+          - name: SCREEGO_CORS_ALLOWED_ORIGINS
+            value: https://share.dfl.mn
+          - name: SCREEGO_USERS_FILE
+            value: /screego_users/config
+          - name: SCREEGO_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: screego
+                key: secret-key

@@ -46,6 +46,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	// External services
 	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
 	CNAME('read', 'haproxy.k.dfl.mn.'),
+	CNAME('share', 'haproxy.k.dfl.mn.'),
 	CNAME('status', 'haproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 
