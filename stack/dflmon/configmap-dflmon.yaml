@@ -54,20 +54,6 @@ data:
           "type": "icmp",
           "host": "galactus.int.dfl.mn",
           "interval": 120
-        },
-        {
-          "name": "minecraft",
-          "component_name": "minecraft",
-          "type": "icmp",
-          "host": "minecraft.do.dfl.mn",
-          "interval": 120
-        },
-        {
-          "name": "Minecraft",
-          "component_name": "Minecraft",
-          "type": "tcp",
-          "host": "minecraft.do.dfl.mn:25565",
-          "interval": 120
         }
       ]
     }
