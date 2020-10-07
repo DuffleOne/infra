@@ -190,6 +190,14 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9uQ00gCmDmfYAlSVecQ+SaCNFEhSFcnjrS1hWH3OZvq3MSf7tuyqpHI2mLagsKY12tVLOJWX9mFAZkN77dT59A1GskdHKeUllnYkG6jh0AUD9TIizKMvaTwnwm175NerFKmBK67P6LyzdxyoHsflFGdVcwZOyBRzSR5dGk5vgo5LMGNxSmyWFoOe7IxKHO8C77M0eJ7J85mReN/l367UG7S6vusTfgF8+cDv78acq7QKWhlERggX2S8pHVRZ2Irp6Tdsv3qaC6Uaiy8Kdgy57+rILFyFR4GDA1gMFWPrSAAcBQjFCllOwyrwy6PJqOo3oLETDm2bLMg8OJIvrOxrQIDAQAB')
 )
 
+D("gflix.in", REG_NONE, DnsProvider(cloudflare),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
+
+	// Avoid WWW
+	CF_REDIRECT("*gflix.in/*", "https://georgeflix.uk/$2")
+)
+
 D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
