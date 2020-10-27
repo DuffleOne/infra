@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: synclounge
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8088
+    targetPort: 8088
+    protocol: TCP
+    name: client
+  - port: 8089
+    targetPort: 8089
+    protocol: TCP
+    name: server
+  selector:
+      app: synclounge
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: synclounge
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+spec:
+  tls:
+  - hosts:
+    - sync.georgeflix.uk
+    secretName: cert-synclounge
+  rules:
+  - host: sync.georgeflix.uk
+    http:
+      paths:
+      - path: /slserver
+        backend:
+          serviceName: synclounge
+          servicePort: 8089
+      - path: /
+        backend:
+          serviceName: synclounge
+          servicePort: 8088
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synclounge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synclounge
+  template:
+    metadata:
+      labels:
+        app: synclounge
+    spec:
+      containers:
+        - name: synclounge
+          image: starbix/synclounge:latest
+          ports:
+          - containerPort: 8088
+          - containerPort: 8089
+          env:
+          - name: DOMAIN
+            value: sync.georgeflix.uk
+          - name: SERVERS
+            value: |
+              {
+                "name": "GeorgeSync",
+                "location": "Earth",
+                "url": "https://sync.georgeflix.uk/slserver",
+                "logo": "https://dfl.mn/0lm",
+                "image": "https://dfl.mn/0lm"
+              }

@@ -121,3 +121,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 ```sh
 kubectl get secret cert-dflmn --namespace=default -o yaml | kubectl apply --namespace=ingress-nginx -f -
 ```
+
+```sh
+kubeadm join 68.183.38.41:6443 \
+--token {token} \
+--discovery-token-ca-cert-hash {hash}
+```

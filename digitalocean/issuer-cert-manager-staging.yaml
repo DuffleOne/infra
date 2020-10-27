@@ -1,22 +1,14 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: issuer-cert-manager-production
+  name: issuer-cert-manager-staging
 spec:
   acme:
     email: security@duffleman.co.uk
-    server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: cert-manager-production
+      name: cert-manager-staging
     solvers:
-    - selector:
-        dnsZones:
-        - 'do.dfl.mn'
-      dns01:
-        digitalocean:
-          tokenSecretRef:
-            name: digitalocean
-            key: personal-token
     - selector:
         dnsZones:
         - 'dfl.mn'

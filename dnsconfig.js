@@ -8,7 +8,7 @@ var cloudflare = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI', {
 });
 
 D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'haproxy.k.dfl.mn.'),
+	ALIAS('@', 'doproxy.k.dfl.mn.'),
 	CNAME('www', 'dfl.mn.', CF_PROXY_ON),
 
 	// direct open domain requests to stable S3 bucket
@@ -28,6 +28,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	A('wireguard.ext', '217.38.231.169'),
 
 	// k8s hosts
+	A('doproxy.k', '157.245.31.41'),
 	A('haproxy.k', '134.209.191.212'),
 	A('haproxy.k', '178.62.102.39'),
 
@@ -47,7 +48,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
 	CNAME('read', 'haproxy.k.dfl.mn.'),
 	CNAME('share', 'haproxy.k.dfl.mn.'),
-	CNAME('status', 'haproxy.k.dfl.mn.'),
+	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 
 	// SRV
@@ -177,7 +178,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 	// External services
 	CNAME('plex', 'galactus.ext.dfl.mn.'),
 	CNAME('requests', 'haproxy.k.dfl.mn.'),
-	CNAME('sync', 'haproxy.k.dfl.mn.'),
+	CNAME('sync', 'doproxy.k.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
