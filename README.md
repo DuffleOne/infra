@@ -2,7 +2,7 @@
 
 ## dns
 
-Managed by [DNSControl](https://stackexchange.github.io/dnscontrol/). See [`./dns-control.js`](./dns-control.js) for the configuration. An additional secret is required to run the script.
+Managed by [DNSControl](https://stackexchange.github.io/dnscontrol/). See [`./dnscontrol.js`](./dnscontrol.js) for the configuration. An additional secret is required to run the script.
 
 ```bash
 dnscontrol push --creds ~/Source/infra-secrets/dnscontrol.json
