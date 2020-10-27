@@ -62,14 +62,6 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('oapkcsxs37goqvx4jydjubagqml6544f._domainkey.ses', 'oapkcsxs37goqvx4jydjubagqml6544f.dkim.amazonses.com.'),
 	CNAME('ysimhqy4t3riv543ehlzcjlarf7nkvrf._domainkey.ses', 'ysimhqy4t3riv543ehlzcjlarf7nkvrf.dkim.amazonses.com.'),
 
-	// NS delegation
-	NS('cuv', 'ns1.digitalocean.com.'),
-	NS('cuv', 'ns2.digitalocean.com.'),
-	NS('cuv', 'ns3.digitalocean.com.'),
-	NS('do', 'ns1.digitalocean.com.'),
-	NS('do', 'ns2.digitalocean.com.'),
-	NS('do', 'ns3.digitalocean.com.'),
-
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('@', 'keybase-site-verification=5iWvlQacJDPK1-1tMxiRwdUeNv7eFEdIDqyJT2xqSLY'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPMzaX0DMLvdwFg5j6ifkunYhkn0JvMKghrlzR5r6BelB9cVV3w72ncqsOiMHGNh8pL98n6x9iz5Q4fmU9aTXUoyx4xQmuuR/3armuIKEr88uox4ArZy4TWR8OuDKuMlezt4WwCOUdyqxnqUgpd6gOZL20TY81PB8Zd3EG93Yv8QIDAQAB')
