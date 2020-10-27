@@ -45,14 +45,8 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CNAME('sonarr.i', 'haproxy.k.dfl.mn.'),
 
 	// External services
-	CNAME('heimdall', 'haproxy.k.dfl.mn.'),
-	CNAME('read', 'haproxy.k.dfl.mn.'),
-	CNAME('share', 'haproxy.k.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
-
-	// SRV
-	SRV('_minecraft._tcp', 0, 5, 25565, 'minecraft.do.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
