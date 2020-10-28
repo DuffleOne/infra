@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dflmon
-  labels:
-    app: dflmon
 spec:
   replicas: 1
   selector:
@@ -14,8 +12,6 @@ spec:
       labels:
         app: dflmon
     spec:
-      nodeSelector:
-        dfl.mn/datacentre: digitalocean
       volumes:
       - name: dflmon
         configMap:
@@ -40,3 +36,35 @@ spec:
             value: 'http://cachet:8000'
           - name: DFLMON_CONFIG
             value: '/dflmon_config/config'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dflmon
+data:
+  config: |
+    {
+      "jobs": [
+        {
+          "name": "plex",
+          "component_name": "PLEX Server",
+          "type": "https-novalidate",
+          "host": "galactus.ext.dfl.mn:32400/web/index.html",
+          "interval": 120
+        },
+        {
+          "name": "ombi",
+          "component_name": "Ombi",
+          "type": "https",
+          "host": "requests.georgeflix.uk",
+          "interval": 120
+        },
+        {
+          "name": "synclongue",
+          "component_name": "Synclounge",
+          "type": "https",
+          "host": "sync.georgeflix.uk",
+          "interval": 120
+        }
+      ]
+    }
