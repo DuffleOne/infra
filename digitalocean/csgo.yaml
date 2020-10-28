@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: csgo-lb
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: UDP
+      port: 27015
+      targetPort: 27015
+      name: csgo
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: csi-pvc-csgo
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: do-block-storage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csgo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: csgo
+  template:
+    metadata:
+      labels:
+        app: csgo
+    spec:
+      containers:
+        - name: csgo
+          image: cm2network/csgo:sourcemod
+          volumeMounts:
+          - mountPath: "/home/steam/csgo-dedicated"
+            name: csgo-volume
+          ports:
+          - containerPort: 27015
+          env:
+          - name: SRCDS_TOKEN
+            value: VALUE
+      volumes:
+        - name: csgo-volume
+          persistentVolumeClaim:
+            claimName: csi-pvc-csgo
