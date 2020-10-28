@@ -19,30 +19,24 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 	CF_REDIRECT("www.dfl.mn/*", "https://dfl.mn/$1"),
 
 	// Internal hosts
+	A('containers.int', '192.168.254.110'),
 	A('galactus.int', '192.168.254.5'),
-	A('node-3.int', '192.168.254.101'),
 	A('wireguard.int', '192.168.254.22'),
 
 	// External hosts
+	A('containers.ext', '217.38.231.169'),
 	A('galactus.ext', '217.38.231.169'),
 	A('wireguard.ext', '217.38.231.169'),
 
 	// k8s hosts
 	A('doproxy.k', '157.245.31.41'),
-	A('haproxy.k', '134.209.191.212'),
-	A('haproxy.k', '178.62.102.39'),
-
-	A('control-plane.k', '68.183.38.41'),
-	A('node-1.k', '134.209.191.212'),
-	A('node-2.k', '178.62.102.39'),
-	A('node-3.k', '217.38.231.169'),
 
 	// Internal services
-	CNAME('bazarr.i', 'haproxy.k.dfl.mn.'),
-	CNAME('deluge.i', 'haproxy.k.dfl.mn.'),
-	CNAME('jackett.i', 'haproxy.k.dfl.mn.'),
-	CNAME('radarr.i', 'haproxy.k.dfl.mn.'),
-	CNAME('sonarr.i', 'haproxy.k.dfl.mn.'),
+	CNAME('bazarr.i', 'containers.ext.dfl.mn.'),
+	CNAME('deluge.i', 'containers.ext.dfl.mn.'),
+	CNAME('jackett.i', 'containers.ext.dfl.mn.'),
+	CNAME('radarr.i', 'containers.ext.dfl.mn.'),
+	CNAME('sonarr.i', 'containers.ext.dfl.mn.'),
 
 	// External services
 	CNAME('status', 'doproxy.k.dfl.mn.'),
@@ -163,7 +157,7 @@ D("georgeflix.uk", REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('plex', 'galactus.ext.dfl.mn.'),
-	CNAME('requests', 'haproxy.k.dfl.mn.'),
+	CNAME('requests', 'containers.ext.dfl.mn.'),
 	CNAME('sync', 'doproxy.k.dfl.mn.'),
 
 	// Mail

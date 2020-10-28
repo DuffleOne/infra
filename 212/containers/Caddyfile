@@ -1,0 +1,4 @@
+requests.georgeflix.uk {
+	encode zstd gzip
+	reverse_proxy ombi:3579
+}
