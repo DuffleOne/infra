@@ -13,6 +13,7 @@ spec:
         dnsZones:
         - 'dfl.mn'
         - 'georgeflix.uk'
+        - 'tflga.me'
       dns01:
         cloudflare:
           email: cloudflare@duffleman.co.uk

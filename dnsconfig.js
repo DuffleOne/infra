@@ -197,3 +197,22 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 	TXT('@', 'keybase-site-verification=gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlzRF0eIiHqrHrdqIHxZCW1+MV49Dpp/rHoGs2OiCiQzrCn14FelwAo7x9Q51kvtSj4GoukdkluWp3KX7PnZHFfjepZwBaK+yxcegPHg0cNwKqdW5dYQEJBZ4RRLYDTvQbCqh9HzZPWDUjjBMZeIE890peua4Y73Ml2Xb2gqpWXLd+WT/qjesR3VJfpdT4Aq/y3kcJa02rdUZSqhffBrZOdhOfVdh2VhTleaRgYVRkAYU7YKj+rieo9Swbc/hsQmAHzHLlK3bwt62oMxq2EsB1qakb2xhKLJfO6eVVF4ObFU682sBBnOncJuMMUwtw2nJlX9mXiOboGyBF3SuZwsSYwIDAQAB')
 )
+
+D("tflga.me", REG_NONE, DnsProvider(cloudflare),
+	ALIAS('@', 'tflga.me.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
+	CNAME('api', 'doproxy.k.dfl.mn.'),
+	CNAME('www', 'tflga.me.', CF_PROXY_ON),
+
+	// Avoid WWW
+	CF_REDIRECT("www.tflga.me/*", "https://tflga.me/$1"),
+
+	// Mail
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'alt3.aspmx.l.google.com.'),
+	MX('@', 10, 'alt4.aspmx.l.google.com.'),
+
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn+feSRV/Tt+auY4L/irlzTUO9UQaYpqcwbSmQ4F4hOqKrJ5xReg17XjZiuEItTrprYkqPEne3rm6MsBoiKAKlxUwEgQpsW1r6qTlCI/s0lY6RWMAD6QkazyV+BKHqozzOeirwXlzTDaRBeSSOP6Pdkceb4tWtfjBavLH6nWbKdlm2nTfhEF9AkAnN3QwCpjcD715T1nXCF3EvXxZdAZs7OuYAYfyutAIANI36nmrbdKgj8al7QPotZbHJJCL+t1F9mX8YpjfmWJgXRD1+VD98tnItMglDyaSLTW5paJeP1VwbOockqYGLArr3MOrf36wXk5e7HW9DjYJxmvoLIhN7QIDAQAB')
+)
