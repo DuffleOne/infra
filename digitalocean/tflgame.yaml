@@ -21,10 +21,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - tflga.me
+      - api.tflga.me
       secretName: cert-tflgame
   rules:
-  - host: tflga.me
+  - host: api.tflga.me
     http:
       paths:
       - backend:
@@ -50,3 +50,9 @@ spec:
           image: duffleman/tflgame-go:latest
           ports:
           - containerPort: 80
+          env:
+          - name: CONFIG
+            valueFrom:
+              secretKeyRef:
+                name: tflgame
+                key: CONFIG

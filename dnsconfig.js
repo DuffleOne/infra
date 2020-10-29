@@ -199,7 +199,8 @@ D("georgemiller.me.uk", REG_NONE, DnsProvider(cloudflare),
 )
 
 D("tflga.me", REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'doproxy.k.dfl.mn.'),
+	ALIAS('@', 'tflga.me.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
+	CNAME('api', 'doproxy.k.dfl.mn.'),
 	CNAME('www', 'tflga.me.', CF_PROXY_ON),
 
 	// Avoid WWW
