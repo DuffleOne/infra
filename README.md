@@ -33,3 +33,5 @@ kc apply -f ~/Source/infra/digitalocean -R
 ```
 
 ## 212
+
+The host at 212 runs a single node portainer instance as Docker Swarm. It's entirely manual because of the dependancy that all containers running on-premise require filesystem access, and most of them require access to the NAS where media content is hosted.
