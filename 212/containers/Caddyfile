@@ -2,3 +2,25 @@ requests.georgeflix.uk {
 	encode zstd gzip
 	reverse_proxy ombi:3579
 }
+
+deluge.i.dfl.mn {
+	encode zstd gzip
+	reverse_proxy deluge:8112
+	tls security@duffeman.co.uk {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /config/root_public.pem
+		}
+	}
+}
+
+sonarr.i.dfl.mn {
+	encode zstd gzip
+	reverse_proxy sonarr:8989
+	tls security@duffeman.co.uk {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /config/root_public.pem
+		}
+	}
+}
