@@ -9,7 +9,7 @@ deluge.i.dfl.mn {
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
-			trusted_ca_cert_file /config/root_public.pem
+			trusted_ca_cert_file /config/root.public.pem
 		}
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
@@ -21,7 +21,7 @@ sonarr.i.dfl.mn {
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
-			trusted_ca_cert_file /config/root_public.pem
+			trusted_ca_cert_file /config/root.public.pem
 		}
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
@@ -33,7 +33,7 @@ radarr.i.dfl.mn {
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
-			trusted_ca_cert_file /config/root_public.pem
+			trusted_ca_cert_file /config/root.public.pem
 		}
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
@@ -45,7 +45,7 @@ bazarr.i.dfl.mn {
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
-			trusted_ca_cert_file /config/root_public.pem
+			trusted_ca_cert_file /config/root.public.pem
 		}
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
@@ -57,7 +57,7 @@ jackett.i.dfl.mn {
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
-			trusted_ca_cert_file /config/root_public.pem
+			trusted_ca_cert_file /config/root.public.pem
 		}
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
