@@ -40,6 +40,7 @@ D("dfl.mn", REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('status', 'doproxy.k.dfl.mn.'),
+	CNAME('wiki', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 
 	// Mail

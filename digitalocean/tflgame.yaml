@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: tflgame
-          image: duffleman/tflgame-go:latest
+          image: duffleman/tflgame:0.0.1
           ports:
           - containerPort: 80
           env:
