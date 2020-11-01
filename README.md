@@ -12,9 +12,11 @@ dnscontrol push --creds ~/Source/infra-secrets/dnscontrol.json
 
 ### services
 
-- [Cachet](https://cachethq.io) - [https://status.dfl.mn](https://status.dfl.mn)
-- [dflimg](https://github.com/duffleman/dflimg-go/)
-- [SyncLounge](https://synclounge.tv) - [https://sync.georgeflix.uk](https://sync.georgeflix.uk)
+* [Cachet](https://cachethq.io) - [https://status.dfl.mn](https://status.dfl.mn)
+* [dflimg](https://github.com/duffleman/dflimg-go/) - [https://dfl.mn/{code}](https://dfl.mn/:hello)
+* [SyncLounge](https://synclounge.tv) - [https://sync.georgeflix.uk](https://sync.georgeflix.uk)
+* [WikiJS](https://wiki.js.org) - [https://wiki.dfl.mn](https://wiki.dfl.mn)
+* [TFLGame](https://github.com/duffleman/tflgame-go) - [https://api.tflga.me](https://api.tflga.me)
 
 ### deployment
 
