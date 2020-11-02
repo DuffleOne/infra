@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: tflgame
-          image: duffleman/tflgame:0.0.1
+          image: duffleman/tflgame:cors
           ports:
           - containerPort: 80
           env:
