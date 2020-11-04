@@ -62,3 +62,15 @@ jackett.i.dfl.mn {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
 }
+
+metube.i.dfl.mn {
+	encode zstd gzip
+	reverse_proxy metube:8081
+	tls security@duffeman.co.uk {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /config/root.public.pem
+		}
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	}
+}
