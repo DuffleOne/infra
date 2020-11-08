@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: keycloak
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+spec:
+  tls:
+    - hosts:
+      - keycloak.dfl.mn
+      secretName: cert-keycloak
+  rules:
+  - host: keycloak.dfl.mn
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:11.0.3
+          ports:
+          - containerPort: 8080
+          env:
+          - name: KEYCLOAK_HOSTNAME
+            value: keycloak.dfl.mn
+          - name: JDBC_PARAMS
+            value: 'sslmode=require'
+          - name: PROXY_ADDRESS_FORWARDING
+            value: 'true'
+          - name: DB_VENDOR
+            value: postgres
+          - name: DB_ADDR
+            value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
+          - name: DB_PORT
+            value: '25060'
+          - name: DB_DATABASE
+            value: keycloak
+          - name: DB_USER
+            value: keycloak
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: keycloak
+                key: db-password
+          - name: KEYCLOAK_USER
+            value: Duffleman
+          - name: KEYCLOAK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: keycloak
+                key: password
