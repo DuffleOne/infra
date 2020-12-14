@@ -36,14 +36,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: server
+            name: synclounge
             port:
               number: 8089
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: client
+            name: synclounge
             port:
               number: 8088
 ---

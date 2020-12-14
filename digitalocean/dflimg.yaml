@@ -31,7 +31,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: dflmn
+            name: dflimg
             port:
               number: 80
 ---
