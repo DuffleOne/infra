@@ -11,7 +11,7 @@ spec:
   selector:
     app: wiki
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wiki
@@ -27,9 +27,13 @@ spec:
   - host: wiki.dfl.mn
     http:
       paths:
-      - backend:
-          serviceName: wiki
-          servicePort: 3000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wiki
+            port:
+              number: 3000
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -11,7 +11,7 @@ spec:
   selector:
     app: tflgame
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tflgame
@@ -27,9 +27,13 @@ spec:
   - host: api.tflga.me
     http:
       paths:
-      - backend:
-          serviceName: tflgame
-          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tflgame
+            port:
+              number: 80
 ---
 apiVersion: apps/v1
 kind: Deployment

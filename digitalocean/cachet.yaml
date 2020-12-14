@@ -11,7 +11,7 @@ spec:
   selector:
       app: cachet
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cachet
@@ -27,9 +27,13 @@ spec:
   - host: status.dfl.mn
     http:
       paths:
-      - backend:
-          serviceName: cachet
-          servicePort: 8000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: status
+            port:
+              number: 8000
 ---
 apiVersion: apps/v1
 kind: Deployment

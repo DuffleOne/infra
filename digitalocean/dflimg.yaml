@@ -11,7 +11,7 @@ spec:
   selector:
     app: dflimg
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dflimg
@@ -27,9 +27,13 @@ spec:
   - host: dfl.mn
     http:
       paths:
-      - backend:
-          serviceName: dflimg
-          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dflmn
+            port:
+              number: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
