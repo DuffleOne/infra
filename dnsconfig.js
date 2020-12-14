@@ -30,7 +30,7 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	A('wireguard.ext', '217.38.231.169'),
 
 	// k8s hosts
-	A('doproxy.k', '157.245.31.41'),
+	A('doproxy.k', '46.101.65.145'),
 
 	// Internal services
 	CNAME('bazarr.i', 'containers.ext.dfl.mn.'),
