@@ -65,6 +65,13 @@ data:
           "type": "https",
           "host": "sync.georgeflix.uk",
           "interval": 120
+        },
+        {
+          "name": "dflimg",
+          "component_name": "DFLImg",
+          "type": "https",
+          "host": "dfl.mn/:alive",
+          "interval": 120
         }
       ]
     }
