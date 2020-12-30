@@ -42,6 +42,7 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	CNAME('sonarr.i', 'containers.ext.dfl.mn.'),
 
 	// External services
+	CNAME('auth', 'doproxy.k.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 	CNAME('wiki', 'doproxy.k.dfl.mn.'),

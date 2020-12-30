@@ -58,6 +58,11 @@ spec:
           env:
           - name: SHORT_PORT
             value: '80'
+          - name: SHORT_PUBLIC_KEY
+            valueFrom:
+              secretKeyRef:
+                name: auth
+                key: public
           - name: SHORT_AWS_REGION
             value: eu-west-1
           - name: AWS_ACCESS_KEY_ID
@@ -79,11 +84,6 @@ spec:
               secretKeyRef:
                 name: short
                 key: salt
-          - name: SHORT_USERS
-            valueFrom:
-              secretKeyRef:
-                name: short
-                key: users
           - name: SHORT_DSN
             valueFrom:
               secretKeyRef:
