@@ -87,9 +87,9 @@ portainer.i.dfl.mn {
 	}
 }
 
-gaps.i.dfl.mn {
+hue.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy gaps:8484
+	reverse_proxy hue:8888
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify

@@ -35,6 +35,7 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	// Internal services
 	CNAME('bazarr.i', 'containers.ext.dfl.mn.'),
 	CNAME('deluge.i', 'containers.ext.dfl.mn.'),
+	CNAME('hue.i', 'containers.ext.dfl.mn.'),
 	CNAME('jackett.i', 'containers.ext.dfl.mn.'),
 	CNAME('metube.i', 'containers.ext.dfl.mn.'),
 	CNAME('portainer.i', 'containers.ext.dfl.mn.'),
