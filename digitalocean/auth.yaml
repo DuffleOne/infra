@@ -58,6 +58,12 @@ spec:
           env:
           - name: AUTH_PORT
             value: '80'
+          - name: AUTH_WEBAUTHN_RPID
+            value: auth.dfl.mn
+          - name: AUTH_WEBAUTHN_RPORIGIN
+            value: https://auth.dfl.mn
+          - name: AUTH_WEBAUTHN_RPDISPLAYNAME
+            value: DFL Auth
           - name: AUTH_DSN
             valueFrom:
               secretKeyRef:
