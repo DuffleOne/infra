@@ -58,6 +58,8 @@ spec:
           env:
           - name: AUTH_PORT
             value: '80'
+          - name: AUTH_JWT_ISSUER
+            value: auth.dfl.mn
           - name: AUTH_WEBAUTHN_RPID
             value: auth.dfl.mn
           - name: AUTH_WEBAUTHN_RPORIGIN
