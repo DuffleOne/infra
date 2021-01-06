@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitor
+  template:
+    metadata:
+      labels:
+        app: monitor
+    spec:
+      volumes:
+      - name: monitor
+        configMap:
+          name: monitor
+      containers:
+        - name: monitor
+          image: duffleman/dfl:latest
+          args: ["monitor"]
+          volumeMounts:
+          - name: monitor
+            mountPath: /monitor_config
+          env:
+          - name: MONITOR_CACHET_URL
+            value: 'http://cachet:8000'
+          - name: MONITOR_CACHET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: monitor
+                key: cachet-token
+          - name: MONITOR_DEBUG
+            value: 'true'
+          - name: MONITOR_JOBS_FILE
+            value: '/monitor_config/jobs'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: monitor
+data:
+  jobs: |
+    [
+      {
+        "name": "plex",
+        "component_name": "PLEX Server",
+        "type": "https-novalidate",
+        "host": "galactus.ext.dfl.mn:32400/web/index.html",
+        "interval": 120
+      },
+      {
+        "name": "ombi",
+        "component_name": "Ombi",
+        "type": "https",
+        "host": "requests.georgeflix.uk",
+        "interval": 120
+      },
+      {
+        "name": "synclongue",
+        "component_name": "Synclounge",
+        "type": "https",
+        "host": "sync.georgeflix.uk",
+        "interval": 120
+      },
+      {
+        "name": "auth",
+        "component_name": "Auth",
+        "type": "https",
+        "host": "auth.dfl.mn",
+        "interval": 120
+      },
+      {
+        "name": "short",
+        "component_name": "Short",
+        "type": "https",
+        "host": "dfl.mn/:alive",
+        "interval": 120
+      }
+    ]
