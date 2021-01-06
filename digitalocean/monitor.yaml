@@ -18,7 +18,7 @@ spec:
           name: monitor
       containers:
         - name: monitor
-          image: duffleman/dfl:latest
+          image: duffleman/dfl:a8983462f21ae7447bf527ae4871fd33edf1abba
           args: ["monitor"]
           volumeMounts:
           - name: monitor
@@ -32,7 +32,7 @@ spec:
                 name: monitor
                 key: cachet-token
           - name: MONITOR_DEBUG
-            value: 'true'
+            value: 'false'
           - name: MONITOR_JOBS_FILE
             value: '/monitor_config/jobs'
 ---
