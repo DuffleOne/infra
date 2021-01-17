@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: short
-          image: duffleman/dfl:pr-36
+          image: duffleman/dfl:sha-244456a
           args: ["short"]
           ports:
           - containerPort: 80

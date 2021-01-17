@@ -18,7 +18,7 @@ spec:
           name: monitor
       containers:
         - name: monitor
-          image: duffleman/dfl:pr-36
+          image: duffleman/dfl:sha-244456a
           args: ["monitor"]
           volumeMounts:
           - name: monitor
