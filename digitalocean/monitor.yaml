@@ -18,12 +18,14 @@ spec:
           name: monitor
       containers:
         - name: monitor
-          image: duffleman/dfl:sha-226e378
+          image: duffleman/dfl:pr-36
           args: ["monitor"]
           volumeMounts:
           - name: monitor
             mountPath: /monitor_config
           env:
+          - name: ENV
+            value: prod
           - name: MONITOR_CACHET_URL
             value: 'http://cachet:8000'
           - name: MONITOR_CACHET_KEY

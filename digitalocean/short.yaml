@@ -51,13 +51,19 @@ spec:
     spec:
       containers:
         - name: short
-          image: duffleman/dfl:sha-226e378
+          image: duffleman/dfl:pr-36
           args: ["short"]
           ports:
           - containerPort: 80
           env:
-          - name: SHORT_PORT
-            value: '80'
+          - name: ENV
+            value: prod
+          - name: SHORT_SERVER_ADDR
+            value: '0.0.0.0:80'
+          - name: SHORT_SERVER_GRACEFUL
+            value: '5'
+          - name: SHORT_LOGGING_FORMAT
+            value: 'json'
           - name: SHORT_PUBLIC_KEY
             valueFrom:
               secretKeyRef:
