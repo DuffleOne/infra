@@ -75,18 +75,6 @@ metube.i.dfl.mn {
 	}
 }
 
-portainer.i.dfl.mn {
-	encode zstd gzip
-	reverse_proxy portainer_portainer.1.wx36m82hunyt8rvxzycszhjsn:9000
-	tls security@duffeman.co.uk {
-		client_auth {
-			mode require_and_verify
-			trusted_ca_cert_file /config/root.public.pem
-		}
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-	}
-}
-
 hue.i.dfl.mn {
 	encode zstd gzip
 	reverse_proxy hue:8888
