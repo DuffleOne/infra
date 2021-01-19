@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: synclounge
-          image: starbix/synclounge:latest
+          image: synclounge/synclounge:latest
           ports:
           - containerPort: 8088
           - containerPort: 8089
