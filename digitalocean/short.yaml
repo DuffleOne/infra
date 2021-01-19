@@ -62,6 +62,8 @@ spec:
             value: '0.0.0.0:80'
           - name: SHORT_SERVER_GRACEFUL
             value: '5'
+          - name: SHORT_JWT_ISSUER
+            value: auth.dfl.mn
           - name: SHORT_LOGGING_FORMAT
             value: 'json'
           - name: SHORT_PUBLIC_KEY
