@@ -44,9 +44,13 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('auth', 'doproxy.k.dfl.mn.'),
+	CNAME('matrix', 'containers.ext.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 	CNAME('wiki', 'doproxy.k.dfl.mn.'),
+
+	// Pointers
+	SRV('_matrix._tcp', 10, 10, 443, 'matrix.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),

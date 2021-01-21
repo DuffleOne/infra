@@ -86,3 +86,13 @@ hue.i.dfl.mn {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
 }
+
+matrix.dfl.mn {
+	encode zstd gzip
+	reverse_proxy /_matrix/* matrix:8008
+	respond /.well-known/matrix/server "{ \"m.server\": \"matrix.dfl.mn:443\" }"
+	respond /.well-known/matrix/client "{ \"m.homeserver\": { \"base_url\": \"https://app.element.io\" } }"
+	tls security@duffeman.co.uk {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	}
+}
