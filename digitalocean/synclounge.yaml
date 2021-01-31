@@ -5,16 +5,16 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8088
-    targetPort: 8088
-    protocol: TCP
-    name: client
-  - port: 8089
-    targetPort: 8089
-    protocol: TCP
-    name: server
+    - port: 8088
+      targetPort: 8088
+      protocol: TCP
+      name: client
+    - port: 8089
+      targetPort: 8089
+      protocol: TCP
+      name: server
   selector:
-      app: synclounge
+    app: synclounge
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -25,27 +25,27 @@ metadata:
     cert-manager.io/cluster-issuer: issuer-cert-manager-production
 spec:
   tls:
-  - hosts:
-    - sync.georgeflix.uk
-    secretName: cert-synclounge
+    - hosts:
+        - sync.georgeflix.uk
+      secretName: cert-synclounge
   rules:
-  - host: sync.georgeflix.uk
-    http:
-      paths:
-      - path: /slserver
-        pathType: Prefix
-        backend:
-          service:
-            name: synclounge
-            port:
-              number: 8089
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: synclounge
-            port:
-              number: 8088
+    - host: sync.georgeflix.uk
+      http:
+        paths:
+          - path: /slserver
+            pathType: Prefix
+            backend:
+              service:
+                name: synclounge
+                port:
+                  number: 8089
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: synclounge
+                port:
+                  number: 8088
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -65,17 +65,17 @@ spec:
         - name: synclounge
           image: synclounge/synclounge:latest
           ports:
-          - containerPort: 8088
-          - containerPort: 8089
+            - containerPort: 8088
+            - containerPort: 8089
           env:
-          - name: DOMAIN
-            value: sync.georgeflix.uk
-          - name: SERVERS
-            value: |
-              {
-                "name": "GeorgeSync",
-                "location": "Earth",
-                "url": "https://sync.georgeflix.uk/slserver",
-                "logo": "https://dfl.mn/0lm",
-                "image": "https://dfl.mn/0lm"
-              }
+            - name: DOMAIN
+              value: sync.georgeflix.uk
+            - name: SERVERS
+              value: |
+                {
+                  "name": "GeorgeSync",
+                  "location": "Earth",
+                  "url": "https://sync.georgeflix.uk/slserver",
+                  "logo": "https://dfl.mn/0lm",
+                  "image": "https://dfl.mn/0lm"
+                }

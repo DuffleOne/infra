@@ -5,9 +5,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 80
-    targetPort: 80
-    protocol: TCP
+    - port: 80
+      targetPort: 80
+      protocol: TCP
   selector:
     app: tflgame
 ---
@@ -21,19 +21,19 @@ metadata:
 spec:
   tls:
     - hosts:
-      - api.tflga.me
+        - api.tflga.me
       secretName: cert-tflgame
   rules:
-  - host: api.tflga.me
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: tflgame
-            port:
-              number: 80
+    - host: api.tflga.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tflgame
+                port:
+                  number: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -53,10 +53,10 @@ spec:
         - name: tflgame
           image: duffleman/tflgame:cors
           ports:
-          - containerPort: 80
+            - containerPort: 80
           env:
-          - name: CONFIG
-            valueFrom:
-              secretKeyRef:
-                name: tflgame
-                key: CONFIG
+            - name: CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: tflgame
+                  key: CONFIG

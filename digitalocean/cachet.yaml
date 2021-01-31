@@ -5,11 +5,11 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8000
-    targetPort: 8000
-    protocol: TCP
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
   selector:
-      app: cachet
+    app: cachet
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -20,20 +20,20 @@ metadata:
     cert-manager.io/cluster-issuer: issuer-cert-manager-production
 spec:
   tls:
-  - hosts:
-    - status.dfl.mn
-    secretName: cert-cachet
+    - hosts:
+        - status.dfl.mn
+      secretName: cert-cachet
   rules:
-  - host: status.dfl.mn
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: cachet
-            port:
-              number: 8000
+    - host: status.dfl.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cachet
+                port:
+                  number: 8000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -53,55 +53,55 @@ spec:
         - name: cachet
           image: cachethq/docker:latest
           ports:
-          - containerPort: 8000
+            - containerPort: 8000
           env:
-          - name: DOCKER
-            value: 'true'
-          - name: APP_ENV
-            value: production
-          - name: APP_DEBUG
-            value: 'false'
-          - name: APP_KEY
-            valueFrom:
-              secretKeyRef:
-                name: cachet
-                key: app-key
-          - name: DB_DRIVER
-            value: pgsql
-          - name: DB_HOST
-            value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
-          - name: DB_PORT
-            value: '25060'
-          - name: DB_DATABASE
-            value: cachet
-          - name: DB_USERNAME
-            value: cachet
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: cachet
-                key: db-password
-          - name: CACHE_DRIVER
-            value: file
-          - name: QUEUE_DRIVER
-            value: sync
-          - name: MAIL_DRIVER
-            value: smtp
-          - name: MAIL_PORT
-            value: '587'
-          - name: MAIL_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: cachet
-                key: mail-username
-          - name: MAIL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: cachet
-                key: mail-password
-          - name: MAIL_ADDRESS
-            value: alerts@ses.dfl.mn
-          - name: MAIL_NAME
-            value: DFL Alerts
-          - name: MAIL_ENCRYPTION
-            value: tls
+            - name: DOCKER
+              value: "true"
+            - name: APP_ENV
+              value: production
+            - name: APP_DEBUG
+              value: "false"
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cachet
+                  key: app-key
+            - name: DB_DRIVER
+              value: pgsql
+            - name: DB_HOST
+              value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
+            - name: DB_PORT
+              value: "25060"
+            - name: DB_DATABASE
+              value: cachet
+            - name: DB_USERNAME
+              value: cachet
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cachet
+                  key: db-password
+            - name: CACHE_DRIVER
+              value: file
+            - name: QUEUE_DRIVER
+              value: sync
+            - name: MAIL_DRIVER
+              value: smtp
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: cachet
+                  key: mail-username
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cachet
+                  key: mail-password
+            - name: MAIL_ADDRESS
+              value: alerts@ses.dfl.mn
+            - name: MAIL_NAME
+              value: DFL Alerts
+            - name: MAIL_ENCRYPTION
+              value: tls

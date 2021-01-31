@@ -5,9 +5,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 3000
-    targetPort: 3000
-    protocol: TCP
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
   selector:
     app: wiki
 ---
@@ -21,19 +21,19 @@ metadata:
 spec:
   tls:
     - hosts:
-      - wiki.dfl.mn
+        - wiki.dfl.mn
       secretName: cert-wiki
   rules:
-  - host: wiki.dfl.mn
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: wiki
-            port:
-              number: 3000
+    - host: wiki.dfl.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wiki
+                port:
+                  number: 3000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -53,29 +53,29 @@ spec:
         - name: wiki
           image: requarks/wiki:2
           ports:
-          - containerPort: 3000
+            - containerPort: 3000
           env:
-          - name: PORT
-            value: '3000'
-          - name: DB_TYPE
-            value: postgres
-          - name: DB_HOST
-            value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
-          - name: DB_PORT
-            value: '25061'
-          - name: DB_USER
-            value: wiki
-          - name: DB_PASS
-            valueFrom:
-              secretKeyRef:
-                name: wiki
-                key: db-pass
-          - name: DB_NAME
-            value: 'wiki'
-          - name: DB_SSL
-            value: 'true'
-          - name: DB_SSL_CA
-            valueFrom:
-              secretKeyRef:
-                name: wiki
-                key: db-cert
+            - name: PORT
+              value: "3000"
+            - name: DB_TYPE
+              value: postgres
+            - name: DB_HOST
+              value: db-postgresql-lon1-17763-do-user-308239-0.a.db.ondigitalocean.com
+            - name: DB_PORT
+              value: "25061"
+            - name: DB_USER
+              value: wiki
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: wiki
+                  key: db-pass
+            - name: DB_NAME
+              value: "wiki"
+            - name: DB_SSL
+              value: "true"
+            - name: DB_SSL_CA
+              valueFrom:
+                secretKeyRef:
+                  name: wiki
+                  key: db-cert

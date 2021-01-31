@@ -9,14 +9,14 @@ spec:
     privateKeySecretRef:
       name: cert-manager-staging
     solvers:
-    - selector:
-        dnsZones:
-        - 'dfl.mn'
-        - 'georgeflix.uk'
-        - 'tflga.me'
-      dns01:
-        cloudflare:
-          email: cloudflare@duffleman.co.uk
-          apiTokenSecretRef:
-            name: cloudflare
-            key: api-token
+      - selector:
+          dnsZones:
+            - "dfl.mn"
+            - "georgeflix.uk"
+            - "tflga.me"
+        dns01:
+          cloudflare:
+            email: cloudflare@duffleman.co.uk
+            apiTokenSecretRef:
+              name: cloudflare
+              key: api-token
