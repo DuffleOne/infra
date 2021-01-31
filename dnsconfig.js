@@ -44,6 +44,7 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 
 	// External services
 	CNAME('auth', 'doproxy.k.dfl.mn.'),
+	CNAME('dash', 'doproxy.k.dfl.mn.'),
 	CNAME('matrix', 'containers.ext.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),

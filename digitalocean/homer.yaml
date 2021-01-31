@@ -1,0 +1,152 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homer
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: homer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homer
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+spec:
+  tls:
+    - hosts:
+        - dash.dfl.mn
+      secretName: cert-homer
+  rules:
+    - host: dash.dfl.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homer
+                port:
+                  number: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homer
+  template:
+    metadata:
+      labels:
+        app: homer
+    spec:
+      volumes:
+        - name: homer
+          configMap:
+            name: homer
+      containers:
+        - name: homer
+          image: b4bz/homer:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: homer
+              mountPath: /www/assets/config.yml
+              subPath: config.yml
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: UID
+              value: "1000"
+            - name: GID
+              value: "1000"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homer
+data:
+  config.yml: |
+    title: "DFL Dash"
+    subtitle: "Duffleman"
+    icon: "far fa-meh-blank"
+
+    header: true
+    footer: false
+
+    connectivityCheck: true
+
+    links:
+      - name: "Home"
+        icon: "fas fa-home"
+        url: "https://dfl.mn"
+      - name: "Wiki"
+        icon: "fas fa-book"
+        url: "https://wiki.dfl.mn"
+      - name: "GitHub"
+        icon: "fab fa-github-alt"
+        url: "https://github.com/Duffleman"
+
+    services:
+      - name: "Internal"
+        icon: "fas fa-user-lock"
+        items:
+          - name: "Deluge"
+            icon: "fas fa-download"
+            subtitle: "Downloads"
+            tag: "internal"
+            url: "https://deluge.i.dfl.mn"
+          - name: "Sonarr"
+            icon: "fas fa-tv"
+            subtitle: "TV shows"
+            tag: "internal"
+            url: "https://sonarr.i.dfl.mn"
+          - name: "Radarr"
+            icon: "fas fa-film"
+            subtitle: "Movies"
+            tag: "internal"
+            url: "https://radarr.i.dfl.mn"
+          - name: "Bazarr"
+            icon: "fas fa-closed-captioning"
+            subtitle: "Subtitles"
+            tag: "internal"
+            url: "https://bazarr.i.dfl.mn"
+          - name: "Jackett"
+            icon: "fas fa-arrows-alt"
+            subtitle: "Sources"
+            tag: "internal"
+            url: "https://jackett.i.dfl.mn"
+          - name: "Hue"
+            icon: "fas fa-database"
+            subtitle: "Database"
+            tag: "internal"
+            url: "https://hue.i.dfl.mn"
+
+      - name: "Selfhosted"
+        icon: "fas fa-cloud"
+        items:
+          - name: "Requests"
+            icon: "fas fa-tasks"
+            subtitle: "Ombi"
+            tag: "selfhosted"
+            url: "https://requests.georgeflix.uk"
+          - name: "Wiki"
+            icon: "fas fa-book"
+            subtitle: "Personal wiki"
+            tag: "selfhosted"
+            url: "https://wiki.dfl.mn"
+          - name: "Status"
+            icon: "fas fa-check-circle"
+            subtitle: "Cachet"
+            tag: "selfhosted"
+            url: "https://status.dfl.mn"
