@@ -126,11 +126,6 @@ data:
             subtitle: "Sources"
             tag: "internal"
             url: "https://jackett.i.dfl.mn"
-          - name: "Hue"
-            icon: "fas fa-database"
-            subtitle: "Database"
-            tag: "internal"
-            url: "https://hue.i.dfl.mn"
 
       - name: "Selfhosted"
         icon: "fas fa-cloud"

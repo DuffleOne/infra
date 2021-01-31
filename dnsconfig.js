@@ -35,23 +35,16 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	// Internal services
 	CNAME('bazarr.i', 'containers.ext.dfl.mn.'),
 	CNAME('deluge.i', 'containers.ext.dfl.mn.'),
-	CNAME('hue.i', 'containers.ext.dfl.mn.'),
 	CNAME('jackett.i', 'containers.ext.dfl.mn.'),
-	CNAME('metube.i', 'containers.ext.dfl.mn.'),
-	CNAME('portainer.i', 'containers.ext.dfl.mn.'),
 	CNAME('radarr.i', 'containers.ext.dfl.mn.'),
 	CNAME('sonarr.i', 'containers.ext.dfl.mn.'),
 
 	// External services
 	CNAME('auth', 'doproxy.k.dfl.mn.'),
 	CNAME('dash', 'doproxy.k.dfl.mn.'),
-	CNAME('matrix', 'containers.ext.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 	CNAME('wiki', 'doproxy.k.dfl.mn.'),
-
-	// Pointers
-	SRV('_matrix._tcp', 10, 10, 443, 'matrix.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
