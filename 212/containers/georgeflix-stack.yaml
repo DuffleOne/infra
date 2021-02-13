@@ -1,0 +1,106 @@
+version: "3.6"
+services:
+  ombi:
+    networks:
+      - default
+      - web_web
+    image: linuxserver/ombi:development
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/ombi:/config
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+  deluge:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "8112:8112"
+    image: linuxserver/deluge:latest
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/deluge:/config
+      - /mnt/downloads:/downloads
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+      - UMASK=022
+      - DELUGE_LOGLEVEL=error
+  sonarr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "8989:8989"
+    image: linuxserver/sonarr:preview
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/sonarr:/config
+      - /mnt/downloads:/downloads
+      - /mnt/tv-a1:/tv-a1
+      - /mnt/tv-a2:/tv-a2
+      - /mnt/tv-a3:/tv-a3
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022
+  radarr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "7878:7878"
+    image: linuxserver/radarr:nightly
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/radarr:/config
+      - /mnt/downloads:/downloads
+      - /mnt/movies-a2:/movies-a2
+      - /mnt/movies-a3:/movies-a3
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022
+  bazarr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "6767:6767"
+    image: linuxserver/bazarr:development
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/bazarr:/config
+      - /mnt/downloads:/downloads
+      - /mnt/movies-a2:/movies-a2
+      - /mnt/movies-a3:/movies-a3
+      - /mnt/tv-a1:/tv-a1
+      - /mnt/tv-a2:/tv-a2
+      - /mnt/tv-a3:/tv-a3
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022
+  jackett:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "9117:9117"
+    image: linuxserver/jackett:latest
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/jackett:/config
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
+networks:
+  web_web:
+    external: true
