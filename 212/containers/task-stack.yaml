@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/localfs/github-runner:/home/runner
     environment:
       - RUNNER_NAME=containers
       - RUNNER_REPOSITORY_URL=https://github.com/Duffleman/dfl
