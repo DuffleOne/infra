@@ -10,3 +10,19 @@ services:
       - RUNNER_NAME=containers
       - RUNNER_REPOSITORY_URL=https://github.com/Duffleman/dfl
       - RUNNER_TOKEN=${RUNNER_TOKEN}
+  duplicati:
+    networks:
+      - web_web
+    image: ghcr.io/linuxserver/duplicati
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /mnt/localfs/duplicati:/config
+      - /mnt/george/containers:/backups
+      - /mnt/localfs:/localfs
+    restart: unless-stopped
+networks:
+  web_web:
+    external: true

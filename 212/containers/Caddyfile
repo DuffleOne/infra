@@ -3,6 +3,18 @@ requests.georgeflix.uk {
 	reverse_proxy georgeflix_ombi:3579
 }
 
+duplicati.i.dfl.mn {
+	encode zstd gzip
+	reverse_proxy tasks_duplicati:8200
+	tls security@duffeman.co.uk {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /config/root.public.pem
+		}
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	}
+}
+
 deluge.i.dfl.mn {
 	encode zstd gzip
 	reverse_proxy georgeflix_deluge:8112
