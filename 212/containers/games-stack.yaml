@@ -1,0 +1,19 @@
+version: "3.6"
+services:
+  valheim:
+    image: mbround18/valheim:latest
+    ports:
+      - 2456:2456/udp
+      - 2457:2457/udp
+      - 2458:2458/udp
+    environment:
+      - PORT=2456
+      - NAME="Live. Laugh. Love."
+      - WORLD=LiveLaughLove
+      - PASSWORD=${PASSWORD}
+      - TZ=Europe/London
+      - AUTO_UPDATE=1
+      - PUBLIC=1
+    volumes:
+      - /mnt/localfs/valheim/saves:/home/steam/.config/unity3d/IronGate/Valheim
+      - /mnt/localfs/valheim/server:/home/steam/valheim
