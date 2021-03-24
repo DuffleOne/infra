@@ -230,3 +230,22 @@ D('staff.tf', REG_GHANDI, DnsProvider(cloudflare),
 
 	CF_REDIRECT('*staff.tf/*', 'https://github.com/cuvva/cuvva/blob/master/infra/aws-acc-root/staff.tf')
 )
+
+D('duffle.one', REG_NONE, DnsProvider(cloudflare),
+	ALIAS('@', 'duffle.one.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
+	CNAME('www', 'duffle.one.', CF_PROXY_ON),
+	CNAME('s3', 's3.amazonaws.com.'),
+
+	// Avoid WWW
+	CF_REDIRECT('www.duffle.one/*', 'https://duffle.one/$1'),
+
+	// Mail
+	MX('@', 1, 'aspmx.l.google.com.'),
+	MX('@', 5, 'alt1.aspmx.l.google.com.'),
+	MX('@', 5, 'alt2.aspmx.l.google.com.'),
+	MX('@', 10, 'alt3.aspmx.l.google.com.'),
+	MX('@', 10, 'alt4.aspmx.l.google.com.'),
+w
+	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
+	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnu/frbLrtqCqunp+VEz+WdQeRH+Z+X5WOud6bunGmFXhK8G8wyXPCF2QoMsJX+hMXULUTN57qc9gqAzr5W6AtHNuvmsgloiZDq1pJfJKeKyQgWmn8uhgMFVMbSEUrNqH9dbN6iX8gHt7qyhBKpZs3BIzQ9dw5RQ5eAdAthmVFWQGuz+7uKsuYfizq9cdz+mIxd6nZeqHqIKooPJyPvEG04AwwL3jqUZQaKHhBU+NvEf0nGPhDZq4jGm13pGZBSg8tZ7iFzm1mcWrxxy31Wj4f/juofp0UOy0ZQh2mWNiR5uugs2JWFCRmvN6GKkL7+Tou5FNMLAbtCudeFVRrmCJ3wIDAQAB', AUTOSPLIT)
+)
