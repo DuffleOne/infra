@@ -35,7 +35,7 @@ services:
       - web_web
     ports:
       - "8989:8989"
-    image: linuxserver/sonarr:preview
+    image: linuxserver/sonarr:develop
     restart: unless-stopped
     volumes:
       - /mnt/localfs/sonarr:/config
