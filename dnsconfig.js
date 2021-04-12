@@ -47,7 +47,6 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
 	CNAME('valheim', 'containers.ext.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
-	CNAME('wiki', 'doproxy.k.dfl.mn.'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
