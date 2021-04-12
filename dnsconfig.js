@@ -82,12 +82,12 @@ D('212.house', REG_NONE, DnsProvider(cloudflare),
 )
 
 D('duffleman.co.uk', REG_NONE, DnsProvider(cloudflare),
-	ALIAS('@', 'duffleman.co.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
-	CNAME('www', 'duffleman.co.uk.', CF_PROXY_ON),
+	A('@', '1.2.3.4', CF_PROXY_ON),
+	A('www', '1.2.3.4', CF_PROXY_ON),
 	CNAME('s3', 's3.amazonaws.com.'),
 
-	// Avoid WWW
-	CF_REDIRECT('www.duffleman.co.uk/*', 'https://duffleman.co.uk/$1'),
+	// push everything over to duffleman.co.uk
+	CF_REDIRECT('*duffleman.co.uk/*', 'https://duffle.one/$2'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
@@ -244,7 +244,7 @@ D('duffle.one', REG_NONE, DnsProvider(cloudflare),
 	MX('@', 5, 'alt2.aspmx.l.google.com.'),
 	MX('@', 10, 'alt3.aspmx.l.google.com.'),
 	MX('@', 10, 'alt4.aspmx.l.google.com.'),
-w
+
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnu/frbLrtqCqunp+VEz+WdQeRH+Z+X5WOud6bunGmFXhK8G8wyXPCF2QoMsJX+hMXULUTN57qc9gqAzr5W6AtHNuvmsgloiZDq1pJfJKeKyQgWmn8uhgMFVMbSEUrNqH9dbN6iX8gHt7qyhBKpZs3BIzQ9dw5RQ5eAdAthmVFWQGuz+7uKsuYfizq9cdz+mIxd6nZeqHqIKooPJyPvEG04AwwL3jqUZQaKHhBU+NvEf0nGPhDZq4jGm13pGZBSg8tZ7iFzm1mcWrxxy31Wj4f/juofp0UOy0ZQh2mWNiR5uugs2JWFCRmvN6GKkL7+Tou5FNMLAbtCudeFVRrmCJ3wIDAQAB', AUTOSPLIT)
 )
