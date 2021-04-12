@@ -106,7 +106,7 @@ D('duffleman.dev', REG_NONE, DnsProvider(cloudflare),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
 	// push everything over to duffleman.co.uk
-	CF_REDIRECT('*duffleman.dev/*', 'https://duffleman.co.uk/$2'),
+	CF_REDIRECT('*duffleman.dev/*', 'https://duffle.one/$2'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
@@ -124,7 +124,7 @@ D('duffleman.me', REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
-	CF_REDIRECT('*duffleman.me/*', 'https://duffleman.co.uk/$2'),
+	CF_REDIRECT('*duffleman.me/*', 'https://duffle.one/$2'),
 
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
@@ -141,7 +141,7 @@ D('duffleman.uk', REG_NONE, DnsProvider(cloudflare),
 	A('@', '1.2.3.4', CF_PROXY_ON),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
-	CF_REDIRECT('*duffleman.uk/*', 'https://duffleman.co.uk/$2'),
+	CF_REDIRECT('*duffleman.uk/*', 'https://duffle.one/$2'),
 
 	MX('@', 1, 'aspmx.l.google.com.'),
 	MX('@', 5, 'alt1.aspmx.l.google.com.'),
@@ -190,7 +190,7 @@ D('georgemiller.me.uk', REG_NONE, DnsProvider(cloudflare),
 	A('www', '1.2.3.4', CF_PROXY_ON),
 
 	// push everything over to duffleman.co.uk
-	CF_REDIRECT('*georgemiller.me.uk/*', 'https://duffleman.co.uk/$2'),
+	CF_REDIRECT('*georgemiller.me.uk/*', 'https://duffle.one/$2'),
 
 	// Mail
 	MX('@', 1, 'aspmx.l.google.com.'),
