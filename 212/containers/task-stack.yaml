@@ -1,15 +1,5 @@
 version: "3.6"
 services:
-  github-runner:
-    image: tcardonne/github-runner:latest
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/localfs/github-runner:/home/runner
-    environment:
-      - RUNNER_NAME=containers
-      - RUNNER_REPOSITORY_URL=https://github.com/Duffleman/dfl
-      - RUNNER_TOKEN=${RUNNER_TOKEN}
   duplicati:
     networks:
       - web_web
