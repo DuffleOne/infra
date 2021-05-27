@@ -45,6 +45,7 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	CNAME('dash', 'doproxy.k.dfl.mn.'),
 	CNAME('draw', 'doproxy.k.dfl.mn.'),
 	CNAME('status', 'doproxy.k.dfl.mn.'),
+	CNAME('support', 'doproxy.k.dfl.mn.'),
 	CNAME('valheim', 'containers.ext.dfl.mn.'),
 	CNAME('wg', 'wireguard.ext.dfl.mn.'),
 

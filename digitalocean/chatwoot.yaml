@@ -1,0 +1,155 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatwoot
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: chatwoot
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chatwoot
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: issuer-cert-manager-production
+spec:
+  tls:
+    - hosts:
+        - support.dfl.mn
+      secretName: cert-chatwoot
+  rules:
+    - host: support.dfl.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chatwoot
+                port:
+                  number: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatwoot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatwoot
+  template:
+    metadata:
+      labels:
+        app: chatwoot
+    spec:
+      containers:
+        - name: chatwoot
+          image: chatwoot/chatwoot:latest
+          command: ['docker/entrypoints/rails.sh']
+          args: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RAILS_ENV
+              value: production
+            - name: NODE_ENV
+              value: production
+            - name: FRONTEND_URL
+              value: https://support.dfl.mn
+            - name: DEFAULT_LOCALE
+              value: en
+            - name: MAILER_SENDER_EMAIL
+              value: support@ses.dfl.mn
+            - name: SMTP_ADDRESS
+              value: email-smtp.eu-west-1.amazonaws.com
+            - name: SMTP_ENABLE_STARTTLS_AUTO
+              value: 'true'
+            - name: SMTP_PORT
+              value: '587'
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: smtp-username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: smtp-pw
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: db-url
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: redis-url
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: redis-pw
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: secret-key
+        - name: sidekiq
+          image: chatwoot/chatwoot:latest
+          args: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+          env:
+            - name: RAILS_ENV
+              value: production
+            - name: NODE_ENV
+              value: production
+            - name: FRONTEND_URL
+              value: https://support.dfl.mn
+            - name: DEFAULT_LOCALE
+              value: en
+            - name: MAILER_SENDER_EMAIL
+              value: support@ses.dfl.mn
+            - name: SMTP_ADDRESS
+              value: email-smtp.eu-west-1.amazonaws.com
+            - name: SMTP_ENABLE_STARTTLS_AUTO
+              value: 'true'
+            - name: SMTP_PORT
+              value: '587'
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: smtp-username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: smtp-pw
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: db-url
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: redis-url
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: redis-pw
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot
+                  key: secret-key
