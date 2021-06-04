@@ -101,6 +101,19 @@ services:
       - PUID=1000
       - GUID=1000
       - TZ=Europe/London
+  overseerr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "5055:5055"
+    image: sctx/overseerr:latest
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/overseerr:/app/config
+    environment:
+      - TZ=Europe/London
+      - LOG_LEVEL=info
 networks:
   web_web:
     external: true
