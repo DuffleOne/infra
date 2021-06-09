@@ -17,3 +17,23 @@ module "duffleman_me" {
   keybase              = true
   keybase_verification = "krT8JY9BETiWK8m-QISEHETCJ49WetjrXXDTDHx_sEM"
 }
+
+module "duffleman_uk" {
+  source = "../modules/domain_alias"
+
+  domain     = "duffleman.uk"
+  domain_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2OgbsykUScp+kl3WrXmmKU85aX7dwd34pi7ghiKlSmJzn7roPX7IUwJpcaW18nHPW3tQi7T4yMzIMGn+4gZsUy4+36tXGIVpNSZ1En7KGKAgD2dB2g/NOQM4WJhBXETf+bhK188RJfVphlq3k4UtrGheTHermFyjqUWRSgxx1wIW1OdB0RTepppZw1T028TM8Cd2FokbRoqLnKWov5nlhTnh+MypPSLuL4dwN61DzV8xCXSeatuGrHqu1pVsDrufWdE226qD0puB70COIk1XQ+0PcJ/siP/rWrxhxVrhF7nZIQjZ00Ow7WudQPu6qxxuxpSe7NluPJv5obvuNyckwIDAQAB"
+
+  keybase              = true
+  keybase_verification = "Pfkhz4_vVBGKCYWh30PAp87lz5f-gIiAmes-jKMg96Q"
+}
+
+module "georgemiller_me_uk" {
+  source = "../modules/domain_alias"
+
+  domain     = "georgemiller.me.uk"
+  domain_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlzRF0eIiHqrHrdqIHxZCW1+MV49Dpp/rHoGs2OiCiQzrCn14FelwAo7x9Q51kvtSj4GoukdkluWp3KX7PnZHFfjepZwBaK+yxcegPHg0cNwKqdW5dYQEJBZ4RRLYDTvQbCqh9HzZPWDUjjBMZeIE890peua4Y73Ml2Xb2gqpWXLd+WT/qjesR3VJfpdT4Aq/y3kcJa02rdUZSqhffBrZOdhOfVdh2VhTleaRgYVRkAYU7YKj+rieo9Swbc/hsQmAHzHLlK3bwt62oMxq2EsB1qakb2xhKLJfO6eVVF4ObFU682sBBnOncJuMMUwtw2nJlX9mXiOboGyBF3SuZwsSYwIDAQAB"
+
+  keybase              = true
+  keybase_verification = "gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE"
+}
