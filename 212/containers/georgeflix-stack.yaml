@@ -1,17 +1,5 @@
 version: "3.6"
 services:
-  ombi:
-    networks:
-      - default
-      - web_web
-    image: linuxserver/ombi:development
-    restart: unless-stopped
-    volumes:
-      - /mnt/localfs/ombi:/config
-    environment:
-      - PUID=1000
-      - GUID=1000
-      - TZ=Europe/London
   deluge:
     networks:
       - default
