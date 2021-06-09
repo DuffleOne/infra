@@ -31,27 +31,43 @@ resource "digitalocean_database_firewall" "main-fw" {
   }
 }
 
-resource "digitalocean_database_db" "auth" {
+module "db_auth" {
+  source = "../modules/database"
+
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "auth"
 }
 
-resource "digitalocean_database_db" "cachet" {
+module "db_cachet" {
+  source = "../modules/database"
+
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "cachet"
 }
 
-resource "digitalocean_database_db" "dflimg" {
+module "db_dflimg" {
+  source = "../modules/database"
+
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "dflimg"
 }
 
-resource "digitalocean_database_db" "tflgame" {
+module "db_tflgame" {
+  source = "../modules/database"
+
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "tflgame"
+
+  enable_pool = true
+  pool_size   = 11
 }
 
-resource "digitalocean_database_db" "wiki" {
+module "db_wiki" {
+  source = "../modules/database"
+
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "wiki"
+
+  enable_pool = true
+  pool_size   = 5
 }
