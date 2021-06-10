@@ -2,11 +2,7 @@
 
 ## dns
 
-Managed by [DNSControl](https://stackexchange.github.io/dnscontrol/). See [`./dnsconfig.js`](./dnsconfig.js) for the configuration. An additional secret is required to run the script.
-
-```bash
-dnscontrol push --creds ~/Source/infra-secrets/dnscontrol.json
-```
+Managed by [Terraform](https://www.terraform.io).
 
 ## digital ocean
 
