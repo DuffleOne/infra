@@ -15,18 +15,10 @@ resource "cloudflare_record" "root" {
   proxied = true
 }
 
-resource "cloudflare_record" "www" {
-  zone_id = module.base_domain.zone_id
-  name    = "www"
-  type    = "A"
-  value   = "1.2.3.4"
-  proxied = true
-}
-
 resource "cloudflare_page_rule" "this" {
   zone_id  = module.base_domain.zone_id
   target   = "*${module.base_domain.domain}/*"
-  priority = 1
+  priority = 2
 
   actions {
     forwarding_url {

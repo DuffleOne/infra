@@ -4,6 +4,27 @@ resource "cloudflare_zone" "this" {
   type = "full"
 }
 
+resource "cloudflare_page_rule" "avoid_www" {
+  zone_id  = cloudflare_zone.this.id
+  target   = "www.${cloudflare_zone.this.zone}/*"
+  priority = 1
+
+  actions {
+    forwarding_url {
+      url         = "https://${cloudflare_zone.this.zone}/$1"
+      status_code = 301
+    }
+  }
+}
+
+resource "cloudflare_record" "www" {
+  zone_id = cloudflare_zone.this.id
+  name    = "www"
+  type    = "CNAME"
+  value   = cloudflare_zone.this.zone
+  proxied = true
+}
+
 resource "cloudflare_record" "mx_1" {
   count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id

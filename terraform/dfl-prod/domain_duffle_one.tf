@@ -12,11 +12,3 @@ resource "cloudflare_record" "root" {
   value   = "duffle.one.s3-website-eu-west-1.amazonaws.com"
   proxied = true
 }
-
-resource "cloudflare_record" "www" {
-  zone_id = module.duffle_one.zone_id
-  name    = "www"
-  type    = "CNAME"
-  value   = module.duffle_one.domain
-  proxied = true
-}
