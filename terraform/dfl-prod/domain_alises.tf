@@ -1,3 +1,13 @@
+module "duffleman_co_uk" {
+  source = "../modules/domain_alias"
+
+  domain     = "duffleman.co.uk"
+  domain_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt9kMz3boousXY4IUknZfeYvhqCixCZtXidnF0deacOC7DAFCskqPu+J/00IHcCx7fiAHC08yuHna3xW30cPzwTcTRI+7e7CqYrH9ltvgMXtTZgnqPzfvGRRCoj8uFb/nGVzOXjRFtegvIClqekc6VIU0g+sQ/kkAa4fk8AwSjUQIDAQAB"
+
+  keybase              = true
+  keybase_verification = "2zA8_3TqWj5I8W56tdkAGhdBUoW9_slEBtzKohqF2AQ"
+}
+
 module "duffleman_dev" {
   source = "../modules/domain_alias"
 

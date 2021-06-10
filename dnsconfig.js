@@ -68,26 +68,6 @@ D('dfl.mn', REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPMzaX0DMLvdwFg5j6ifkunYhkn0JvMKghrlzR5r6BelB9cVV3w72ncqsOiMHGNh8pL98n6x9iz5Q4fmU9aTXUoyx4xQmuuR/3armuIKEr88uox4ArZy4TWR8OuDKuMlezt4WwCOUdyqxnqUgpd6gOZL20TY81PB8Zd3EG93Yv8QIDAQAB', AUTOSPLIT)
 )
 
-D('duffleman.co.uk', REG_NONE, DnsProvider(cloudflare),
-	A('@', '1.2.3.4', CF_PROXY_ON),
-	A('www', '1.2.3.4', CF_PROXY_ON),
-	CNAME('s3', 's3.amazonaws.com.'),
-
-	// push everything over to duffleman.co.uk
-	CF_REDIRECT('*duffleman.co.uk/*', 'https://duffle.one/$2'),
-
-	// Mail
-	MX('@', 1, 'aspmx.l.google.com.'),
-	MX('@', 5, 'alt1.aspmx.l.google.com.'),
-	MX('@', 5, 'alt2.aspmx.l.google.com.'),
-	MX('@', 10, 'alt3.aspmx.l.google.com.'),
-	MX('@', 10, 'alt4.aspmx.l.google.com.'),
-
-	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
-	TXT('@', 'keybase-site-verification=2zA8_3TqWj5I8W56tdkAGhdBUoW9_slEBtzKohqF2AQ'),
-	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt9kMz3boousXY4IUknZfeYvhqCixCZtXidnF0deacOC7DAFCskqPu+J/00IHcCx7fiAHC08yuHna3xW30cPzwTcTRI+7e7CqYrH9ltvgMXtTZgnqPzfvGRRCoj8uFb/nGVzOXjRFtegvIClqekc6VIU0g+sQ/kkAa4fk8AwSjUQIDAQAB', AUTOSPLIT)
-)
-
 D('georgeflix.uk', REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'georgeflix.uk.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
 	CNAME('www', 'georgeflix.uk.', CF_PROXY_ON),
