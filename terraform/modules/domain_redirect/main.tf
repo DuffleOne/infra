@@ -1,12 +1,10 @@
 module "base_domain" {
   source = "../domain"
 
-  domain               = var.domain
-  has_domain_key       = var.has_domain_key
-  domain_key           = var.domain_key
-  email                = var.email
-  keybase              = var.keybase
-  keybase_verification = var.keybase_verification
+  domain         = var.domain
+  has_domain_key = false
+  email          = false
+  keybase        = false
 }
 
 resource "cloudflare_record" "root" {
@@ -25,14 +23,14 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 
-resource "cloudflare_page_rule" "redirect_home" {
+resource "cloudflare_page_rule" "this" {
   zone_id  = module.base_domain.zone_id
   target   = "*${module.base_domain.domain}/*"
   priority = 1
 
   actions {
     forwarding_url {
-      url         = "https://duffle.one/$2"
+      url         = var.redirect_to
       status_code = 301
     }
   }

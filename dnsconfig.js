@@ -125,14 +125,6 @@ D('georgeflix.uk', REG_NONE, DnsProvider(cloudflare),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9uQ00gCmDmfYAlSVecQ+SaCNFEhSFcnjrS1hWH3OZvq3MSf7tuyqpHI2mLagsKY12tVLOJWX9mFAZkN77dT59A1GskdHKeUllnYkG6jh0AUD9TIizKMvaTwnwm175NerFKmBK67P6LyzdxyoHsflFGdVcwZOyBRzSR5dGk5vgo5LMGNxSmyWFoOe7IxKHO8C77M0eJ7J85mReN/l367UG7S6vusTfgF8+cDv78acq7QKWhlERggX2S8pHVRZ2Irp6Tdsv3qaC6Uaiy8Kdgy57+rILFyFR4GDA1gMFWPrSAAcBQjFCllOwyrwy6PJqOo3oLETDm2bLMg8OJIvrOxrQIDAQAB', AUTOSPLIT)
 )
 
-D('gflix.in', REG_NONE, DnsProvider(cloudflare),
-	A('@', '1.2.3.4', CF_PROXY_ON),
-	A('www', '1.2.3.4', CF_PROXY_ON),
-
-	// Avoid WWW
-	CF_REDIRECT('*gflix.in/*', 'https://georgeflix.uk/$2')
-)
-
 D('tflga.me', REG_NONE, DnsProvider(cloudflare),
 	ALIAS('@', 'tflga.me.s3-website-eu-west-1.amazonaws.com.', CF_PROXY_ON),
 	CNAME('api', 'doproxy.k.dfl.mn.'),
@@ -150,11 +142,4 @@ D('tflga.me', REG_NONE, DnsProvider(cloudflare),
 
 	TXT('@', 'v=spf1 include:_spf.google.com ~all'),
 	TXT('google._domainkey', 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn+feSRV/Tt+auY4L/irlzTUO9UQaYpqcwbSmQ4F4hOqKrJ5xReg17XjZiuEItTrprYkqPEne3rm6MsBoiKAKlxUwEgQpsW1r6qTlCI/s0lY6RWMAD6QkazyV+BKHqozzOeirwXlzTDaRBeSSOP6Pdkceb4tWtfjBavLH6nWbKdlm2nTfhEF9AkAnN3QwCpjcD715T1nXCF3EvXxZdAZs7OuYAYfyutAIANI36nmrbdKgj8al7QPotZbHJJCL+t1F9mX8YpjfmWJgXRD1+VD98tnItMglDyaSLTW5paJeP1VwbOockqYGLArr3MOrf36wXk5e7HW9DjYJxmvoLIhN7QIDAQAB', AUTOSPLIT)
-)
-
-D('staff.tf', REG_GHANDI, DnsProvider(cloudflare),
-	A('@', '1.2.3.4', CF_PROXY_ON),
-	A('www', '1.2.3.4', CF_PROXY_ON),
-
-	CF_REDIRECT('*staff.tf/*', 'https://github.com/cuvva/cuvva/blob/master/infra/aws-acc-root/staff.tf')
 )

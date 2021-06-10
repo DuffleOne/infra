@@ -5,6 +5,7 @@ resource "cloudflare_zone" "this" {
 }
 
 resource "cloudflare_record" "mx_1" {
+  count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id
   name     = cloudflare_zone.this.zone
   type     = "MX"
@@ -13,6 +14,7 @@ resource "cloudflare_record" "mx_1" {
 }
 
 resource "cloudflare_record" "mx_2" {
+  count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id
   name     = cloudflare_zone.this.zone
   type     = "MX"
@@ -21,6 +23,7 @@ resource "cloudflare_record" "mx_2" {
 }
 
 resource "cloudflare_record" "mx_3" {
+  count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id
   name     = cloudflare_zone.this.zone
   type     = "MX"
@@ -29,6 +32,7 @@ resource "cloudflare_record" "mx_3" {
 }
 
 resource "cloudflare_record" "mx_4" {
+  count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id
   name     = cloudflare_zone.this.zone
   type     = "MX"
@@ -37,6 +41,7 @@ resource "cloudflare_record" "mx_4" {
 }
 
 resource "cloudflare_record" "mx_5" {
+  count    = var.email ? 1 : 0
   zone_id  = cloudflare_zone.this.id
   name     = cloudflare_zone.this.zone
   type     = "MX"
@@ -45,6 +50,7 @@ resource "cloudflare_record" "mx_5" {
 }
 
 resource "cloudflare_record" "spf" {
+  count   = var.email ? 1 : 0
   zone_id = cloudflare_zone.this.id
   name    = cloudflare_zone.this.zone
   type    = "TXT"
@@ -52,6 +58,7 @@ resource "cloudflare_record" "spf" {
 }
 
 resource "cloudflare_record" "key" {
+  count   = var.has_domain_key ? 1 : 0
   zone_id = cloudflare_zone.this.id
   name    = "google._domainkey"
   type    = "TXT"
