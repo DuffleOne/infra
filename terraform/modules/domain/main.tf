@@ -4,6 +4,19 @@ resource "cloudflare_zone" "this" {
   type = "full"
 }
 
+resource "cloudflare_zone_settings_override" "this" {
+  zone_id = cloudflare_zone.this.id
+
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    http3                    = "on"
+
+    min_tls_version = "1.2"
+    ssl             = "flexible"
+  }
+}
+
 resource "cloudflare_page_rule" "avoid_www" {
   zone_id  = cloudflare_zone.this.id
   target   = "www.${cloudflare_zone.this.zone}/*"
