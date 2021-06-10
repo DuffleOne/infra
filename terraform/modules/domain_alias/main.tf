@@ -2,10 +2,8 @@ module "base_domain" {
   source = "../domain"
 
   domain               = var.domain
-  has_domain_key       = var.has_domain_key
   domain_key           = var.domain_key
   email                = var.email
-  keybase              = var.keybase
   keybase_verification = var.keybase_verification
 }
 

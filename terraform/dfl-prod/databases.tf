@@ -20,14 +20,12 @@ resource "digitalocean_database_firewall" "main-fw" {
     value = "217.38.231.160/28"
   }
 
-  rule {
-    type  = "ip_addr"
-    value = "46.101.93.46"
-  }
-
-  rule {
-    type  = "ip_addr"
-    value = "178.62.120.225"
+  dynamic "rule" {
+    for_each = data.terraform_remote_state.cuv_do_prod.outputs.ipv4_addresses
+    content {
+      type  = "ip_addr"
+      value = rule.value
+    }
   }
 }
 

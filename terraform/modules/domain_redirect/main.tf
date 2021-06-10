@@ -1,10 +1,8 @@
 module "base_domain" {
   source = "../domain"
 
-  domain         = var.domain
-  has_domain_key = false
-  email          = false
-  keybase        = false
+  domain = var.domain
+  email  = false
 }
 
 resource "cloudflare_record" "root" {
