@@ -28,7 +28,7 @@ locals {
   ]
 }
 
-module "alias_domain" {
+module "domain_alias" {
   for_each = { for domain in local.domain_aliases : domain.name => domain }
 
   source = "../modules/domain_alias"
