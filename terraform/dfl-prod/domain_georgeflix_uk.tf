@@ -20,7 +20,7 @@ resource "cloudflare_record" "georgeflix_plex" {
   value   = "galactus.ext.dfl.mn"
 }
 
-resource "cloudflare_record" "georgeflix_requesets" {
+resource "cloudflare_record" "georgeflix_requests" {
   zone_id = module.georgeflix_uk.zone_id
   name    = "requests"
   type    = "CNAME"
