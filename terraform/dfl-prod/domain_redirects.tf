@@ -1,13 +1,21 @@
-module "staff_tf" {
-  source = "../modules/domain_redirect"
-
-  domain      = "staff.tf"
-  redirect_to = "https://github.com/cuvva/cuvva/blob/master/infra/aws-acc-root/staff.tf"
+locals {
+  domain_redirects = [
+    {
+      name     = "staff.tf",
+      redirect = "https://github.com/cuvva/cuvva/blob/master/infra/aws-acc-root/staff.tf",
+    },
+    {
+      name     = "gflix.in",
+      redirect = "https://georgeflix.uk",
+    },
+  ]
 }
 
-module "gflix_in" {
+module "domain_redirect" {
+  for_each = { for domain in local.domain_redirects : domain.name => domain }
+
   source = "../modules/domain_redirect"
 
-  domain      = "gflix.in"
-  redirect_to = "https://georgeflix.uk"
+  domain      = each.value.name
+  redirect_to = each.value.redirect
 }
