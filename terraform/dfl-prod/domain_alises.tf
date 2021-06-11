@@ -37,6 +37,6 @@ module "domain_alias" {
   source = "../modules/domain_alias"
 
   domain               = each.value.name
-  domain_key           = each.value.key
-  keybase_verification = each.value.keybase
+  domain_key           = each.value.key == null ? null : each.value.key
+  keybase_verification = each.value.keybase == null ? null : each.value.keybase
 }
