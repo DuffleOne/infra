@@ -26,7 +26,9 @@ locals {
       keybase = "gF4poEcsqEj-FS95jTRY4_LPoEhuf9MATRzlvHoUIhE",
     },
     {
-      name = "lauramiller.me.uk",
+      name    = "lauramiller.me.uk",
+      key     = null,
+      keybase = null,
     },
   ]
 }
@@ -37,6 +39,6 @@ module "domain_alias" {
   source = "../modules/domain_alias"
 
   domain               = each.value.name
-  domain_key           = each.value.key == null ? null : each.value.key
-  keybase_verification = each.value.keybase == null ? null : each.value.keybase
+  domain_key           = each.value.key
+  keybase_verification = each.value.keybase
 }
