@@ -2,7 +2,7 @@ resource "digitalocean_kubernetes_cluster" "dflmn" {
   name   = "dflmn"
   region = "lon1"
   # Grab the latest version slug from `doctl kubernetes options versions`
-  version       = "1.19.11-do.0"
+  version       = "1.20.7-do.0"
   auto_upgrade  = true
   surge_upgrade = true
 
