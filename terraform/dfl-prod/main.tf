@@ -8,14 +8,9 @@ terraform {
   }
 }
 
-variable "do_token" {}
-
 provider "digitalocean" {
   token = var.do_token
 }
-
-variable "cloudflare_email" {}
-variable "cloudflare_api_key" {}
 
 provider "cloudflare" {
   email   = var.cloudflare_email

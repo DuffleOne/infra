@@ -55,9 +55,7 @@ module "db_tflgame" {
 
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "tflgame"
-
-  enable_pool = true
-  pool_size   = 11
+  pool_size  = 11
 }
 
 module "db_wiki" {
@@ -65,7 +63,5 @@ module "db_wiki" {
 
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "wiki"
-
-  enable_pool = true
-  pool_size   = 5
+  pool_size  = 5
 }

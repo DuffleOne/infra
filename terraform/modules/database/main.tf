@@ -9,7 +9,7 @@ resource "digitalocean_database_user" "this" {
 }
 
 resource "digitalocean_database_connection_pool" "this" {
-  count = var.enable_pool ? 1 : 0
+  count = var.pool_size == 0 ? 0 : 1
 
   cluster_id = var.cluster_id
   name       = "${var.name}-pool"

@@ -8,8 +8,6 @@ terraform {
   }
 }
 
-variable "cuv_do_token" {}
-
 provider "digitalocean" {
   token = var.cuv_do_token
 }
