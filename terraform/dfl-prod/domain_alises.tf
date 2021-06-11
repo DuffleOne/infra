@@ -27,7 +27,7 @@ locals {
     },
     {
       name    = "lauramiller.me.uk",
-      key     = null,
+      key     = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhGk498numKPDWFDXMwOHhGPFETj16HORC1YysLSJWpjKhEGtJ1B0ZpCHgaXtjC3nOv6Etqmi1Du+PXw+ViyVgdGBAYlCVnI9j2eihFrqbtr8z+R6eGDU2bRqTnH+DZFiR0czBLTpFh0cb87fgIgrXvIDtsVUA0jVhxOygPJcVaIiRzYU9T/8p3myeStwXHv3wLRtLvsY9WM6vNfVAmF1TGuWEpy/GRJIV7L95IlES5gmNh0pop+GZsTYDhNtpd81p/+UaALIfhOV4EFspVxdyNir7lXo6RAca5QOpAwPpeb4o/S5x/5kFHZ7vcHeUXaEWq5M+Gt2WjTi+PDUgiHeWwIDAQAB",
       keybase = null,
     },
   ]
