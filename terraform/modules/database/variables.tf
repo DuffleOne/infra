@@ -8,12 +8,6 @@ variable "cluster_id" {
   type        = string
 }
 
-variable "enable_pool" {
-  description = "Should the DB connection have a connection pool?"
-  type        = bool
-  default     = false
-}
-
 variable "pool_size" {
   description = "How big should the pool size be?"
   type        = number

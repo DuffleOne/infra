@@ -20,14 +20,12 @@ resource "digitalocean_database_firewall" "main-fw" {
     value = "217.38.231.160/28"
   }
 
-  rule {
-    type  = "ip_addr"
-    value = "46.101.93.46"
-  }
-
-  rule {
-    type  = "ip_addr"
-    value = "178.62.120.225"
+  dynamic "rule" {
+    for_each = data.terraform_remote_state.cuv_do_prod.outputs.ipv4_addresses
+    content {
+      type  = "ip_addr"
+      value = rule.value
+    }
   }
 }
 
@@ -57,9 +55,7 @@ module "db_tflgame" {
 
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "tflgame"
-
-  enable_pool = true
-  pool_size   = 11
+  pool_size  = 11
 }
 
 module "db_wiki" {
@@ -67,7 +63,5 @@ module "db_wiki" {
 
   cluster_id = digitalocean_database_cluster.main-db.id
   name       = "wiki"
-
-  enable_pool = true
-  pool_size   = 5
+  pool_size  = 5
 }

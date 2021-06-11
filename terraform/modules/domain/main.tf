@@ -92,7 +92,7 @@ resource "cloudflare_record" "spf" {
 }
 
 resource "cloudflare_record" "key" {
-  count   = var.has_domain_key ? 1 : 0
+  count   = var.domain_key == null ? 0 : 1
   zone_id = cloudflare_zone.this.id
   name    = "google._domainkey"
   type    = "TXT"
@@ -100,7 +100,7 @@ resource "cloudflare_record" "key" {
 }
 
 resource "cloudflare_record" "keybase" {
-  count   = var.keybase ? 1 : 0
+  count   = var.keybase_verification == null ? 0 : 1
   zone_id = cloudflare_zone.this.id
   name    = cloudflare_zone.this.zone
   type    = "TXT"
