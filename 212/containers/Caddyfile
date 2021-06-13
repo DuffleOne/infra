@@ -3,6 +3,11 @@ requests.georgeflix.uk {
 	reverse_proxy georgeflix_overseerr:5055
 }
 
+requests.lauraflix.uk {
+	encode zstd gzip
+	reverse_proxy georgeflix_overseerr:5055
+}
+
 duplicati.i.dfl.mn {
 	encode zstd gzip
 	reverse_proxy tasks_duplicati:8200

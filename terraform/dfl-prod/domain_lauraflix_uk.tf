@@ -12,3 +12,10 @@ resource "cloudflare_record" "lauraflix_root" {
   value   = "lauraflix.uk.s3-website-eu-west-1.amazonaws.com"
   proxied = true
 }
+
+resource "cloudflare_record" "lauraflix_requests" {
+  zone_id = module.lauraflix_uk.zone_id
+  name    = "requests"
+  type    = "CNAME"
+  value   = "containers.ext.dfl.mn"
+}
