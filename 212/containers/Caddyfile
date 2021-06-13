@@ -1,11 +1,11 @@
 requests.georgeflix.uk {
 	encode zstd gzip
-	reverse_proxy georgeflix_overseerr:5055
+	reverse_proxy lauraflix_overseerr:5055
 }
 
 requests.lauraflix.uk {
 	encode zstd gzip
-	reverse_proxy georgeflix_overseerr:5055
+	reverse_proxy lauraflix_overseerr:5055
 }
 
 duplicati.i.dfl.mn {
@@ -22,7 +22,7 @@ duplicati.i.dfl.mn {
 
 deluge.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_deluge:8112
+	reverse_proxy lauraflix_deluge:8112
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -34,7 +34,7 @@ deluge.i.dfl.mn {
 
 sonarr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_sonarr:8989
+	reverse_proxy lauraflix_sonarr:8989
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -46,7 +46,7 @@ sonarr.i.dfl.mn {
 
 radarr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_radarr:7878
+	reverse_proxy lauraflix_radarr:7878
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -58,7 +58,7 @@ radarr.i.dfl.mn {
 
 bazarr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_bazarr:6767
+	reverse_proxy lauraflix_bazarr:6767
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -70,7 +70,7 @@ bazarr.i.dfl.mn {
 
 jackett.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_jackett:9117
+	reverse_proxy lauraflix_jackett:9117
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -82,7 +82,7 @@ jackett.i.dfl.mn {
 
 overseerr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy georgeflix_overseerr:5055
+	reverse_proxy lauraflix_overseerr:5055
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
