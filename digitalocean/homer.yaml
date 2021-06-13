@@ -78,7 +78,7 @@ metadata:
 data:
   config.yml: |
     title: "DFL Dash"
-    subtitle: "Duffleman"
+    subtitle: "DuffleOne"
     icon: "far fa-meh-blank"
 
     header: true
@@ -89,7 +89,7 @@ data:
     links:
       - name: "Home"
         icon: "fas fa-home"
-        url: "https://dfl.mn"
+        url: "https://duffle.one"
       - name: "GitHub"
         icon: "fab fa-github-alt"
         url: "https://github.com/Duffleman"
@@ -134,9 +134,9 @@ data:
         items:
           - name: "Requests"
             icon: "fas fa-tasks"
-            subtitle: "Make requests for George'flix"
+            subtitle: "Make requests for Laura'flix"
             tag: "selfhosted"
-            url: "https://requests.georgeflix.uk"
+            url: "https://requests.lauraflix.uk"
           - name: "Synclounge"
             icon: "fas fa-sync"
             subtitle: "Watch PLEX in sync"
