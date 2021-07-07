@@ -46,5 +46,5 @@ resource "cloudflare_record" "dflmn_k_kubernetes" {
   zone_id = module.dfl_mn.zone_id
   name    = "doproxy.k"
   type    = "A"
-  value   = "46.101.65.145"
+  value   = "159.65.210.204"
 }
