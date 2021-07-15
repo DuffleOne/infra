@@ -46,5 +46,5 @@ resource "cloudflare_record" "dflmn_k_kubernetes" {
   zone_id = module.dfl_mn.zone_id
   name    = "doproxy.k"
   type    = "A"
-  value   = "159.65.210.204"
+  value   = data.terraform_remote_state.cuv_do_prod.outputs.loadbalancer_ip
 }
