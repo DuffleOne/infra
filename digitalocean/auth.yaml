@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: duffleman/dfl:sha-7103891
+          image: duffleone/dfl:sha-7103891
           args: ["auth"]
           ports:
             - containerPort: 80

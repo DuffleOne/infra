@@ -7,7 +7,7 @@ services:
     ports:
       - "443:443"
       - "80:80"
-    image: duffleman/caddy:2
+    image: duffleone/caddy:2
     restart: unless-stopped
     volumes:
       - /mnt/caddy/config:/config

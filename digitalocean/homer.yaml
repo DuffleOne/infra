@@ -92,7 +92,7 @@ data:
         url: "https://duffle.one"
       - name: "GitHub"
         icon: "fab fa-github-alt"
-        url: "https://github.com/Duffleman"
+        url: "https://github.com/DuffleOne"
 
     services:
       - name: "Internal"
