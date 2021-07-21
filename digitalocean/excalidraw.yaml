@@ -51,6 +51,6 @@ spec:
     spec:
       containers:
         - name: excalidraw
-          image: excalidraw/excalidraw:sha-ce507b0
+          image: excalidraw/excalidraw:sha-b2c4552
           ports:
             - containerPort: 80
