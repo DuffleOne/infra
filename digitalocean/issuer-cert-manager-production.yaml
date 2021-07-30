@@ -13,6 +13,7 @@ spec:
           dnsZones:
             - "dfl.mn"
             - "georgeflix.uk"
+            - "lauraflix.uk"
             - "tflga.me"
         dns01:
           cloudflare:
