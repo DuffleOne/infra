@@ -53,17 +53,17 @@ data:
         "interval": 120
       },
       {
-        "name": "ombi",
-        "component_name": "Ombi",
+        "name": "overseerr",
+        "component_name": "Overseerr",
         "type": "https",
-        "host": "requests.georgeflix.uk",
+        "host": "requests.lauraflix.uk",
         "interval": 120
       },
       {
         "name": "synclongue",
         "component_name": "Synclounge",
         "type": "https",
-        "host": "sync.georgeflix.uk",
+        "host": "sync.lauraflix.uk",
         "interval": 120
       },
       {

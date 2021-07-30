@@ -13,9 +13,23 @@ resource "cloudflare_record" "lauraflix_root" {
   proxied = true
 }
 
+resource "cloudflare_record" "lauraflix_plex" {
+  zone_id = module.lauraflix_uk.zone_id
+  name    = "plex"
+  type    = "CNAME"
+  value   = "galactus.ext.dfl.mn"
+}
+
 resource "cloudflare_record" "lauraflix_requests" {
   zone_id = module.lauraflix_uk.zone_id
   name    = "requests"
   type    = "CNAME"
   value   = "containers.ext.dfl.mn"
+}
+
+resource "cloudflare_record" "lauraflix_sync" {
+  zone_id = module.lauraflix_uk.zone_id
+  name    = "sync"
+  type    = "CNAME"
+  value   = "doproxy.k.dfl.mn"
 }

@@ -26,10 +26,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - sync.georgeflix.uk
+        - sync.lauraflix.uk
       secretName: cert-synclounge
   rules:
-    - host: sync.georgeflix.uk
+    - host: sync.lauraflix.uk
       http:
         paths:
           - path: /slserver
@@ -69,13 +69,13 @@ spec:
             - containerPort: 8089
           env:
             - name: DOMAIN
-              value: sync.georgeflix.uk
+              value: sync.lauraflix.uk
             - name: SERVERS
               value: |
                 {
-                  "name": "GeorgeSync",
+                  "name": "DuffleSync",
                   "location": "Earth",
-                  "url": "https://sync.georgeflix.uk/slserver",
+                  "url": "https://sync.lauraflix.uk/slserver",
                   "logo": "https://dfl.mn/0lm",
                   "image": "https://dfl.mn/0lm"
                 }

@@ -141,7 +141,7 @@ data:
             icon: "fas fa-sync"
             subtitle: "Watch PLEX in sync"
             tag: "selfhosted"
-            url: "https://sync.georgeflix.uk"
+            url: "https://sync.lauraflix.uk"
           - name: "Status"
             icon: "fas fa-check-circle"
             subtitle: "Cachet"
