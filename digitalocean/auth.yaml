@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ghcr.io/duffleone/dfl:sha-0506554
+          image: ghcr.io/duffleone/dfl:sha-fef9b88
           args: ["auth"]
           ports:
             - containerPort: 80

@@ -18,11 +18,8 @@ spec:
             name: monitor
       containers:
         - name: monitor
-          image: ghcr.io/duffleone/dfl:sha-0506554
+          image: ghcr.io/duffleone/dfl:sha-fef9b88
           args: ["monitor"]
-          volumeMounts:
-            - name: monitor
-              mountPath: /monitor_config
           env:
             - name: ENV
               value: prod
