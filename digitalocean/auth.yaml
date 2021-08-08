@@ -23,20 +23,7 @@ spec:
     - hosts:
         - api.duffle.one
       secretName: cert-dflapi
-    - hosts:
-        - auth.dfl.mn
-      secretName: cert-auth
   rules:
-    - host: auth.dfl.mn
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: auth
-                port:
-                  number: 80
     - host: api.duffle.one
       http:
         paths:
@@ -64,7 +51,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ghcr.io/duffleone/dfl:pr-218
+          image: ghcr.io/duffleone/dfl:sha-760334d
           args: ["auth"]
           ports:
             - containerPort: 80
@@ -78,11 +65,11 @@ spec:
             - name: AUTH_LOGGING_FORMAT
               value: "json"
             - name: AUTH_JWT_ISSUER
-              value: auth.dfl.mn
+              value: auth.duffle.one
             - name: AUTH_WEBAUTHN_RPID
-              value: auth.dfl.mn
+              value: auth.duffle.one
             - name: AUTH_WEBAUTHN_RPORIGIN
-              value: https://auth.dfl.mn
+              value: https://auth.duffle.one
             - name: AUTH_WEBAUTHN_RPDISPLAYNAME
               value: DFL Auth
             - name: AUTH_DSN

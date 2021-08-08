@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: short
-          image: ghcr.io/duffleone/dfl:pr-218
+          image: ghcr.io/duffleone/dfl:sha-760334d
           args: ["short"]
           ports:
             - containerPort: 80
@@ -76,7 +76,7 @@ spec:
             - name: SHORT_SERVER_GRACEFUL
               value: "5"
             - name: SHORT_JWT_ISSUER
-              value: auth.dfl.mn
+              value: auth.duffle.one
             - name: SHORT_LOGGING_FORMAT
               value: "json"
             - name: SHORT_PUBLIC_KEY
