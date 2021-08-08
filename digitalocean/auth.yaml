@@ -21,13 +21,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - auth.dfl.mn
-      secretName: cert-auth
+        - api.duffle.one
+      secretName: cert-dflapi
   rules:
-    - host: auth.dfl.mn
+    - host: api.duffle.one
       http:
         paths:
-          - path: /
+          - path: /1/auth
             pathType: Prefix
             backend:
               service:
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ghcr.io/duffleone/dfl:sha-fef9b88
+          image: ghcr.io/duffleone/dfl:pr-218
           args: ["auth"]
           ports:
             - containerPort: 80

@@ -12,3 +12,19 @@ resource "cloudflare_record" "duffleone_root" {
   value   = "duffle.one.s3-website-eu-west-1.amazonaws.com"
   proxied = true
 }
+
+resource "cloudflare_record" "duffleone_api" {
+  zone_id = module.duffle_one.zone_id
+  name    = "api"
+  type    = "CNAME"
+  value   = "doproxy.k.dfl.mn"
+  proxied = true
+}
+
+resource "cloudflare_record" "duffleone_auth" {
+  zone_id = module.duffle_one.zone_id
+  name    = "auth"
+  type    = "CNAME"
+  value   = "auth.duffle.one.s3-website-eu-west-1.amazonaws.com"
+  proxied = true
+}

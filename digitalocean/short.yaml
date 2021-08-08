@@ -23,11 +23,24 @@ spec:
     - hosts:
         - dfl.mn
       secretName: cert-short
+    - hosts:
+        - api.duffle.one
+      secretName: cert-dflapi
   rules:
     - host: dfl.mn
       http:
         paths:
           - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: short
+                port:
+                  number: 80
+    - host: api.duffle.one
+      http:
+        paths:
+          - path: /1/short
             pathType: Prefix
             backend:
               service:
@@ -51,7 +64,7 @@ spec:
     spec:
       containers:
         - name: short
-          image: ghcr.io/duffleone/dfl:sha-fef9b88
+          image: ghcr.io/duffleone/dfl:pr-218
           args: ["short"]
           ports:
             - containerPort: 80

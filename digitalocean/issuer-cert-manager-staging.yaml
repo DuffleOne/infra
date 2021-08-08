@@ -12,11 +12,13 @@ spec:
       - selector:
           dnsZones:
             - "dfl.mn"
+            - "duffle.one"
             - "georgeflix.uk"
+            - "lauraflix.uk"
             - "tflga.me"
         dns01:
           cloudflare:
-            email: cloudflare@duffleman.co.uk
+            email: cloudflare@duffle.one
             apiTokenSecretRef:
               name: cloudflare
               key: api-token
