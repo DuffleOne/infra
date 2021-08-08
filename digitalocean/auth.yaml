@@ -23,7 +23,20 @@ spec:
     - hosts:
         - api.duffle.one
       secretName: cert-dflapi
+    - hosts:
+        - auth.dfl.mn
+      secretName: cert-auth
   rules:
+    - host: auth.dfl.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                  number: 80
     - host: api.duffle.one
       http:
         paths:
