@@ -49,13 +49,6 @@ resource "cloudflare_record" "dflmn_svc_sonarr" {
 }
 
 // External
-resource "cloudflare_record" "dflmn_svc_auth" {
-  zone_id = module.dfl_mn.zone_id
-  name    = "auth"
-  type    = "CNAME"
-  value   = "doproxy.k.dfl.mn"
-}
-
 resource "cloudflare_record" "dflmn_svc_dash" {
   zone_id = module.dfl_mn.zone_id
   name    = "dash"
