@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: short
-          image: ghcr.io/duffleone/dfl:sha-760334d
+          image: ghcr.io/duffleone/dfl:sha-22dbbab
           args: ["short"]
           ports:
             - containerPort: 80
