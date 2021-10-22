@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  valheim:
+    cap_add:
+      - sys_nice
+    image: ghcr.io/lloesche/valheim-server:latest
+    environment:
+      - SERVER_NAME=Duffleheim
+      - SERVER_PASS=LLEUOSF
+    volumes:
+      - /mnt/localfs/valheim/config:/config
+      - /mnt/localfs/valheim/data:/opt/valheim
+    restart: unless-stopped
+    ports:
+      - "2456-2457:2456-2457/udp"
