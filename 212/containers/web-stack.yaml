@@ -7,6 +7,7 @@ services:
     ports:
       - "443:443"
       - "80:80"
+      - "8448:8448"
     image: duffleone/caddy:2
     restart: unless-stopped
     volumes:

@@ -13,6 +13,19 @@ services:
       - /mnt/george/containers:/backups
       - /mnt/localfs:/localfs
     restart: unless-stopped
+  synapse:
+    networks:
+      - web_web
+    ports:
+      - "8008:8008"
+    image: matrixdotorg/synapse:latest
+    environment:
+      - UID=0
+      - GID=0
+      - TZ=Europe/London
+    volumes:
+      - /mnt/localfs/synapse:/data
+    restart: unless-stopped
 networks:
   web_web:
     external: true
