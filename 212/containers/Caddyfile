@@ -7,9 +7,8 @@ chat.duffle.one:8448 {
 	reverse_proxy tasks_synapse:8008
 }
 
-requests.georgeflix.uk {
-	encode zstd gzip
-	reverse_proxy lauraflix_overseerr:5055
+bot.duffle.one {
+	reverse_proxy tasks_synapsebot:4050
 }
 
 requests.lauraflix.uk {
