@@ -16,6 +16,18 @@ requests.lauraflix.uk {
 	reverse_proxy lauraflix_overseerr:5055
 }
 
+grocy.i.dfl.mn {
+	encode zstd gzip
+	reverse_proxy tasks_grocy:80
+	tls security@duffeman.co.uk {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /config/root.public.pem
+		}
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	}
+}
+
 duplicati.i.dfl.mn {
 	encode zstd gzip
 	reverse_proxy tasks_duplicati:8200

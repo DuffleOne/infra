@@ -39,6 +39,17 @@ services:
       - BASE_URL=https://bot.duffle.one
     volumes:
       - /mnt/localfs/synapsebot:/data
+  grocy:
+    networks:
+      - web_web
+    image: ghcr.io/linuxserver/grocy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /mnt/localfs/grocy:/config
+    restart: unless-stopped
 networks:
   web_web:
     external: true
