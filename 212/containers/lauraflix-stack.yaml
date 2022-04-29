@@ -75,20 +75,6 @@ services:
       - GUID=1000
       - TZ=Europe/London
       - UMASK_SET=022
-  jackett:
-    networks:
-      - default
-      - web_web
-    ports:
-      - "9117:9117"
-    image: linuxserver/jackett:latest
-    restart: unless-stopped
-    volumes:
-      - /mnt/localfs/jackett:/config
-    environment:
-      - PUID=1000
-      - GUID=1000
-      - TZ=Europe/London
   overseerr:
     networks:
       - default
@@ -102,6 +88,20 @@ services:
     environment:
       - TZ=Europe/London
       - LOG_LEVEL=info
+  prowlarr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "9696:9696"
+    image: linuxserver/prowlarr:nightly
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/prowlarr:/config
+    environment:
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/London
 networks:
   web_web:
     external: true

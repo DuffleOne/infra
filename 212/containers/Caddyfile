@@ -88,9 +88,9 @@ bazarr.i.dfl.mn {
 	}
 }
 
-jackett.i.dfl.mn {
+overseerr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy lauraflix_jackett:9117
+	reverse_proxy lauraflix_overseerr:5055
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
@@ -100,9 +100,9 @@ jackett.i.dfl.mn {
 	}
 }
 
-overseerr.i.dfl.mn {
+prowlarr.i.dfl.mn {
 	encode zstd gzip
-	reverse_proxy lauraflix_overseerr:5055
+	reverse_proxy lauraflix_prowlarr:9696
 	tls security@duffeman.co.uk {
 		client_auth {
 			mode require_and_verify
