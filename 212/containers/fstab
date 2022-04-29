@@ -4,4 +4,4 @@ nas:/mnt/array2/TV-A2 /mnt/tv-a2 nfs  auto,nofail,noatime,nolock,intr,tcp,actime
 nas:/mnt/array3/Television /mnt/tv-a3 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 nas:/mnt/array2/Movies-A2 /mnt/movies-a2 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 nas:/mnt/array3/Movies /mnt/movies-a3 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-nas:/mnt/array3/George /mnt/george nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+nas:/mnt/array3/Laura /mnt/laura nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
