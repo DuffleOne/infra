@@ -1,16 +1,3 @@
-chat.duffle.one {
-	reverse_proxy /_matrix/* tasks_synapse:8008
-	reverse_proxy /_synapse/client/* tasks_synapse:8008
-}
-
-chat.duffle.one:8448 {
-	reverse_proxy tasks_synapse:8008
-}
-
-bot.duffle.one {
-	reverse_proxy tasks_synapsebot:4050
-}
-
 requests.lauraflix.uk {
 	encode zstd gzip
 	reverse_proxy lauraflix_overseerr:5055
