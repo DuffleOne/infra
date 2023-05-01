@@ -102,6 +102,20 @@ services:
       - PUID=1000
       - GUID=1000
       - TZ=Europe/London
+  wizarr:
+    networks:
+      - default
+      - web_web
+    ports:
+      - "5690:5690"
+    image: ghcr.io/wizarrrr/wizarr
+    restart: unless-stopped
+    volumes:
+      - /mnt/localfs/wizarr:/data/database
+    environment:
+      - APP_URL=https://i.lauraflix.uk
+      - TZ=Europe/London
+      - LOG_LEVEL=info
 networks:
   web_web:
     external: true

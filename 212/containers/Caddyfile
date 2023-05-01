@@ -16,6 +16,11 @@ requests.lauraflix.uk {
 	reverse_proxy lauraflix_overseerr:5055
 }
 
+i.lauraflix.uk {
+	encode zstd gzip
+	reverse_proxy lauraflix_wizarr:5690
+}
+
 grocy.i.dfl.mn {
 	encode zstd gzip
 	reverse_proxy tasks_grocy:80
