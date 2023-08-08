@@ -3,7 +3,6 @@ services:
   deluge:
     networks:
       - default
-      - web_web
     ports:
       - "8112:8112"
     image: linuxserver/deluge:latest
@@ -20,7 +19,6 @@ services:
   sonarr:
     networks:
       - default
-      - web_web
     ports:
       - "8989:8989"
     image: linuxserver/sonarr:develop
@@ -39,7 +37,6 @@ services:
   radarr:
     networks:
       - default
-      - web_web
     ports:
       - "7878:7878"
     image: linuxserver/radarr:nightly
@@ -57,7 +54,6 @@ services:
   bazarr:
     networks:
       - default
-      - web_web
     ports:
       - "6767:6767"
     image: linuxserver/bazarr:development
@@ -78,7 +74,6 @@ services:
   overseerr:
     networks:
       - default
-      - web_web
     ports:
       - "5055:5055"
     image: sctx/overseerr:latest
@@ -91,7 +86,6 @@ services:
   prowlarr:
     networks:
       - default
-      - web_web
     ports:
       - "9696:9696"
     image: linuxserver/prowlarr:nightly
@@ -105,7 +99,6 @@ services:
   wizarr:
     networks:
       - default
-      - web_web
     ports:
       - "5690:5690"
     image: ghcr.io/wizarrrr/wizarr
@@ -116,6 +109,20 @@ services:
       - APP_URL=https://i.lauraflix.uk
       - TZ=Europe/London
       - LOG_LEVEL=info
-networks:
-  web_web:
-    external: true
+  xteve:
+    networks:
+      - default
+    ports:
+      - "34400:34400"
+    image: alturismo/xteve_g2g_owi
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /mnt/localfs/xteve/xteve:/root/.xteve
+      - /mnt/localfs/xteve/config:/config
+      - /mnt/localfs/xteve/guide2go:/guide2go
+      - /mnt/localfs/xteve/owi2plex:/owi2plex
+      - /mnt/localfs/xteve/tmp:/tmp/xteve
+      - /mnt/localfs/xteve/tvh:/TVH
+    environment:
+      - TZ=Europe/London

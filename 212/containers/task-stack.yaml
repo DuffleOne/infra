@@ -1,8 +1,8 @@
 version: "3.6"
 services:
   duplicati:
-    networks:
-      - web_web
+    ports:
+     - "8200:8200"
     image: ghcr.io/linuxserver/duplicati
     environment:
       - PUID=1000
@@ -13,6 +13,3 @@ services:
       - /mnt/laura/containers:/backups
       - /mnt/localfs:/localfs
     restart: unless-stopped
-networks:
-  web_web:
-    external: true
