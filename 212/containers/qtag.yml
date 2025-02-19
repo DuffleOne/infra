@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  qtag:
+    ports:
+     - "8947:8947"
+    image: ghcr.io/duffleone/qtag:latest
+    environment:
+      - API_DOMAIN=api.qtag.link
+      - DASHBOARD_SITE=https://admin.qtag.link
+      - MAIN_SITE=https://qtag.link
+      - WEB_DOMAIN=qtag.link
+      - GLOBAL_API_KEY_FILE=/run/secrets/qtag-api-key
+      - MONGODB_URI_FILE=/run/secrets/qtag-mongodb-uri
+    restart: unless-stopped
