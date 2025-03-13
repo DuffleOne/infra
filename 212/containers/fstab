@@ -1,9 +1,3 @@
-nas:/mnt/array1/TV /mnt/tv-a1 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-nas:/mnt/array2/TV-A2 /mnt/tv-a2 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-nas:/mnt/array3/Television /mnt/tv-a3 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-nas:/mnt/array2/Movies-A2 /mnt/movies-a2 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-nas:/mnt/array3/Movies /mnt/movies-a3 nfs  auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
-
 unas:/var/nfs/shared/Lauraflix.Movies /mnt/movies nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 unas:/var/nfs/shared/Lauraflix.TV /mnt/tv nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 unas:/var/nfs/shared/Lauraflix.Downloads /mnt/downloads nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0

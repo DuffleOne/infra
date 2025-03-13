@@ -26,9 +26,6 @@ services:
     volumes:
       - /mnt/localfs/sonarr:/config
       - /mnt/downloads:/downloads
-      - /mnt/tv-a1:/tv-a1
-      - /mnt/tv-a2:/tv-a2
-      - /mnt/tv-a3:/tv-a3
       - /mnt/tv:/tv
     environment:
       - PUID=1000
@@ -45,8 +42,6 @@ services:
     volumes:
       - /mnt/localfs/radarr:/config
       - /mnt/downloads:/downloads
-      - /mnt/movies-a2:/movies-a2
-      - /mnt/movies-a3:/movies-a3
       - /mnt/movies:/movies
     environment:
       - PUID=1000
@@ -64,12 +59,7 @@ services:
       - /mnt/localfs/bazarr:/config
       - /mnt/downloads:/downloads
       - /mnt/movies:/movies
-      - /mnt/movies-a2:/movies-a2
-      - /mnt/movies-a3:/movies-a3
       - /mnt/tv:/tv
-      - /mnt/tv-a1:/tv-a1
-      - /mnt/tv-a2:/tv-a2
-      - /mnt/tv-a3:/tv-a3
     environment:
       - PUID=1000
       - GUID=1000
