@@ -29,6 +29,7 @@ services:
       - /mnt/tv-a1:/tv-a1
       - /mnt/tv-a2:/tv-a2
       - /mnt/tv-a3:/tv-a3
+      - /mnt/tv:/tv
     environment:
       - PUID=1000
       - GUID=1000
@@ -46,6 +47,7 @@ services:
       - /mnt/downloads:/downloads
       - /mnt/movies-a2:/movies-a2
       - /mnt/movies-a3:/movies-a3
+      - /mnt/movies:/movies
     environment:
       - PUID=1000
       - GUID=1000
@@ -61,8 +63,10 @@ services:
     volumes:
       - /mnt/localfs/bazarr:/config
       - /mnt/downloads:/downloads
+      - /mnt/movies:/movies
       - /mnt/movies-a2:/movies-a2
       - /mnt/movies-a3:/movies-a3
+      - /mnt/tv:/tv
       - /mnt/tv-a1:/tv-a1
       - /mnt/tv-a2:/tv-a2
       - /mnt/tv-a3:/tv-a3
@@ -71,18 +75,6 @@ services:
       - GUID=1000
       - TZ=Europe/London
       - UMASK_SET=022
-  overseerr:
-    networks:
-      - default
-    ports:
-      - "5055:5055"
-    image: sctx/overseerr:latest
-    restart: unless-stopped
-    volumes:
-      - /mnt/localfs/overseerr:/app/config
-    environment:
-      - TZ=Europe/London
-      - LOG_LEVEL=info
   prowlarr:
     networks:
       - default
@@ -95,34 +87,4 @@ services:
     environment:
       - PUID=1000
       - GUID=1000
-      - TZ=Europe/London
-  wizarr:
-    networks:
-      - default
-    ports:
-      - "5690:5690"
-    image: ghcr.io/wizarrrr/wizarr
-    restart: unless-stopped
-    volumes:
-      - /mnt/localfs/wizarr:/data/database
-    environment:
-      - APP_URL=https://i.lauraflix.uk
-      - TZ=Europe/London
-      - LOG_LEVEL=info
-  xteve:
-    networks:
-      - default
-    ports:
-      - "34400:34400"
-    image: alturismo/xteve_g2g_owi
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - /mnt/localfs/xteve/xteve:/root/.xteve
-      - /mnt/localfs/xteve/config:/config
-      - /mnt/localfs/xteve/guide2go:/guide2go
-      - /mnt/localfs/xteve/owi2plex:/owi2plex
-      - /mnt/localfs/xteve/tmp:/tmp/xteve
-      - /mnt/localfs/xteve/tvh:/TVH
-    environment:
       - TZ=Europe/London
